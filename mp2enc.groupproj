@@ -2,6 +2,17 @@
 		<PropertyGroup>
 			<ProjectGuid>{1572FEC2-613C-4F28-BB87-DA3E0C60735F}</ProjectGuid>
 		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="..\ProjectGroup1\Project1\Project1.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="mp2dmoe\mp2dmoe.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="mp2dmoe\tests\mp2dmoeTests.cbproj">
+				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
+			</Projects>
+		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
 			<Borland.ProjectType/>
@@ -9,14 +20,41 @@
 				<Default.Personality/>
 			</BorlandProject>
 		</ProjectExtensions>
+		<Target Name="Project1">
+			<MSBuild Projects="..\ProjectGroup1\Project1\Project1.cbproj"/>
+		</Target>
+		<Target Name="Project1:Clean">
+			<MSBuild Targets="Clean" Projects="..\ProjectGroup1\Project1\Project1.cbproj"/>
+		</Target>
+		<Target Name="Project1:Make">
+			<MSBuild Targets="Make" Projects="..\ProjectGroup1\Project1\Project1.cbproj"/>
+		</Target>
+		<Target Name="mp2dmoe">
+			<MSBuild Projects="mp2dmoe\mp2dmoe.cbproj"/>
+		</Target>
+		<Target Name="mp2dmoe:Clean">
+			<MSBuild Targets="Clean" Projects="mp2dmoe\mp2dmoe.cbproj"/>
+		</Target>
+		<Target Name="mp2dmoe:Make">
+			<MSBuild Targets="Make" Projects="mp2dmoe\mp2dmoe.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="mp2dmoe" Name="mp2dmoeTests">
+			<MSBuild Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="mp2dmoe:Clean" Name="mp2dmoeTests:Clean">
+			<MSBuild Targets="Clean" Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="mp2dmoe:Make" Name="mp2dmoeTests:Make">
+			<MSBuild Targets="Make" Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget/>
+			<CallTarget Targets="Project1;mp2dmoe;mp2dmoeTests"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget/>
+			<CallTarget Targets="Project1:Clean;mp2dmoe:Clean;mp2dmoeTests:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget/>
+			<CallTarget Targets="Project1:Make;mp2dmoe:Make;mp2dmoeTests:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>
