@@ -1,0 +1,9 @@
+syntax: glob
+
+# Binary directories.
+.libs/
+Debug/
+Release/
+
+# Backup files.
+*~
