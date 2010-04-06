@@ -84,7 +84,8 @@ DllCanUnloadNow(void)
 STDAPI EXPORT
 DllRegisterServer(void)
 {
-  return _Module.RegisterServer(TRUE);
+  // No type library in this DLL.
+  return _Module.RegisterServer(FALSE);
 }
 
 // DllRegisterServer を通じて作成されたすべてのレジストリ エントリを
