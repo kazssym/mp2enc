@@ -23,16 +23,12 @@ class ATL_NO_VTABLE UUID("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}") CMP2Encoder
 public:
   // <atlmod.h>
   //DECLARE_PROGID("mp2dmoe.MP2Encoder");
-  DECLARE_DESCRIPTION("MP2 Encoder DMO");
+  DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
   DECLARE_THREADING_MODEL(otBoth);
 public:
-  static HRESULT WINAPI UpdateRegistry(BOOL bRegister)
-  {
-    TComServerRegistrarT<CMP2Encoder>
-      regObj(GetObjectCLSID(), 0, GetDescription());
-    return regObj.UpdateRegistry(bRegister);
-  }
+  static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 
+  // <atlcom.h>
   BEGIN_COM_MAP(CMP2Encoder)
   COM_INTERFACE_ENTRY(IMediaObject)
   END_COM_MAP()
