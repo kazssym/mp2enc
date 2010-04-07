@@ -60,8 +60,8 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
-			<CppCompile Include="encoder.cpp">
-				<DependentOn>encoder.h</DependentOn>
+			<CppCompile Include="Encoder.cpp">
+				<DependentOn>Encoder.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
 			</CppCompile>
 			<CppCompile Include="main.cpp">
