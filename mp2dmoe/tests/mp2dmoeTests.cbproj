@@ -65,6 +65,10 @@
 			<CppCompile Include="mp2dmoeTests.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
+			<CppCompile Include="Helper.cpp">
+				<DependentOn>Helper.h</DependentOn>
+				<BuildOrder>1</BuildOrder>
+			</CppCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
