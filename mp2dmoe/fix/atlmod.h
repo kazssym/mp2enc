@@ -381,7 +381,7 @@ template <class T>
 HRESULT TRegistrarBaseT<T>::CreateRegKey(LPCTSTR keyStr, LPCTSTR ValueName, LPCTSTR Value)
 {
   CRegKey key;
-  HRESULT status = key.Create(HKEY_CLASSES_ROOT, keyStr);
+  LONG status = key.Create(HKEY_CLASSES_ROOT, keyStr);
 
   if ((status == ERROR_SUCCESS) && (Value != NULL))
   {
@@ -393,7 +393,7 @@ HRESULT TRegistrarBaseT<T>::CreateRegKey(LPCTSTR keyStr, LPCTSTR ValueName, LPCT
     ::MessageBox(0, dbgMsg, keyStr, MB_OK);
 #endif
   }
-  return status;
+  return HRESULT_FROM_WIN32(status);
 }
 
 // Deletes a Registry Key
@@ -403,7 +403,7 @@ HRESULT TRegistrarBaseT<T>::CreateRegKey(LPCTSTR keyStr, LPCTSTR ValueName, LPCT
 template <class T>
 HRESULT TRegistrarBaseT<T>::DeleteRegKey(LPCTSTR keyStr)
 {
-  return ::RegDeleteKey(HKEY_CLASSES_ROOT, keyStr);
+  return HRESULT_FROM_WIN32(::RegDeleteKey(HKEY_CLASSES_ROOT, keyStr));
 }
 
 // Delete a Registry Key and all subkeys
@@ -415,7 +415,7 @@ HRESULT TRegistrarBaseT<T>::NukeRegKey(LPCTSTR keyStr)
   //
   CRegKey key;
   key.Attach(HKEY_CLASSES_ROOT);
-  return key.RecurseDeleteKey(keyStr);
+  return HRESULT_FROM_WIN32(key.RecurseDeleteKey(keyStr));
 }
 
 // Convert GUID to String
@@ -555,13 +555,16 @@ bool IsEqual(T t1, T t2)
 template <class T> HRESULT
 TComServerRegistrarT<T>::UpdateRegistry(bool bRegister)
 {
+  HRESULT hres;
   if (bRegister)
   {
     static TCHAR szAutomation[] = _T(" /Automation");
 
     // Create registry entries
     //
-    CreateRegKey(m_ClassKey, _T(""), m_Description);
+    hres = CreateRegKey(m_ClassKey, _T(""), m_Description);
+    if (FAILED(hres))
+      return hres;
 
     // ClassKey\ServerType
     //
@@ -581,7 +584,9 @@ TComServerRegistrarT<T>::UpdateRegistry(bool bRegister)
 
     // Register ClassKey\ServerType
     //
-    CreateRegKey(key, _T(""), mod);
+    hres = CreateRegKey(key, _T(""), mod);
+    if (FAILED(hres))
+      return hres;
 
     // Store Threading Model
     // Ambient relies on defines (a la CBuilder3)
@@ -590,66 +595,74 @@ TComServerRegistrarT<T>::UpdateRegistry(bool bRegister)
     if (IsEqual(T::GetThreadModel(), otAmbientThreadModel))
     {
 #if   defined(_ATL_SINGLE_THREADED)
-      CreateRegKey(key, szThrdMdl, _T("Single"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Single"));
 #elif defined(_ATL_BOTH_THREADED)
-      CreateRegKey(key, szThrdMdl, _T("Both"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Both"));
 #elif defined(_ATL_APARTMENT_THREADED)
-      CreateRegKey(key, szThrdMdl, _T("Apartment"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Apartment"));
 #elif defined(_ATL_NEUTRAL_THREADED)
-      CreateRegKey(key, szThrdMdl, _T("Neutral"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Neutral"));
 #elif defined(_ATL_FREE_THREADED)           // NOTE: Check _ATL_FREE_THREADED last
                                             //       because ATLBASE.H defines it for BOTH
-      CreateRegKey(key, szThrdMdl, _T("Free"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Free"));
 #else
-      CreateRegKey(key, _T("NoThreadingModel"), _T(""));
+      hres = CreateRegKey(key, _T("NoThreadingModel"), _T(""));
 #endif
     }
     else if (IsEqual(T::GetThreadModel(), otSingle))
     {
-      CreateRegKey(key, szThrdMdl, _T("Single"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Single"));
     }
     else if (IsEqual(T::GetThreadModel(), otFree))
     {
-      CreateRegKey(key, szThrdMdl, _T("Free"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Free"));
     }
     else if (IsEqual(T::GetThreadModel(), otBoth))
     {
-      CreateRegKey(key, szThrdMdl, _T("Both"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Both"));
     }
     else if (IsEqual(T::GetThreadModel(), otNeutral))
     {
-      CreateRegKey(key, szThrdMdl, _T("Neutral"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Neutral"));
     }
     else /* if (T::GetThreadModel() == otApartment)  (Default case) */
     {
-      CreateRegKey(key, szThrdMdl, _T("Apartment"));
+      hres = CreateRegKey(key, szThrdMdl, _T("Apartment"));
     }
+    if (FAILED(hres))
+      return hres;
 
     // Register CLSID/ProgID
     //
     if (m_ProgID && *m_ProgID)
     {
-      CreateRegKey(m_ProgID, _T(""), m_Description);
+      hres = CreateRegKey(m_ProgID, _T(""), m_Description);
+      if (FAILED(hres))
+        return hres;
 
       TAPtr<TCHAR> buff(new TCHAR[_MAX_PATH]);
       lstrcpy(buff, m_ProgID);
       lstrcat(buff, _T("\\CLSID"));
-      CreateRegKey(buff, _T(""), m_ClassIDstr);
+      hres = CreateRegKey(buff, _T(""), m_ClassIDstr);
+      if (FAILED(hres))
+        return hres;
 
       lstrcpy(buff, m_ClassKey);
       lstrcat(buff, _T("\\ProgID"));
-      CreateRegKey(buff, _T(""), m_ProgID);
+      hres = CreateRegKey(buff, _T(""), m_ProgID);
     }
   }
   else
   {
     // Remove registry entries
     //
-    NukeRegKey(m_ClassKey);
+    hres = NukeRegKey(m_ClassKey);
+    if (FAILED(hres))
+      return hres;
     if (m_ProgID && *m_ProgID)
-      NukeRegKey(m_ProgID);
+      hres = NukeRegKey(m_ProgID);
   }
-  return S_OK;
+  return hres;
 }
 
 
