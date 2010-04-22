@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EncoderH
-#define EncoderH
-//---------------------------------------------------------------------------
+#ifndef Mp2H
+#define Mp2H 1
+#pragma once
 
 #define FIX_LOCK_NAME 1
 #include <dmo.h>

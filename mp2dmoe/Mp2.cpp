@@ -19,7 +19,7 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "Encoder.h"
+#include "Mp2.h"
 
 //---------------------------------------------------------------------------
 

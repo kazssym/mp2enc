@@ -60,6 +60,13 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
+			<CppCompile Include="Mp2.cpp">
+				<DependentOn>Mp2.h</DependentOn>
+				<BuildOrder>1</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="dll.cpp">
+				<BuildOrder>0</BuildOrder>
+			</CppCompile>
 			<ResourceCompile Include="resources.rc">
 				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
 				<Form>manifest.res</Form>
@@ -69,13 +76,6 @@
 				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
 				<ContainerId>WebFile</ContainerId>
 			</None>
-			<CppCompile Include="Encoder.cpp">
-				<DependentOn>Encoder.h</DependentOn>
-				<BuildOrder>1</BuildOrder>
-			</CppCompile>
-			<CppCompile Include="main.cpp">
-				<BuildOrder>0</BuildOrder>
-			</CppCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
