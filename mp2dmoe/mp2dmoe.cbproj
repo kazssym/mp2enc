@@ -75,6 +75,7 @@
 				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
 				<ContainerId>WebFile</ContainerId>
 			</None>
+			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -149,6 +150,7 @@
 						<VFOLDER ID="{E8007AB5-C522-4B87-9513-37C5540F31BB}" name="Resources"/>
 					</VFOLDERS>
 				</CPlusPlusBuilder.Personality>
+				<ModelSupport>True</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>

@@ -27,17 +27,15 @@
 
 #define DEFGUID(Name, Type) const GUID Name = __uuidof(Type);
 
-class __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) CMp2Encoder;
+class __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) ATL_NO_VTABLE CMp2Encoder;
 
 extern const GUID CLSID_Mp2Encoder;
 
-class ATL_NO_VTABLE CMp2Encoder
+class CMp2Encoder
 : public CComObjectRootEx<CComMultiThreadModel>,
   public CComCoClass<CMp2Encoder, &CLSID_Mp2Encoder>,
   public IMediaObjectImpl<CMp2Encoder, 1, 1>
 {
-  friend class IMediaObjectImpl<CMp2Encoder, 1, 1>;
-
   BEGIN_COM_MAP(CMp2Encoder)
   COM_INTERFACE_ENTRY(IMediaObject)
   END_COM_MAP()
@@ -49,7 +47,7 @@ class ATL_NO_VTABLE CMp2Encoder
   DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
   DECLARE_THREADING_MODEL(otBoth);
   static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
-private:
+
   // IMediaObjectImpl internal methods
   HRESULT WINAPI InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags);
   HRESULT WINAPI InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags);
