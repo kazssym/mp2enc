@@ -47,7 +47,11 @@
 //   せん。
 //---------------------------------------------------------------------------
 
-#define EXPORT __export
+// Exports functions.
+STDAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
+STDAPI __export DllCanUnloadNow(void);
+STDAPI __export DllRegisterServer(void);
+STDAPI __export DllUnregisterServer(void);
 
 static TComModule MP2DMOEncoderModule;
 TComModule &_Module = MP2DMOEncoderModule;
@@ -79,7 +83,7 @@ ModuleTerm(void)
 /*
  * Retrieves the class object from a DLL object handler.
  */
-STDAPI EXPORT
+STDMETHODIMP
 DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv)
 {
   return _Module.GetClassObject(rclsid, riid, ppv);
@@ -88,7 +92,7 @@ DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv)
 /*
  * Determines whether this DLL is in use.
  */
-STDAPI EXPORT
+STDMETHODIMP
 DllCanUnloadNow(void)
 {
   return _Module.GetLockCount() == 0 ? S_OK : S_FALSE;
@@ -97,7 +101,7 @@ DllCanUnloadNow(void)
 // モジュールでサポートされたすべてのクラスに対するレジストリ エントリ
 // を作成するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
 //
-STDAPI EXPORT
+STDMETHODIMP
 DllRegisterServer(void)
 {
   // No type library in this DLL.
@@ -107,7 +111,7 @@ DllRegisterServer(void)
 // DllRegisterServer を通じて作成されたすべてのレジストリ エントリを
 // 削除するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
 //
-STDAPI EXPORT
+STDMETHODIMP
 DllUnregisterServer(void)
 {
   return _Module.UnregisterServer();
