@@ -19,13 +19,29 @@
 #include <vcl.h>
 #pragma hdrstop
 
+#include <Initguid.h>
+
 #include "Mp2.h"
+#include <Dshow.h>
+#include <cstring>
+
+using namespace std;
 
 //---------------------------------------------------------------------------
 
 #pragma package(smart_init)
 
 DEFGUID(CLSID_Mp2Encoder, CMp2Encoder)
+
+#define PCM(c, s) {WAVE_FORMAT_PCM, (c), (s), (s) * (c) * 2, (c) * 2, 16, 0}
+static const WAVEFORMATEX inputFormat[] = {
+  PCM(2, 48000),
+  PCM(2, 44100),
+  PCM(2, 32000),
+  PCM(1, 48000),
+  PCM(1, 44100),
+  PCM(1, 32000),
+};
 
 CMp2Encoder::CMp2Encoder(void)
 {
@@ -55,14 +71,39 @@ CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFl
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetInputType(DWORD, DWORD, DMO_MEDIA_TYPE *)
+CMp2Encoder::InternalGetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex,
+                                  DMO_MEDIA_TYPE *pmt)
 {
-  return E_NOTIMPL;
+  if (dwInputStreamIndex >= 1)
+    return DMO_E_INVALIDSTREAMINDEX;
+  if (dwTypeIndex >= sizeof inputFormat / sizeof inputFormat[0])
+    return DMO_E_NO_MORE_ITEMS;
+  if (pmt != 0)
+  {
+    HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEX));
+    pmt->majortype = MEDIATYPE_Audio;
+    pmt->subtype = MEDIASUBTYPE_PCM;
+    pmt->bFixedSizeSamples = TRUE;
+    pmt->lSampleSize = 2 * 2;
+    pmt->formattype = FORMAT_WaveFormatEx;
+    WAVEFORMATEX *pFormat = reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
+    *pFormat = inputFormat[0];
+  }
+  return S_OK;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetOutputType(DWORD, DWORD, DMO_MEDIA_TYPE *)
+CMp2Encoder::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex,
+                                   DMO_MEDIA_TYPE *pmt)
 {
+  if (dwOutputStreamIndex >= 1)
+    return DMO_E_INVALIDSTREAMINDEX;
+  if (dwTypeIndex >= sizeof inputFormat / sizeof inputFormat[0])
+    return DMO_E_NO_MORE_ITEMS;
+  if (pmt != 0)
+  {
+    // @todo
+  }
   return E_NOTIMPL;
 }
 

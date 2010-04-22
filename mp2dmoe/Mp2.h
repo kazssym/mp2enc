@@ -21,8 +21,8 @@
 #pragma once
 
 #define FIX_LOCK_NAME 1
-#include <dmo.h>
-#include <dmoimpl.h>
+#include <Dmo.h>
+#include <Dmoimpl.h>
 #undef FIX_LOCK_NAME
 
 #define DEFGUID(Name, Type) const GUID Name = __uuidof(Type);
@@ -51,8 +51,10 @@ class CMp2Encoder
   // IMediaObjectImpl internal methods
   HRESULT WINAPI InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags);
   HRESULT WINAPI InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags);
-  HRESULT WINAPI InternalGetInputType(DWORD, DWORD, DMO_MEDIA_TYPE *);
-  HRESULT WINAPI InternalGetOutputType(DWORD, DWORD, DMO_MEDIA_TYPE *);
+  HRESULT WINAPI InternalGetInputType(DWORD dwInputStreamIndex,
+                                      DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt);
+  HRESULT WINAPI InternalGetOutputType(DWORD dwOutputStreamIndex,
+                                       DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt);
   HRESULT WINAPI InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt);
   HRESULT WINAPI InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt);
   HRESULT WINAPI InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *);
