@@ -27,16 +27,16 @@
 
 #define DEFGUID(Name, Type) const GUID Name = __uuidof(Type);
 
-class __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) CMP2Encoder;
+class __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) CMp2Encoder;
 
-extern const GUID CLSID_MP2Encoder;
+extern const GUID CLSID_Mp2Encoder;
 
-class ATL_NO_VTABLE CMP2Encoder
+class ATL_NO_VTABLE CMp2Encoder
 : public CComObjectRootEx<CComMultiThreadModel>,
-  public CComCoClass<CMP2Encoder, &CLSID_MP2Encoder>,
-  public IMediaObjectImpl<CMP2Encoder, 1, 1>
+  public CComCoClass<CMp2Encoder, &CLSID_Mp2Encoder>,
+  public IMediaObjectImpl<CMp2Encoder, 1, 1>
 {
-  friend class IMediaObjectImpl<CMP2Encoder, 1, 1>;
+  friend class IMediaObjectImpl<CMp2Encoder, 1, 1>;
 public:
   // <atl/atlmod.h>
   DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
@@ -45,7 +45,7 @@ public:
   static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 
   // <atlcom.h>
-  BEGIN_COM_MAP(CMP2Encoder)
+  BEGIN_COM_MAP(CMp2Encoder)
   COM_INTERFACE_ENTRY(IMediaObject)
   END_COM_MAP()
 

@@ -3,7 +3,7 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "encoder.h"
+#include "Mp2.h"
 //#include <atl/atlvcl.h>
 
 //---------------------------------------------------------------------------
@@ -37,7 +37,7 @@ static TComModule MP2DMOEncoderModule;
 TComModule &_Module = MP2DMOEncoderModule;
 
 BEGIN_OBJECT_MAP(ObjectMap)
-OBJECT_ENTRY(CLSID_MP2Encoder, CMP2Encoder)
+OBJECT_ENTRY(CLSID_MP2Encoder, CMp2Encoder)
 END_OBJECT_MAP()
 
 #pragma argsused
