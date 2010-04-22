@@ -53,8 +53,8 @@ STDAPI __export DllCanUnloadNow(void);
 STDAPI __export DllRegisterServer(void);
 STDAPI __export DllUnregisterServer(void);
 
-static TComModule MP2DMOEncoderModule;
-TComModule &_Module = MP2DMOEncoderModule;
+static TComModule ThisModule;
+TComModule &_Module = ThisModule;
 
 BEGIN_OBJECT_MAP(ObjectMap)
 OBJECT_ENTRY(CLSID_Mp2Encoder, CMp2Encoder)
