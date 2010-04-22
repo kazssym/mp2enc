@@ -48,10 +48,10 @@
 //---------------------------------------------------------------------------
 
 // Exports functions.
-STDAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
-STDAPI __export DllCanUnloadNow(void);
-STDAPI __export DllRegisterServer(void);
-STDAPI __export DllUnregisterServer(void);
+extern "C" HRESULT WINAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
+extern "C" HRESULT WINAPI __export DllCanUnloadNow(void);
+extern "C" HRESULT WINAPI __export DllRegisterServer(void);
+extern "C" HRESULT WINAPI __export DllUnregisterServer(void);
 
 static TComModule ThisModule;
 TComModule &_Module = ThisModule;
@@ -60,7 +60,8 @@ BEGIN_OBJECT_MAP(ObjectMap)
 OBJECT_ENTRY(CLSID_Mp2Encoder, CMp2Encoder)
 END_OBJECT_MAP()
 
-#pragma argsused
+/*
+ */
 BOOL WINAPI
 DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
@@ -71,7 +72,6 @@ DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
   }
   return TRUE;
 }
-//---------------------------------------------------------------------------
 
 static void
 ModuleTerm(void)
@@ -83,7 +83,7 @@ ModuleTerm(void)
 /*
  * Retrieves the class object from a DLL object handler.
  */
-STDMETHODIMP
+HRESULT WINAPI
 DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv)
 {
   return _Module.GetClassObject(rclsid, riid, ppv);
@@ -92,7 +92,7 @@ DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv)
 /*
  * Determines whether this DLL is in use.
  */
-STDMETHODIMP
+HRESULT WINAPI
 DllCanUnloadNow(void)
 {
   return _Module.GetLockCount() == 0 ? S_OK : S_FALSE;
@@ -101,7 +101,7 @@ DllCanUnloadNow(void)
 // モジュールでサポートされたすべてのクラスに対するレジストリ エントリ
 // を作成するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
 //
-STDMETHODIMP
+HRESULT WINAPI
 DllRegisterServer(void)
 {
   // No type library in this DLL.
@@ -111,7 +111,7 @@ DllRegisterServer(void)
 // DllRegisterServer を通じて作成されたすべてのレジストリ エントリを
 // 削除するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
 //
-STDMETHODIMP
+HRESULT WINAPI
 DllUnregisterServer(void)
 {
   return _Module.UnregisterServer();
