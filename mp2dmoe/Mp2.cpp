@@ -27,6 +27,14 @@
 
 DEFGUID(CLSID_Mp2Encoder, CMp2Encoder)
 
+CMp2Encoder::CMp2Encoder(void)
+{
+}
+
+CMp2Encoder::~CMp2Encoder(void)
+{
+}
+
 HRESULT WINAPI
 CMp2Encoder::UpdateRegistry(BOOL bRegister)
 {

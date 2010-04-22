@@ -37,18 +37,18 @@ class ATL_NO_VTABLE CMp2Encoder
   public IMediaObjectImpl<CMp2Encoder, 1, 1>
 {
   friend class IMediaObjectImpl<CMp2Encoder, 1, 1>;
-public:
-  // <atl/atlmod.h>
-  DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
-  DECLARE_THREADING_MODEL(otBoth);
-public:
-  static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 
-  // <atlcom.h>
   BEGIN_COM_MAP(CMp2Encoder)
   COM_INTERFACE_ENTRY(IMediaObject)
   END_COM_MAP()
+public:
+  CMp2Encoder(void);
+  ~CMp2Encoder(void);
 
+  // For <atl/atlmod.h>
+  DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
+  DECLARE_THREADING_MODEL(otBoth);
+  static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 private:
   // IMediaObjectImpl internal methods
   HRESULT InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags);
