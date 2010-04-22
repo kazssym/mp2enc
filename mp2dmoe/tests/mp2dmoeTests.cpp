@@ -8,7 +8,7 @@
 #include <GUITestRunner.hpp>
 
 
-WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 {
   try
   {
