@@ -51,23 +51,23 @@ class ATL_NO_VTABLE CMp2Encoder
   static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 private:
   // IMediaObjectImpl internal methods
-  HRESULT InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags);
-  HRESULT InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags);
-  HRESULT InternalGetInputType(DWORD, DWORD, DMO_MEDIA_TYPE *);
-  HRESULT InternalGetOutputType(DWORD, DWORD, DMO_MEDIA_TYPE *);
-  HRESULT InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt);
-  HRESULT InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt);
-  HRESULT InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *);
-  HRESULT InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *);
-  HRESULT InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *);
-  HRESULT InternalSetInputMaxLatency(DWORD, REFERENCE_TIME);
-  HRESULT InternalFlush(void);
-  HRESULT InternalDiscontinuity(DWORD);
-  HRESULT InternalAllocateStreamingResources(void);
-  HRESULT InternalFreeStreamingResources(void);
-  HRESULT InternalAcceptingInput(DWORD dwInputStreamIndex);
-  HRESULT InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME);
-  HRESULT InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *);
+  HRESULT WINAPI InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags);
+  HRESULT WINAPI InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags);
+  HRESULT WINAPI InternalGetInputType(DWORD, DWORD, DMO_MEDIA_TYPE *);
+  HRESULT WINAPI InternalGetOutputType(DWORD, DWORD, DMO_MEDIA_TYPE *);
+  HRESULT WINAPI InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt);
+  HRESULT WINAPI InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt);
+  HRESULT WINAPI InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *);
+  HRESULT WINAPI InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *);
+  HRESULT WINAPI InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *);
+  HRESULT WINAPI InternalSetInputMaxLatency(DWORD, REFERENCE_TIME);
+  HRESULT WINAPI InternalFlush(void);
+  HRESULT WINAPI InternalDiscontinuity(DWORD);
+  HRESULT WINAPI InternalAllocateStreamingResources(void);
+  HRESULT WINAPI InternalFreeStreamingResources(void);
+  HRESULT WINAPI InternalAcceptingInput(DWORD dwInputStreamIndex);
+  HRESULT WINAPI InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME);
+  HRESULT WINAPI InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *);
 };
 
 #endif

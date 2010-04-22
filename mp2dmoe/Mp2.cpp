@@ -42,103 +42,103 @@ CMp2Encoder::UpdateRegistry(BOOL bRegister)
   return regObj.UpdateRegistry(bRegister);
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalGetInputType(DWORD, DWORD, DMO_MEDIA_TYPE *)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalGetOutputType(DWORD, DWORD, DMO_MEDIA_TYPE *)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalSetInputMaxLatency(DWORD, REFERENCE_TIME)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalFlush(void)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalDiscontinuity(DWORD)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalAllocateStreamingResources(void)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalFreeStreamingResources(void)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalAcceptingInput(DWORD dwInputStreamIndex)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME)
 {
   return E_NOTIMPL;
 }
 
-HRESULT
+HRESULT WINAPI
 CMp2Encoder::InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *)
 {
   return E_NOTIMPL;
