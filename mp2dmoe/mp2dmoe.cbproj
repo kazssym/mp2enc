@@ -68,7 +68,6 @@
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
 			<ResourceCompile Include="resources.rc">
-				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
 				<Form>manifest.res</Form>
 				<BuildOrder>2</BuildOrder>
 			</ResourceCompile>
