@@ -1,4 +1,20 @@
-﻿//---------------------------------------------------------------------------
+﻿/*
+ * MP2 Encoder DMO.
+ * Copyright (C) 2010 Kaz Sasa.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #ifndef EncoderH
 #define EncoderH
@@ -9,20 +25,20 @@
 #include <dmoimpl.h>
 #undef FIX_LOCK_NAME
 
-#define UUID(UUID) __declspec(uuid(UUID))
-#define DEFUUID(Name, Type) const GUID Name = __uuidof(Type);
+#define DEFGUID(Name, Type) const GUID Name = __uuidof(Type);
+
+class __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) CMP2Encoder;
 
 extern const GUID CLSID_MP2Encoder;
 
-class ATL_NO_VTABLE UUID("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}") CMP2Encoder
+class ATL_NO_VTABLE CMP2Encoder
 : public CComObjectRootEx<CComMultiThreadModel>,
   public CComCoClass<CMP2Encoder, &CLSID_MP2Encoder>,
   public IMediaObjectImpl<CMP2Encoder, 1, 1>
 {
   friend class IMediaObjectImpl<CMP2Encoder, 1, 1>;
 public:
-  // <atlmod.h>
-  //DECLARE_PROGID("mp2dmoe.MP2Encoder");
+  // <atl/atlmod.h>
   DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
   DECLARE_THREADING_MODEL(otBoth);
 public:
