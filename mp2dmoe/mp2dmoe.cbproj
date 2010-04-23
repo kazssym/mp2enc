@@ -18,7 +18,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<BCC_Defines>USING_ATLVCL;INC_ATL_HEADERS;_ATL_FREE_THREADED;$(BCC_Defines)</BCC_Defines>
+			<Defines>LIBTWOLAME_STATIC;$(Defines)</Defines>
+			<BCC_Defines>USING_ATLVCL;INC_ATL_HEADERS;_ATL_FREE_THREADED;_ATL_SINGLEUSE_INSTANCING;$(BCC_Defines)</BCC_Defines>
 			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<ILINK_AdditionalOptions>libtwolame.lib msdmo.lib</ILINK_AdditionalOptions>
@@ -60,16 +61,6 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
-			<None Include="mp2dmoe.manifest">
-				<ModuleName>mp2dmoe.dll</ModuleName>
-				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
-				<ContainerId>WebFile</ContainerId>
-			</None>
-			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
-			<ResourceCompile Include="resources.rc">
-				<Form>manifest.res</Form>
-				<BuildOrder>0</BuildOrder>
-			</ResourceCompile>
 			<CppCompile Include="Mp2.cpp">
 				<DependentOn>Mp2.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
@@ -81,6 +72,15 @@
 				<VirtualFolder>{6F77BEB4-1254-40CC-8A46-3297A370DA97}</VirtualFolder>
 				<BuildOrder>5</BuildOrder>
 			</None>
+			<None Include="mp2dmoe.manifest">
+				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
+				<ContainerId>WebFile</ContainerId>
+			</None>
+			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
+			<ResourceCompile Include="resources.rc">
+				<Form>manifest.res</Form>
+				<BuildOrder>0</BuildOrder>
+			</ResourceCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
