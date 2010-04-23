@@ -68,7 +68,7 @@
 			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
 			<ResourceCompile Include="resources.rc">
 				<Form>manifest.res</Form>
-				<BuildOrder>2</BuildOrder>
+				<BuildOrder>0</BuildOrder>
 			</ResourceCompile>
 			<CppCompile Include="Mp2.cpp">
 				<DependentOn>Mp2.h</DependentOn>
