@@ -3,14 +3,14 @@
 			<ProjectGuid>{1572FEC2-613C-4F28-BB87-DA3E0C60735F}</ProjectGuid>
 		</PropertyGroup>
 		<ItemGroup>
+			<Projects Include="..\twolame\libtwolame\libtwolame.cbproj">
+				<Dependencies/>
+			</Projects>
 			<Projects Include="mp2dmoe\mp2dmoe.cbproj">
 				<Dependencies>..\twolame\libtwolame\libtwolame.cbproj</Dependencies>
 			</Projects>
 			<Projects Include="mp2dmoe\tests\mp2dmoeTests.cbproj">
 				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
-			</Projects>
-			<Projects Include="..\twolame\libtwolame\libtwolame.cbproj">
-				<Dependencies/>
 			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
@@ -20,6 +20,15 @@
 				<Default.Personality/>
 			</BorlandProject>
 		</ProjectExtensions>
+		<Target Name="libtwolame">
+			<MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
+		</Target>
+		<Target Name="libtwolame:Clean">
+			<MSBuild Targets="Clean" Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
+		</Target>
+		<Target Name="libtwolame:Make">
+			<MSBuild Targets="Make" Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
+		</Target>
 		<Target DependsOnTargets="libtwolame" Name="mp2dmoe">
 			<MSBuild Projects="mp2dmoe\mp2dmoe.cbproj"/>
 		</Target>
@@ -38,23 +47,14 @@
 		<Target DependsOnTargets="mp2dmoe:Make" Name="mp2dmoeTests:Make">
 			<MSBuild Targets="Make" Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
 		</Target>
-		<Target Name="libtwolame">
-			<MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
-		</Target>
-		<Target Name="libtwolame:Clean">
-			<MSBuild Targets="Clean" Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
-		</Target>
-		<Target Name="libtwolame:Make">
-			<MSBuild Targets="Make" Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
-		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="mp2dmoe;mp2dmoeTests;libtwolame"/>
+			<CallTarget Targets="libtwolame;mp2dmoe;mp2dmoeTests"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="mp2dmoe:Clean;mp2dmoeTests:Clean;libtwolame:Clean"/>
+			<CallTarget Targets="libtwolame:Clean;mp2dmoe:Clean;mp2dmoeTests:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="mp2dmoe:Make;mp2dmoeTests:Make;libtwolame:Make"/>
+			<CallTarget Targets="libtwolame:Make;mp2dmoe:Make;mp2dmoeTests:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>
