@@ -16,6 +16,8 @@ public:
   virtual void __fastcall TearDown();
 __published:
   void __fastcall TestGetStreamCount();
+  void __fastcall TestGetInputStreamInfo();
+  void __fastcall TestGetOutputStreamInfo();
   void __fastcall TestGetInputType();
   void __fastcall TestGetOutputType();
 private:
@@ -38,6 +40,7 @@ void __fastcall TTestMp2Encoder::TearDown()
   MediaObject->Release();
 }
 
+
 void __fastcall
 TTestMp2Encoder::TestGetStreamCount(void)
 {
@@ -46,6 +49,28 @@ TTestMp2Encoder::TestGetStreamCount(void)
   Check(SUCCEEDED(hres), L"GetStreamCount failed");
   Check(cInput == 1);
   Check(cOutput == 1);
+}
+
+void __fastcall
+TTestMp2Encoder::TestGetInputStreamInfo(void)
+{
+  HRESULT hres;
+  DWORD flags;
+  hres = MediaObject->GetInputStreamInfo(0, &flags);
+  Check(SUCCEEDED(hres));
+  hres = MediaObject->GetInputStreamInfo(1, &flags);
+  Check(hres == DMO_E_INVALIDSTREAMINDEX);
+}
+
+void __fastcall
+TTestMp2Encoder::TestGetOutputStreamInfo(void)
+{
+  HRESULT hres;
+  DWORD flags;
+  hres = MediaObject->GetOutputStreamInfo(0, &flags);
+  Check(SUCCEEDED(hres));
+  hres = MediaObject->GetOutputStreamInfo(1, &flags);
+  Check(hres == DMO_E_INVALIDSTREAMINDEX);
 }
 
 void __fastcall
@@ -59,11 +84,14 @@ TTestMp2Encoder::TestGetInputType(void)
   DMO_MEDIA_TYPE mt;
   hres = MediaObject->GetInputType(0, 0, &mt);
   Check(SUCCEEDED(hres), L"GetInputType failed");
-  if (SUCCEEDED(hres))
+  try
   {
     Check(mt.majortype == MEDIATYPE_Audio);
     Check(mt.subtype == MEDIASUBTYPE_PCM);
     Check(mt.formattype == FORMAT_WaveFormatEx);
+  }
+  __finally
+  {
     MoFreeMediaType(&mt);
   }
   // Tests stream index 1
@@ -77,7 +105,13 @@ TTestMp2Encoder::TestGetOutputType(void)
   DMO_MEDIA_TYPE mt;
   HRESULT hres = MediaObject->GetOutputType(0, 0, &mt);
   Check(SUCCEEDED(hres), L"GetOutputType failed");
-  if (SUCCEEDED(hres))
+  try
+  {
+    Check(mt.majortype == MEDIATYPE_Audio);
+    Check(mt.subtype == MEDIASUBTYPE_MPEG1Payload || mt.subtype == MEDIASUBTYPE_MPEG2_AUDIO);
+    Check(mt.formattype == FORMAT_WaveFormatEx);
+  }
+  __finally
   {
     MoFreeMediaType(&mt);
   }
