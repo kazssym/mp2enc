@@ -77,6 +77,10 @@
 			<CppCompile Include="mp2dmoe.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
+			<None Include="mp2guid.h">
+				<VirtualFolder>{6F77BEB4-1254-40CC-8A46-3297A370DA97}</VirtualFolder>
+				<BuildOrder>5</BuildOrder>
+			</None>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -148,6 +152,7 @@
 						<ProjectProperties Name="VerifyPackages">True</ProjectProperties>
 					</ProjectProperties>
 					<VFOLDERS>
+						<VFOLDER ID="{6F77BEB4-1254-40CC-8A46-3297A370DA97}" name="Headers"/>
 						<VFOLDER ID="{E8007AB5-C522-4B87-9513-37C5540F31BB}" name="Resources"/>
 					</VFOLDERS>
 				</CPlusPlusBuilder.Personality>

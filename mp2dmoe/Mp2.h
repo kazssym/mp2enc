@@ -20,18 +20,14 @@
 #define Mp2H 1
 #pragma once
 
+#include "mp2guid.h"
+
 #define FIX_LOCK_NAME 1
 #include <Dmo.h>
 #include <Dmoimpl.h>
 #undef FIX_LOCK_NAME
 
-#define DEFGUID(Name, Type) const GUID Name = __uuidof(Type);
-
-class __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) ATL_NO_VTABLE CMp2Encoder;
-
-extern const GUID CLSID_Mp2Encoder;
-
-class CMp2Encoder
+class ATL_NO_VTABLE CMp2Encoder
 : public CComObjectRootEx<CComMultiThreadModel>,
   public CComCoClass<CMp2Encoder, &CLSID_Mp2Encoder>,
   public IMediaObjectImpl<CMp2Encoder, 1, 1>

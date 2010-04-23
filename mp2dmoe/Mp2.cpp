@@ -34,8 +34,6 @@ using namespace std;
 
 #pragma package(smart_init)
 
-DEFGUID(CLSID_Mp2Encoder, CMp2Encoder)
-
 #define CHANNEL_MASK(c)\
   ((c) == 2 ? SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT : 0)
 #define PCM(c, s, b, v) {\
