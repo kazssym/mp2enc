@@ -1,12 +1,12 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include <Initguid.h>
-#include <Mp2.h>
-#include <Dshow.h>
-#include <TestFramework.hpp>
+#include <initguid.h>
 
-DEFGUID(CLSID_Mp2Encoder, CMp2Encoder)
+#include <mp2guid.h>
+#include <dmo.h>
+#include <DShow.h>
+#include <TestFramework.hpp>
 
 class TTestMp2Encoder : public TTestCase
 {
