@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="sdjt8a30ilf_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:CMp2Encoder">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,248,337" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalProcessOutput(unsigned long!unsigned long!CMp2Encoder::_DMO_OUTPUT_DATA_BUFFER*!unsigned long*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalProcessInput(unsigned long!CMp2Encoder::IMediaBuffer*!unsigned long!long long!long long)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalAcceptingInput(unsigned long)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalFreeStreamingResources()" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalAllocateStreamingResources()" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalDiscontinuity(unsigned long)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalFlush()" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalSetInputMaxLatency(unsigned long!long long)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalGetInputMaxLatency(unsigned long!long long*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalGetOutputSizeInfo(unsigned long!unsigned long*!unsigned long*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalGetInputSizeInfo(unsigned long!unsigned long*!unsigned long*!unsigned long*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalCheckOutputType(unsigned long!CMp2Encoder::_DMOMediaType * const)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalCheckInputType(unsigned long!CMp2Encoder::_DMOMediaType * const)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalGetOutputType(unsigned long!unsigned long!CMp2Encoder::_DMOMediaType*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalGetInputType(unsigned long!unsigned long!CMp2Encoder::_DMOMediaType*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalGetOutputStreamInfo(unsigned long!unsigned long*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.InternalGetInputStreamInfo(unsigned long!unsigned long*)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.UpdateRegistry(int)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.DECLARE_THREADING_MODEL(int)">
+        <property name="$hidden" value="True" />
+      </reference>
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.~CMp2Encoder()" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:CMp2Encoder.BEGIN_COM_MAP(CMp2Encoder)">
+        <property name="$hidden" value="True" />
+      </reference>
+    </reference>
+  </view>
+</nodeSet>

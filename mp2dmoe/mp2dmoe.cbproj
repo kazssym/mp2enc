@@ -60,6 +60,15 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
+			<None Include="mp2dmoe.dll.manifest">
+				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
+				<ContainerId>WebFile</ContainerId>
+			</None>
+			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
+			<ResourceCompile Include="resources.rc">
+				<Form>manifest.res</Form>
+				<BuildOrder>2</BuildOrder>
+			</ResourceCompile>
 			<CppCompile Include="Mp2.cpp">
 				<DependentOn>Mp2.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
@@ -67,15 +76,6 @@
 			<CppCompile Include="dll.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
-			<ResourceCompile Include="resources.rc">
-				<Form>manifest.res</Form>
-				<BuildOrder>2</BuildOrder>
-			</ResourceCompile>
-			<None Include="mp2dmoe.dll.manifest">
-				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
-				<ContainerId>WebFile</ContainerId>
-			</None>
-			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
