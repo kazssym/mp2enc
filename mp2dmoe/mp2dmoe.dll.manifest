@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-  <assemblyIdentity name="mp2dmoe.dll" processorArchitecture="x86" type="win32" version="0.0.0.0"></assemblyIdentity>
-  <file name="mp2dmoe.dll">
-    <comClass clsid="{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}" description="MP2 Encoder DMO" threadingModel="Both"></comClass>
-  </file>
-</assembly>
