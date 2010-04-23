@@ -61,19 +61,34 @@ static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
   MPEG1(1, 32000, 192000),
 };
 
-CMp2Encoder::CMp2Encoder(void)
-{
-}
-
-CMp2Encoder::~CMp2Encoder(void)
-{
-}
-
 HRESULT WINAPI
 CMp2Encoder::UpdateRegistry(BOOL bRegister)
 {
   TComServerRegistrarT<CMp2Encoder> regObj(GetObjectCLSID(), 0, GetDescription());
   return regObj.UpdateRegistry(bRegister);
+}
+
+/*
+ * Initializes each member to a safe value.
+ */
+CMp2Encoder::CMp2Encoder(void)
+{
+  Options = 0;
+}
+
+HRESULT WINAPI
+CMp2Encoder::FinalConstruct(void)
+{
+  Options = twolame_init();
+  if (Options == 0)
+    return E_OUTOFMEMORY;
+  return S_OK;
+}
+
+void WINAPI
+CMp2Encoder::FinalRelease(void)
+{
+  twolame_close(&Options);
 }
 
 HRESULT WINAPI

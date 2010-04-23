@@ -22,9 +22,10 @@
 
 #include "mp2guid.h"
 
+#include <twolame.h>
 #define FIX_LOCK_NAME 1
-#include <Dmo.h>
-#include <Dmoimpl.h>
+#include <dmo.h>
+#include <dmoimpl.h>
 #undef FIX_LOCK_NAME
 
 class ATL_NO_VTABLE CMp2Encoder
@@ -36,13 +37,15 @@ class ATL_NO_VTABLE CMp2Encoder
   COM_INTERFACE_ENTRY(IMediaObject)
   END_COM_MAP()
 public:
-  CMp2Encoder(void);
-  ~CMp2Encoder(void);
-
   // For <atl/atlmod.h>
   DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
   DECLARE_THREADING_MODEL(otBoth);
   static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
+public:
+  CMp2Encoder(void);
+
+  HRESULT WINAPI FinalConstruct(void);
+  void WINAPI FinalRelease(void);
 
   // IMediaObjectImpl internal methods
   HRESULT WINAPI InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
@@ -66,6 +69,8 @@ class ATL_NO_VTABLE CMp2Encoder
   HRESULT WINAPI InternalAcceptingInput(DWORD dwInputStreamIndex);
   HRESULT WINAPI InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME);
   HRESULT WINAPI InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *);
+private:
+  twolame_options *Options;
 };
 
 #endif
