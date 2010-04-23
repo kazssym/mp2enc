@@ -19,28 +19,48 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include <Initguid.h>
+#include <initguid.h>
 
 #include "Mp2.h"
-#include <Dshow.h>
+#include <DShow.h>
+//#include <mmreg.h>
+#include <ks.h>
+#pragma warn -8098
+#include <ksmedia.h>
+#pragma warn .8098
 #include <cstring>
 
 using namespace std;
-
-//---------------------------------------------------------------------------
 
 #pragma package(smart_init)
 
 DEFGUID(CLSID_Mp2Encoder, CMp2Encoder)
 
-#define PCM(c, s) {WAVE_FORMAT_PCM, (c), (s), (s) * (c) * 2, (c) * 2, 16, 0}
-static const WAVEFORMATEX inputFormat[] = {
-  PCM(2, 48000),
-  PCM(2, 44100),
-  PCM(2, 32000),
-  PCM(1, 48000),
-  PCM(1, 44100),
-  PCM(1, 32000),
+#define CHANNEL_MASK(c)\
+  ((c) == 2 ? SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT : 0)
+#define PCM(c, s, b, v) {\
+  {WAVE_FORMAT_EXTENSIBLE, (c), (s), (s) * (c) * (b), (c) * (b), 8 * (b), 22},\
+  (v), CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_PCM}\
+}
+#define MPEG1(c, s, r) {\
+  {WAVE_FORMAT_EXTENSIBLE, (c), (s), (r) / 8, 1, 0, 22},\
+  1152, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
+}
+static const WAVEFORMATEXTENSIBLE InputFormat[] = {
+  PCM(2, 48000, 2, 16),
+  PCM(1, 48000, 2, 16),
+  PCM(2, 44100, 2, 16),
+  PCM(1, 44100, 2, 16),
+  PCM(2, 32000, 2, 16),
+  PCM(1, 32000, 2, 16),
+};
+static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
+  MPEG1(2, 48000, 384000),
+  MPEG1(1, 48000, 192000),
+  MPEG1(2, 44100, 384000),
+  MPEG1(1, 44100, 192000),
+  MPEG1(2, 32000, 384000),
+  MPEG1(1, 32000, 192000),
 };
 
 CMp2Encoder::CMp2Encoder(void)
@@ -61,13 +81,23 @@ CMp2Encoder::UpdateRegistry(BOOL bRegister)
 HRESULT WINAPI
 CMp2Encoder::InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags)
 {
-  return E_NOTIMPL;
+  if (dwInputStreamIndex >= 1)
+    return DMO_E_INVALIDSTREAMINDEX;
+  if (pdwFlags == 0)
+    return E_POINTER;
+  *pdwFlags = DMO_INPUT_STREAMF_WHOLE_SAMPLES | DMO_INPUT_STREAMF_FIXED_SAMPLE_SIZE;
+  return S_OK;
 }
 
 HRESULT WINAPI
 CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags)
 {
-  return E_NOTIMPL;
+  if (dwOutputStreamIndex >= 1)
+    return DMO_E_INVALIDSTREAMINDEX;
+  if (pdwFlags == 0)
+    return E_POINTER;
+  *pdwFlags = DMO_OUTPUT_STREAMF_WHOLE_SAMPLES | DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE;
+  return S_OK;
 }
 
 HRESULT WINAPI
@@ -76,18 +106,20 @@ CMp2Encoder::InternalGetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex,
 {
   if (dwInputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
-  if (dwTypeIndex >= sizeof inputFormat / sizeof inputFormat[0])
+  if (dwTypeIndex >= sizeof InputFormat / sizeof InputFormat[0])
     return DMO_E_NO_MORE_ITEMS;
   if (pmt != 0)
   {
-    HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEX));
+    HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
+    if (FAILED(hres))
+      return hres;
     pmt->majortype = MEDIATYPE_Audio;
     pmt->subtype = MEDIASUBTYPE_PCM;
     pmt->bFixedSizeSamples = TRUE;
     pmt->lSampleSize = 2 * 2;
     pmt->formattype = FORMAT_WaveFormatEx;
-    WAVEFORMATEX *pFormat = reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
-    *pFormat = inputFormat[0];
+    WAVEFORMATEXTENSIBLE *pFormat = reinterpret_cast<WAVEFORMATEXTENSIBLE *>(pmt->pbFormat);
+    *pFormat = InputFormat[dwTypeIndex];
   }
   return S_OK;
 }
@@ -98,24 +130,36 @@ CMp2Encoder::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex,
 {
   if (dwOutputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
-  if (dwTypeIndex >= sizeof inputFormat / sizeof inputFormat[0])
+  if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
     return DMO_E_NO_MORE_ITEMS;
   if (pmt != 0)
   {
-    // @todo
+    HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
+    if (FAILED(hres))
+      return hres;
+    pmt->majortype = MEDIATYPE_Audio;
+    pmt->subtype = MEDIASUBTYPE_MPEG1Payload;
+    pmt->bFixedSizeSamples = TRUE;
+    pmt->formattype = FORMAT_WaveFormatEx;
+    WAVEFORMATEXTENSIBLE *pFormat = reinterpret_cast<WAVEFORMATEXTENSIBLE *>(pmt->pbFormat);
+    *pFormat = OutputFormat[dwTypeIndex];
   }
-  return E_NOTIMPL;
+  return S_OK;
 }
 
 HRESULT WINAPI
 CMp2Encoder::InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt)
 {
+  if (dwInputStreamIndex >= 1)
+    return DMO_E_INVALIDSTREAMINDEX;
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
 CMp2Encoder::InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt)
 {
+  if (dwOutputStreamIndex >= 1)
+    return DMO_E_INVALIDSTREAMINDEX;
   return E_NOTIMPL;
 }
 

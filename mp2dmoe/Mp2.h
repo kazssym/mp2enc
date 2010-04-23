@@ -49,8 +49,10 @@ class CMp2Encoder
   static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 
   // IMediaObjectImpl internal methods
-  HRESULT WINAPI InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags);
-  HRESULT WINAPI InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags);
+  HRESULT WINAPI InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
+                                            DWORD *pdwFlags);
+  HRESULT WINAPI InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
+                                             DWORD *pdwFlags);
   HRESULT WINAPI InternalGetInputType(DWORD dwInputStreamIndex,
                                       DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt);
   HRESULT WINAPI InternalGetOutputType(DWORD dwOutputStreamIndex,
