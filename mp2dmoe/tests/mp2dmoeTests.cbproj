@@ -164,6 +164,7 @@
 					<TestFramework>DUnit / C++ Win32</TestFramework>
 					<TestRunner>GUI</TestRunner>
 				</UnitTesting>
+				<ModelSupport>False</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
