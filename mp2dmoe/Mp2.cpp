@@ -64,8 +64,8 @@ static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
 HRESULT WINAPI
 CMp2Encoder::UpdateRegistry(BOOL bRegister)
 {
-  TComServerRegistrarT<CMp2Encoder> regObj(GetObjectCLSID(), 0, GetDescription());
-  return regObj.UpdateRegistry(bRegister);
+  TComServerRegistrarT<CMp2Encoder> reg(GetObjectCLSID(), 0, GetDescription());
+  return reg.UpdateRegistry(bRegister);
 }
 
 /*
