@@ -92,26 +92,30 @@ CMp2Encoder::FinalRelease(void)
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlags)
+CMp2Encoder::InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
+                                        DWORD *pdwFlags)
 {
   if (dwInputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
   if (pdwFlags == 0)
     return E_POINTER;
 
-  *pdwFlags = DMO_INPUT_STREAMF_WHOLE_SAMPLES | DMO_INPUT_STREAMF_FIXED_SAMPLE_SIZE;
+  *pdwFlags = (DMO_INPUT_STREAMF_WHOLE_SAMPLES |
+               DMO_INPUT_STREAMF_FIXED_SAMPLE_SIZE);
   return S_OK;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFlags)
+CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
+                                         DWORD *pdwFlags)
 {
   if (dwOutputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
   if (pdwFlags == 0)
     return E_POINTER;
 
-  *pdwFlags = DMO_OUTPUT_STREAMF_WHOLE_SAMPLES | DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE;
+  *pdwFlags = (DMO_OUTPUT_STREAMF_WHOLE_SAMPLES |
+               DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE);
   return S_OK;
 }
 
