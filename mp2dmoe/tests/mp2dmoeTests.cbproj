@@ -2,18 +2,18 @@
 		<PropertyGroup>
 			<ProjectGuid>{AF79110F-5322-4EB0-8CDF-0D06E988F3F4}</ProjectGuid>
 			<ProjectVersion>12.0</ProjectVersion>
-			<Config Condition="'$(Config)'==''">デバッグ</Config>
+			<Config Condition="'$(Config)'==''">Debug</Config>
 			<MainSource>mp2dmoeTests.cpp</MainSource>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
 			<Base>true</Base>
 		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='デバッグ' or '$(Cfg_1)'!=''">
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
 			<Cfg_1>true</Cfg_1>
 			<CfgParent>Base</CfgParent>
 			<Base>true</Base>
 		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='リリース' or '$(Cfg_2)'!=''">
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
 			<Cfg_2>true</Cfg_2>
 			<CfgParent>Base</CfgParent>
 			<Base>true</Base>
@@ -21,7 +21,6 @@
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<ILINK_AdditionalOptions>msdmo.lib</ILINK_AdditionalOptions>
 			<LinkPackageStatics>vclnp.lib</LinkPackageStatics>
-			<BCC_Defines>USING_ATLVCL;INC_ATL_HEADERS;_ATL_FREE_THREADED;$(BCC_Defines)</BCC_Defines>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<OutputExt>exe</OutputExt>
 			<DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
@@ -67,6 +66,13 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
+			<ResourceCompile Include="resources.rc">
+				<Form>resources.res</Form>
+				<BuildOrder>0</BuildOrder>
+			</ResourceCompile>
+			<None Include="mp2dmoeTests.manifest">
+				<VirtualFolder>{2F2B1EE0-07AF-42AC-8F8F-0C2710AA9D14}</VirtualFolder>
+			</None>
 			<CppCompile Include="TestMp2Encoder.cpp">
 				<DependentOn>TestMp2Encoder.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
@@ -74,23 +80,14 @@
 			<CppCompile Include="mp2dmoeTests.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
-			<ResourceCompile Include="resources.rc">
-				<ModuleName>resources.rc</ModuleName>
-				<Form>resources.res</Form>
-				<BuildOrder>0</BuildOrder>
-			</ResourceCompile>
-			<None Include="mp2dmoeTests.manifest">
-				<ModuleName>mp2dmoeTests.exe</ModuleName>
-				<VirtualFolder>{2F2B1EE0-07AF-42AC-8F8F-0C2710AA9D14}</VirtualFolder>
-			</None>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
-			<BuildConfiguration Include="リリース">
+			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
 			</BuildConfiguration>
-			<BuildConfiguration Include="デバッグ">
+			<BuildConfiguration Include="Debug">
 				<Key>Cfg_1</Key>
 				<CfgParent>Base</CfgParent>
 			</BuildConfiguration>
