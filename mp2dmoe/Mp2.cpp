@@ -98,6 +98,7 @@ CMp2Encoder::InternalGetInputStreamInfo(DWORD dwInputStreamIndex, DWORD *pdwFlag
     return DMO_E_INVALIDSTREAMINDEX;
   if (pdwFlags == 0)
     return E_POINTER;
+
   *pdwFlags = DMO_INPUT_STREAMF_WHOLE_SAMPLES | DMO_INPUT_STREAMF_FIXED_SAMPLE_SIZE;
   return S_OK;
 }
@@ -109,6 +110,7 @@ CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex, DWORD *pdwFl
     return DMO_E_INVALIDSTREAMINDEX;
   if (pdwFlags == 0)
     return E_POINTER;
+
   *pdwFlags = DMO_OUTPUT_STREAMF_WHOLE_SAMPLES | DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE;
   return S_OK;
 }
@@ -121,6 +123,7 @@ CMp2Encoder::InternalGetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex,
     return DMO_E_INVALIDSTREAMINDEX;
   if (dwTypeIndex >= sizeof InputFormat / sizeof InputFormat[0])
     return DMO_E_NO_MORE_ITEMS;
+
   if (pmt != 0)
   {
     HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
@@ -145,6 +148,7 @@ CMp2Encoder::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex,
     return DMO_E_INVALIDSTREAMINDEX;
   if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
     return DMO_E_NO_MORE_ITEMS;
+
   if (pmt != 0)
   {
     HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
@@ -165,6 +169,7 @@ CMp2Encoder::InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TY
 {
   if (dwInputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
+
   return E_NOTIMPL;
 }
 
@@ -173,6 +178,7 @@ CMp2Encoder::InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_
 {
   if (dwOutputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
+
   return E_NOTIMPL;
 }
 
