@@ -48,10 +48,14 @@
 //---------------------------------------------------------------------------
 
 // Exports functions.
-extern "C" HRESULT WINAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
-extern "C" HRESULT WINAPI __export DllCanUnloadNow(void);
-extern "C" HRESULT WINAPI __export DllRegisterServer(void);
-extern "C" HRESULT WINAPI __export DllUnregisterServer(void);
+extern "C"
+{
+  __declspec(dllexport) HRESULT WINAPI DllGetClassObject
+    (REFCLSID rclsid, REFIID riid, LPVOID *ppv);
+  __declspec(dllexport) HRESULT WINAPI DllCanUnloadNow(void);
+  __declspec(dllexport) HRESULT WINAPI DllRegisterServer(void);
+  __declspec(dllexport) HRESULT WINAPI DllUnregisterServer(void);
+}
 
 static TComModule ThisModule;
 TComModule &_Module = ThisModule;
@@ -61,6 +65,7 @@ OBJECT_ENTRY(CLSID_Mp2Encoder, CMp2Encoder)
 END_OBJECT_MAP()
 
 /*
+ * Initializes the module on the first load.
  */
 BOOL WINAPI
 DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
