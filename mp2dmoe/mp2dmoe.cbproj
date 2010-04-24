@@ -18,6 +18,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<BCC_InstructionSet>5</BCC_InstructionSet>
 			<Defines>LIBTWOLAME_STATIC;$(Defines)</Defines>
 			<BCC_Defines>USING_ATLVCL;INC_ATL_HEADERS;_ATL_FREE_THREADED;$(BCC_Defines)</BCC_Defines>
 			<LinkPackageStatics>rtl.lib;vcl.lib;vclnp.lib</LinkPackageStatics>
