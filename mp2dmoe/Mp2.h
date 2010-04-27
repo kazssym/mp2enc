@@ -18,7 +18,6 @@
 
 #ifndef Mp2H
 #define Mp2H 1
-#pragma once
 
 #include "mp2guid.h"
 
@@ -28,12 +27,12 @@
 #include <dmoimpl.h>
 #undef FIX_LOCK_NAME
 
-class ATL_NO_VTABLE CMp2Encoder
+class ATL_NO_VTABLE TMp2EncoderImpl
 : public CComObjectRootEx<CComMultiThreadModel>,
-  public CComCoClass<CMp2Encoder, &CLSID_Mp2Encoder>,
-  public IMediaObjectImpl<CMp2Encoder, 1, 1>
+  public CComCoClass<TMp2EncoderImpl, &CLSID_Mp2Encoder>,
+  public IMediaObjectImpl<TMp2EncoderImpl, 1, 1>
 {
-  BEGIN_COM_MAP(CMp2Encoder)
+  BEGIN_COM_MAP(TMp2EncoderImpl)
   COM_INTERFACE_ENTRY(IMediaObject)
   END_COM_MAP()
 public:
@@ -42,7 +41,7 @@ class ATL_NO_VTABLE CMp2Encoder
   DECLARE_THREADING_MODEL(otBoth);
   static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 public:
-  CMp2Encoder(void);
+  TMp2EncoderImpl(void);
 
   HRESULT WINAPI FinalConstruct(void);
   void WINAPI FinalRelease(void);

@@ -18,15 +18,14 @@
 
 #ifndef MP2GUID_INCLUDED
 #define MP2GUID_INCLUDED 1
-#pragma once
 
 extern const GUID CLSID_Mp2Encoder;
 
 // Uses struct to make C compatible.
-struct __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) CMp2Encoder;
+struct __declspec(uuid("{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}")) TMp2EncoderImpl;
 
 #ifdef INITGUID
-const GUID CLSID_Mp2Encoder = __uuidof(CMp2Encoder);
+const GUID CLSID_Mp2Encoder = __uuidof(TMp2EncoderImpl);
 #endif
 
 #endif

@@ -62,22 +62,22 @@ static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
 };
 
 HRESULT WINAPI
-CMp2Encoder::UpdateRegistry(BOOL bRegister)
+TMp2EncoderImpl::UpdateRegistry(BOOL bRegister)
 {
-  TComServerRegistrarT<CMp2Encoder> reg(GetObjectCLSID(), 0, GetDescription());
+  TComServerRegistrarT<TMp2EncoderImpl> reg(GetObjectCLSID(), 0, GetDescription());
   return reg.UpdateRegistry(bRegister);
 }
 
 /*
  * Initializes each member to a safe value.
  */
-CMp2Encoder::CMp2Encoder(void)
+TMp2EncoderImpl::TMp2EncoderImpl(void)
 {
   Options = 0;
 }
 
 HRESULT WINAPI
-CMp2Encoder::FinalConstruct(void)
+TMp2EncoderImpl::FinalConstruct(void)
 {
   Options = twolame_init();
   if (Options == 0)
@@ -86,13 +86,13 @@ CMp2Encoder::FinalConstruct(void)
 }
 
 void WINAPI
-CMp2Encoder::FinalRelease(void)
+TMp2EncoderImpl::FinalRelease(void)
 {
   twolame_close(&Options);
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
+TMp2EncoderImpl::InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
                                         DWORD *pdwFlags)
 {
   if (dwInputStreamIndex >= 1)
@@ -106,7 +106,7 @@ CMp2Encoder::InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
+TMp2EncoderImpl::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
                                          DWORD *pdwFlags)
 {
   if (dwOutputStreamIndex >= 1)
@@ -120,7 +120,7 @@ CMp2Encoder::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex,
+TMp2EncoderImpl::InternalGetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex,
                                   DMO_MEDIA_TYPE *pmt)
 {
   if (dwInputStreamIndex >= 1)
@@ -145,7 +145,7 @@ CMp2Encoder::InternalGetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex,
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex,
+TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex,
                                    DMO_MEDIA_TYPE *pmt)
 {
   if (dwOutputStreamIndex >= 1)
@@ -169,7 +169,7 @@ CMp2Encoder::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex,
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt)
+TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt)
 {
   if (dwInputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
@@ -178,7 +178,7 @@ CMp2Encoder::InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TY
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt)
+TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt)
 {
   if (dwOutputStreamIndex >= 1)
     return DMO_E_INVALIDSTREAMINDEX;
@@ -187,67 +187,67 @@ CMp2Encoder::InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *)
+TMp2EncoderImpl::InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *)
+TMp2EncoderImpl::InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *)
+TMp2EncoderImpl::InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalSetInputMaxLatency(DWORD, REFERENCE_TIME)
+TMp2EncoderImpl::InternalSetInputMaxLatency(DWORD, REFERENCE_TIME)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalFlush(void)
+TMp2EncoderImpl::InternalFlush(void)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalDiscontinuity(DWORD)
+TMp2EncoderImpl::InternalDiscontinuity(DWORD)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalAllocateStreamingResources(void)
+TMp2EncoderImpl::InternalAllocateStreamingResources(void)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalFreeStreamingResources(void)
+TMp2EncoderImpl::InternalFreeStreamingResources(void)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalAcceptingInput(DWORD dwInputStreamIndex)
+TMp2EncoderImpl::InternalAcceptingInput(DWORD dwInputStreamIndex)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME)
+TMp2EncoderImpl::InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME)
 {
   return E_NOTIMPL;
 }
 
 HRESULT WINAPI
-CMp2Encoder::InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *)
+TMp2EncoderImpl::InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *)
 {
   return E_NOTIMPL;
 }

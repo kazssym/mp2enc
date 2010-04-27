@@ -50,8 +50,8 @@
 // Exports functions.
 extern "C"
 {
-  __declspec(dllexport) HRESULT WINAPI DllGetClassObject
-    (REFCLSID rclsid, REFIID riid, LPVOID *ppv);
+  __declspec(dllexport)
+  HRESULT WINAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
   __declspec(dllexport) HRESULT WINAPI DllCanUnloadNow(void);
   __declspec(dllexport) HRESULT WINAPI DllRegisterServer(void);
   __declspec(dllexport) HRESULT WINAPI DllUnregisterServer(void);
@@ -61,7 +61,7 @@ static TComModule ThisModule;
 TComModule &_Module = ThisModule;
 
 BEGIN_OBJECT_MAP(ObjectMap)
-OBJECT_ENTRY(CLSID_Mp2Encoder, CMp2Encoder)
+OBJECT_ENTRY(CLSID_Mp2Encoder, TMp2EncoderImpl)
 END_OBJECT_MAP()
 
 /*
