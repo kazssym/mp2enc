@@ -87,6 +87,9 @@
 				<DependentOn>mp2dmoe_ATL.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
 			</CppCompile>
+			<ResFiles Include="mp2dmoe.res">
+				<BuildOrder>7</BuildOrder>
+			</ResFiles>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
