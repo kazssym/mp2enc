@@ -21,7 +21,7 @@
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<BCC_InstructionSet>5</BCC_InstructionSet>
 			<Defines>LIBTWOLAME_STATIC;$(Defines)</Defines>
-			<BCC_Defines>USING_ATLVCL;INC_ATL_HEADERS;_ATL_FREE_THREADED;$(BCC_Defines)</BCC_Defines>
+			<BCC_Defines>USING_ATL;INC_ATL_HEADERS;_ATL_FREE_THREADED;$(BCC_Defines)</BCC_Defines>
 			<LinkPackageStatics>rtl.lib;vcl.lib;vclnp.lib</LinkPackageStatics>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<ILINK_AdditionalOptions>libtwolame.lib msdmo.lib</ILINK_AdditionalOptions>

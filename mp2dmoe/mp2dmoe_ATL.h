@@ -19,15 +19,15 @@
 //
 
 #include <utilcls.h>	// _ASSERTE
-#include <atlbase.h>
+#include <atl/atlbase.h>
 
 // ノート: TComModule の派生クラスを作成し、サーバーモジュールにできます
 //         （インスタンスを _Module にアサインできます）
 //         但し _Module の名前を変えてはいけません
 //
-extern CComModule &_Module;
+extern TComModule &_Module;
 
-#include <atlcom.h>
+#include <atl/atlcom.h>
 #include <shellapi.h>
 
 #endif
