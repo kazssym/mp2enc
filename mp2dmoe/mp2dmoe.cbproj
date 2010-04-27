@@ -2,6 +2,7 @@
 		<PropertyGroup>
 			<ProjectGuid>{4E8FBFBA-8621-46C4-9C0C-CBB213CC3DD2}</ProjectGuid>
 			<ProjectVersion>12.0</ProjectVersion>
+			<MainSource>mp2dmoe.cpp</MainSource>
 			<Config Condition="'$(Config)'==''">Debug</Config>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
@@ -79,7 +80,6 @@
 				<BuildOrder>5</BuildOrder>
 			</None>
 			<ResourceCompile Include="resources.rc">
-				<ModuleName>resources.rc</ModuleName>
 				<Form>resources.res</Form>
 				<BuildOrder>0</BuildOrder>
 			</ResourceCompile>
@@ -98,9 +98,12 @@
 		<Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
 		<ProjectExtensions>
 			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
-			<Borland.ProjectType>VCppStyleDll</Borland.ProjectType>
+			<Borland.ProjectType>CppActiveLibrary</Borland.ProjectType>
 			<BorlandProject>
 				<CPlusPlusBuilder.Personality>
+					<Source>
+						<Source Name="MainSource">mp2dmoe.cpp</Source>
+					</Source>
 					<VersionInfo>
 						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
 						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
@@ -158,6 +161,9 @@
 						<VFOLDER ID="{E8007AB5-C522-4B87-9513-37C5540F31BB}" name="Resources"/>
 					</VFOLDERS>
 				</CPlusPlusBuilder.Personality>
+				<ActiveXProjectInfo>
+					<version>1</version>
+				</ActiveXProjectInfo>
 				<ModelSupport>True</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
