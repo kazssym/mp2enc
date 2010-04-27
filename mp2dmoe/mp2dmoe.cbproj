@@ -70,7 +70,7 @@
 			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
 			<CppCompile Include="Mp2.cpp">
 				<DependentOn>Mp2.h</DependentOn>
-				<BuildOrder>1</BuildOrder>
+				<BuildOrder>2</BuildOrder>
 			</CppCompile>
 			<CppCompile Include="mp2dmoe.cpp">
 				<BuildOrder>0</BuildOrder>
@@ -83,6 +83,10 @@
 				<Form>resources.res</Form>
 				<BuildOrder>0</BuildOrder>
 			</ResourceCompile>
+			<CppCompile Include="mp2dmoe_ATL.cpp">
+				<DependentOn>mp2dmoe_ATL.h</DependentOn>
+				<BuildOrder>1</BuildOrder>
+			</CppCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
