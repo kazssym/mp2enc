@@ -40,7 +40,7 @@
 			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
-			<FinalOutputDir>..\Debug</FinalOutputDir>
+			<FinalOutputDir>..\..\Debug</FinalOutputDir>
 			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
 			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
 			<DCC_Optimize>false</DCC_Optimize>
@@ -59,20 +59,13 @@
 			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
-			<FinalOutputDir>..\Release</FinalOutputDir>
+			<FinalOutputDir>..\..\Release</FinalOutputDir>
 			<Defines>NDEBUG;$(Defines)</Defines>
 			<IntermediateOutputDir>Release</IntermediateOutputDir>
 			<ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
-			<ResourceCompile Include="resources.rc">
-				<Form>resources.res</Form>
-				<BuildOrder>0</BuildOrder>
-			</ResourceCompile>
-			<None Include="mp2dmoeTests.manifest">
-				<VirtualFolder>{2F2B1EE0-07AF-42AC-8F8F-0C2710AA9D14}</VirtualFolder>
-			</None>
 			<CppCompile Include="TestMp2Encoder.cpp">
 				<DependentOn>TestMp2Encoder.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
@@ -80,6 +73,15 @@
 			<CppCompile Include="mp2dmoeTests.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
+			<None Include="mp2dmoeTests.exe.manifest">
+				<ModuleName>mp2dmoeTests</ModuleName>
+				<VirtualFolder>{2F2B1EE0-07AF-42AC-8F8F-0C2710AA9D14}</VirtualFolder>
+			</None>
+			<ResourceCompile Include="extra.rc">
+				<ModuleName>extra.rc</ModuleName>
+				<Form>extra.res</Form>
+				<BuildOrder>0</BuildOrder>
+			</ResourceCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
