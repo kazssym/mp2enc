@@ -65,33 +65,32 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
-			<None Include="mp2dmoe.manifest">
-				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
-				<ContainerId>WebFile</ContainerId>
-			</None>
-			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
+			<ResourceCompile Include="extra.rc">
+				<Form>extra.res</Form>
+				<BuildOrder>0</BuildOrder>
+			</ResourceCompile>
 			<CppCompile Include="Mp2.cpp">
 				<DependentOn>Mp2.h</DependentOn>
 				<BuildOrder>2</BuildOrder>
 			</CppCompile>
+			<ResFiles Include="mp2dmoe.res">
+				<BuildOrder>1</BuildOrder>
+			</ResFiles>
+			<None Include="mp2dmoe.manifest">
+				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
+				<ContainerId>WebFile</ContainerId>
+			</None>
 			<CppCompile Include="mp2dmoe.cpp">
 				<BuildOrder>0</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="mp2dmoe_ATL.cpp">
+				<DependentOn>mp2dmoe_ATL.h</DependentOn>
+				<BuildOrder>1</BuildOrder>
 			</CppCompile>
 			<None Include="mp2guid.h">
 				<VirtualFolder>{6F77BEB4-1254-40CC-8A46-3297A370DA97}</VirtualFolder>
 				<BuildOrder>0</BuildOrder>
 			</None>
-			<CppCompile Include="mp2dmoe_ATL.cpp">
-				<DependentOn>mp2dmoe_ATL.h</DependentOn>
-				<BuildOrder>1</BuildOrder>
-			</CppCompile>
-			<ResFiles Include="mp2dmoe.res">
-				<BuildOrder>1</BuildOrder>
-			</ResFiles>
-			<ResourceCompile Include="extra.rc">
-				<Form>extra.res</Form>
-				<BuildOrder>0</BuildOrder>
-			</ResourceCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -173,7 +172,7 @@
 				<ActiveXProjectInfo>
 					<version>1</version>
 				</ActiveXProjectInfo>
-				<ModelSupport>True</ModelSupport>
+				<ModelSupport>False</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
