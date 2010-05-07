@@ -38,6 +38,7 @@
 			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<FinalOutputDir>..\Debug</FinalOutputDir>
 			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
 			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
 			<DCC_Optimize>false</DCC_Optimize>
@@ -57,6 +58,7 @@
 			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<FinalOutputDir>..\Release</FinalOutputDir>
 			<Defines>NDEBUG;$(Defines)</Defines>
 			<IntermediateOutputDir>Release</IntermediateOutputDir>
 			<ILINK_LibraryPath>..\..\twolame\libtwolame\Release;$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -77,7 +79,7 @@
 			</CppCompile>
 			<None Include="mp2guid.h">
 				<VirtualFolder>{6F77BEB4-1254-40CC-8A46-3297A370DA97}</VirtualFolder>
-				<BuildOrder>5</BuildOrder>
+				<BuildOrder>0</BuildOrder>
 			</None>
 			<ResourceCompile Include="resources.rc">
 				<Form>resources.res</Form>
@@ -88,7 +90,7 @@
 				<BuildOrder>1</BuildOrder>
 			</CppCompile>
 			<ResFiles Include="mp2dmoe.res">
-				<BuildOrder>7</BuildOrder>
+				<BuildOrder>1</BuildOrder>
 			</ResFiles>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
