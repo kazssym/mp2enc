@@ -81,10 +81,6 @@
 				<VirtualFolder>{6F77BEB4-1254-40CC-8A46-3297A370DA97}</VirtualFolder>
 				<BuildOrder>0</BuildOrder>
 			</None>
-			<ResourceCompile Include="resources.rc">
-				<Form>resources.res</Form>
-				<BuildOrder>0</BuildOrder>
-			</ResourceCompile>
 			<CppCompile Include="mp2dmoe_ATL.cpp">
 				<DependentOn>mp2dmoe_ATL.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
@@ -92,6 +88,10 @@
 			<ResFiles Include="mp2dmoe.res">
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
+			<ResourceCompile Include="extra.rc">
+				<Form>extra.res</Form>
+				<BuildOrder>0</BuildOrder>
+			</ResourceCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
