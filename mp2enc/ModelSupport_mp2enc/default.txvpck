@@ -6,7 +6,7 @@
     <property name="$name" value="default" />
     <reference referencedUin="cpp:e_class:src:mp2enc:TAboutBox">
       <property name="$shortcutReference" value="true" />
-      <property name="bounds" value="10,10,145,192" />
+      <property name="bounds" value="196,10,145,192" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.OKButton" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Comments" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Copyright" />
@@ -18,7 +18,7 @@
     </reference>
     <reference referencedUin="cpp:e_class:src:mp2enc:TMainForm">
       <property name="$shortcutReference" value="true" />
-      <property name="bounds" value="174,1,176,282" />
+      <property name="bounds" value="10,10,176,312" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.SaveDialog1" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.OpenDialog1" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.EncodeAs1" />
@@ -33,6 +33,8 @@
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.File1" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.MainMenu1" />
       <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.TMainForm(::Classes::TComponent*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.About1Click(::System::TObject*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.Exit1Click(::System::TObject*)" />
     </reference>
   </view>
 </nodeSet>
