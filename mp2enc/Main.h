@@ -26,6 +26,8 @@ __published:	// IDE 管理のコンポーネント
         TMenuItem *EncodeAs1;
         TOpenDialog *OpenDialog1;
         TSaveDialog *SaveDialog1;
+        void __fastcall Exit1Click(TObject *Sender);
+        void __fastcall About1Click(TObject *Sender);
 private:	// ユーザー宣言
 public:		// ユーザー宣言
         __fastcall TMainForm(TComponent* Owner);

@@ -41,12 +41,14 @@ object MainForm: TMainForm
       end
       object Exit1: TMenuItem
         Caption = 'E&xit'
+        OnClick = Exit1Click
       end
     end
     object Help1: TMenuItem
       Caption = '&Help'
       object About1: TMenuItem
         Caption = '&About...'
+        OnClick = About1Click
       end
     end
   end
