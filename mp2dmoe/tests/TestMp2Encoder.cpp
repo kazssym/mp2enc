@@ -7,6 +7,7 @@
 #include <dmo.h>
 #include <DShow.h>
 #include <TestFramework.hpp>
+#include <ComObj.hpp>
 
 class TTestMp2Encoder : public TTestCase
 {
@@ -21,23 +22,22 @@ __published:
   void __fastcall TestGetInputType();
   void __fastcall TestGetOutputType();
 private:
-  IMediaObject *MediaObject;
+  DelphiInterface<IMediaObject> MediaObject1;
 };
 
 
-void __fastcall
-TTestMp2Encoder::SetUp()
+void
+__fastcall TTestMp2Encoder::SetUp()
 {
-  HRESULT hres = CoCreateInstance(CLSID_Mp2Encoder, 0, CLSCTX_INPROC_SERVER,
-                                  IID_IMediaObject,
-                                  reinterpret_cast<void **>(&MediaObject));
-  if (FAILED(hres))
-    StopTests(L"CoCreateInstance failed");
+  DelphiInterface<IUnknown> unknown1(CreateComObject(CLSID_Mp2Encoder));
+  if (unknown1 == 0 || FAILED(unknown1->QueryInterface(&MediaObject1)))
+    StopTests(L"Failed to instantiate an MP2 Encoder DMO");
 }
 
-void __fastcall TTestMp2Encoder::TearDown()
+void
+__fastcall TTestMp2Encoder::TearDown()
 {
-  MediaObject->Release();
+  MediaObject1 = 0;
 }
 
 
@@ -45,7 +45,7 @@ void __fastcall
 TTestMp2Encoder::TestGetStreamCount(void)
 {
   DWORD cInput, cOutput;
-  HRESULT hres = MediaObject->GetStreamCount(&cInput, &cOutput);
+  HRESULT hres = MediaObject1->GetStreamCount(&cInput, &cOutput);
   Check(SUCCEEDED(hres), L"GetStreamCount failed");
   Check(cInput == 1);
   Check(cOutput == 1);
@@ -56,9 +56,9 @@ TTestMp2Encoder::TestGetInputStreamInfo(void)
 {
   HRESULT hres;
   DWORD flags;
-  hres = MediaObject->GetInputStreamInfo(0, &flags);
+  hres = MediaObject1->GetInputStreamInfo(0, &flags);
   Check(SUCCEEDED(hres));
-  hres = MediaObject->GetInputStreamInfo(1, &flags);
+  hres = MediaObject1->GetInputStreamInfo(1, &flags);
   Check(hres == DMO_E_INVALIDSTREAMINDEX);
 }
 
@@ -67,9 +67,9 @@ TTestMp2Encoder::TestGetOutputStreamInfo(void)
 {
   HRESULT hres;
   DWORD flags;
-  hres = MediaObject->GetOutputStreamInfo(0, &flags);
+  hres = MediaObject1->GetOutputStreamInfo(0, &flags);
   Check(SUCCEEDED(hres));
-  hres = MediaObject->GetOutputStreamInfo(1, &flags);
+  hres = MediaObject1->GetOutputStreamInfo(1, &flags);
   Check(hres == DMO_E_INVALIDSTREAMINDEX);
 }
 
@@ -78,11 +78,11 @@ TTestMp2Encoder::TestGetInputType(void)
 {
   HRESULT hres;
   // Tests stream index 0
-  hres = MediaObject->GetInputType(0, 0, 0);
+  hres = MediaObject1->GetInputType(0, 0, 0);
   Check(SUCCEEDED(hres), L"GetInputType failed");
   // Gets media type actually.
   DMO_MEDIA_TYPE mt;
-  hres = MediaObject->GetInputType(0, 0, &mt);
+  hres = MediaObject1->GetInputType(0, 0, &mt);
   Check(SUCCEEDED(hres), L"GetInputType failed");
   try
   {
@@ -95,7 +95,7 @@ TTestMp2Encoder::TestGetInputType(void)
     MoFreeMediaType(&mt);
   }
   // Tests stream index 1
-  hres = MediaObject->GetInputType(1, 0, 0);
+  hres = MediaObject1->GetInputType(1, 0, 0);
   Check(hres == DMO_E_INVALIDSTREAMINDEX);
 }
 
@@ -103,7 +103,7 @@ void __fastcall
 TTestMp2Encoder::TestGetOutputType(void)
 {
   DMO_MEDIA_TYPE mt;
-  HRESULT hres = MediaObject->GetOutputType(0, 0, &mt);
+  HRESULT hres = MediaObject1->GetOutputType(0, 0, &mt);
   Check(SUCCEEDED(hres), L"GetOutputType failed");
   try
   {
