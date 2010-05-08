@@ -21,71 +21,74 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 void
 __fastcall TMainForm::OpenFile(const UnicodeString Name)
 {
-  DelphiInterface<IUnknown> unknown1(CreateComObject(CLSID_FilterGraph));
-  if (unknown1 == 0 || FAILED(unknown1->QueryInterface(&GraphBuilder1)))
-  {
-    ShowMessage(L"Failed to instantiate a filter graph");
-    return;
-  }
+    DelphiInterface<IUnknown> unknown1(CreateComObject(CLSID_FilterGraph));
+    if (unknown1 == 0 || FAILED(unknown1->QueryInterface(&GraphBuilder1)))
+    {
+        ShowMessage(L"Failed to instantiate a filter graph");
+        return;
+    }
 
-  // @todo Add source filter.
+    // @todo Add source filter.
 
-  Close1->Enabled = true;
-  Encode1->Enabled = true;
-  EncodeAs1->Enabled = true;
+    Close1->Enabled = true;
+    Encode1->Enabled = true;
+    EncodeAs1->Enabled = true;
 }
 
 void
 __fastcall TMainForm::CloseFile(void)
 {
-  GraphBuilder1 = 0;
+    GraphBuilder1 = 0;
 
-  Close1->Enabled = false;
-  Encode1->Enabled = false;
-  EncodeAs1->Enabled = false;
+    Close1->Enabled = false;
+    Encode1->Enabled = false;
+    EncodeAs1->Enabled = false;
 }
-
 //---------------------------------------------------------------------------
+
+void
+__fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
+{
+    CloseFile();
+}
+//---------------------------------------------------------------------------
+
 void
 __fastcall TMainForm::Exit1Click(TObject *Sender)
 {
-  CloseFile();
-  Close();
+    Close();
 }
 //---------------------------------------------------------------------------
 void
 __fastcall TMainForm::Open1Click(TObject *Sender)
 {
-  if (OpenDialog1->Execute(Handle))
-  {
-    OpenFile(OpenDialog1->FileName);
-  }
+    if (OpenDialog1->Execute(Handle))
+        OpenFile(OpenDialog1->FileName);
 }
 //---------------------------------------------------------------------------
 
 void
 __fastcall TMainForm::Close1Click(TObject *Sender)
 {
-  CloseFile();
+    CloseFile();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::Encode1Click(TObject *Sender)
 {
-  //
+    // @todo
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::EncodeAs1Click(TObject *Sender)
 {
-  SaveDialog1->Execute(Handle);
+    SaveDialog1->Execute(Handle);
 }
 //---------------------------------------------------------------------------
 
 void
 __fastcall TMainForm::About1Click(TObject *Sender)
 {
-  AboutBox->ShowModal();
+    AboutBox->ShowModal();
 }
 //---------------------------------------------------------------------------
-

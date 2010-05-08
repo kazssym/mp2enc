@@ -29,6 +29,7 @@ __published:	// IDE 管理のコンポーネント
     TMenuItem *EncodeAs1;
     TOpenDialog *OpenDialog1;
     TSaveDialog *SaveDialog1;
+    void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall Exit1Click(TObject *Sender);
     void __fastcall Open1Click(TObject *Sender);
     void __fastcall Close1Click(TObject *Sender);
