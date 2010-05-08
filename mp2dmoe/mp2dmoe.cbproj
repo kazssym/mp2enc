@@ -19,6 +19,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DynamicRTL>true</DynamicRTL>
 			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
 			<BCC_InstructionSet>5</BCC_InstructionSet>
 			<Defines>LIBTWOLAME_STATIC;$(Defines)</Defines>

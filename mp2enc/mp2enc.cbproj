@@ -19,10 +19,11 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<UsePackages>true</UsePackages>
+			<LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
 			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
 			<BCC_InstructionSet>5</BCC_InstructionSet>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
-			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
 			<PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;dbrtl.bpi;vcldb.bpi;vcldbx.bpi;bdertl.bpi;dsnap.bpi;dsnapcon.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;vclie.bpi;DbxClientDriver.bpi;DbxCommonDriver.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;dbxcds.bpi;dbexpress.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;webdsnap.bpi;soaprtl.bpi;websnap.bpi</PackageImports>
 			<Multithreaded>true</Multithreaded>
 			<ProjectType>CppVCLApplication</ProjectType>
