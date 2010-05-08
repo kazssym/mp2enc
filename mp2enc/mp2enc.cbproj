@@ -19,6 +19,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
 			<BCC_InstructionSet>5</BCC_InstructionSet>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
@@ -43,7 +44,6 @@
 			<Defines>_DEBUG;$(Defines)</Defines>
 			<BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
 			<IntermediateOutputDir>Debug</IntermediateOutputDir>
-			<ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
 			<BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
 			<DCC_Define>DEBUG</DCC_Define>
 			<BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
@@ -55,6 +55,7 @@
 			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
 			<FinalOutputDir>..\Release</FinalOutputDir>
 			<Defines>NDEBUG;$(Defines)</Defines>
 			<IntermediateOutputDir>Release</IntermediateOutputDir>
