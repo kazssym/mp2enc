@@ -20,10 +20,12 @@ object MainForm: TMainForm
       Caption = '&File'
       object Open1: TMenuItem
         Caption = '&Open...'
+        OnClick = Open1Click
       end
       object Close1: TMenuItem
         Caption = '&Close'
         Enabled = False
+        OnClick = Close1Click
       end
       object N1: TMenuItem
         Caption = '-'
@@ -31,10 +33,12 @@ object MainForm: TMainForm
       object Encode1: TMenuItem
         Caption = '&Encode'
         Enabled = False
+        OnClick = Encode1Click
       end
       object EncodeAs1: TMenuItem
         Caption = 'E&ncode As...'
         Enabled = False
+        OnClick = EncodeAs1Click
       end
       object N2: TMenuItem
         Caption = '-'
