@@ -19,7 +19,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<ILINK_GenerateDRC>true</ILINK_GenerateDRC>
+			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
 			<BCC_InstructionSet>5</BCC_InstructionSet>
 			<Defines>LIBTWOLAME_STATIC;$(Defines)</Defines>
 			<BCC_Defines>USING_ATL;INC_ATL_HEADERS;_ATL_FREE_THREADED;$(BCC_Defines)</BCC_Defines>
