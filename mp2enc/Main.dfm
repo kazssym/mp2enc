@@ -20,11 +20,13 @@ object MainForm: TMainForm
       Caption = '&File'
       object Open1: TMenuItem
         Caption = '&Open...'
+        ShortCut = 16463
         OnClick = Open1Click
       end
       object Close1: TMenuItem
         Caption = '&Close'
         Enabled = False
+        ShortCut = 16471
         OnClick = Close1Click
       end
       object N1: TMenuItem
@@ -33,6 +35,7 @@ object MainForm: TMainForm
       object Encode1: TMenuItem
         Caption = '&Encode'
         Enabled = False
+        ShortCut = 16453
         OnClick = Encode1Click
       end
       object EncodeAs1: TMenuItem
