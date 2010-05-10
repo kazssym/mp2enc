@@ -63,7 +63,7 @@ object MainForm: TMainForm
         Enabled = False
       end
       object DeleteProfile1: TMenuItem
-        Caption = '&Delete profile...'
+        Caption = '&Delete profile'
         Enabled = False
       end
     end
