@@ -1,3 +1,5 @@
-#include <winuser.h>
+//#include <winuser.h>
 
+#if MANIFEST
 CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "mp2enc.exe.manifest"
+#endif
