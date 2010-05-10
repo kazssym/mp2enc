@@ -69,7 +69,7 @@ object MainForm: TMainForm
     object Help1: TMenuItem
       Caption = #12504#12523#12503'(&H)'
       object About1: TMenuItem
-        Caption = 'MP2 Encoder'#12398#12496#12540#12472#12519#12531#24773#22577'(&A)'
+        Caption = 'MP2 Encoder '#12398#12496#12540#12472#12519#12531#24773#22577'(&A)'
         OnClick = About1Click
       end
     end
