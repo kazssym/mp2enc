@@ -27,7 +27,6 @@ object MainForm: TMainForm
       object Close1: TMenuItem
         Caption = #38281#12376#12427'(&C)'
         Enabled = False
-        ShortCut = 16471
         OnClick = Close1Click
       end
       object N1: TMenuItem
