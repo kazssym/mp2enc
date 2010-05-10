@@ -13,7 +13,7 @@
 				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
 			</Projects>
 			<Projects Include="mp2enc\mp2enc.cbproj">
-				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
+				<Dependencies/>
 			</Projects>
 			<Projects Include="mp2enc\JPN\mp2enc_JPN.bdsproj">
 				<Dependencies/>
@@ -53,13 +53,13 @@
 		<Target DependsOnTargets="mp2dmoe:Make" Name="mp2dmoeTests:Make">
 			<MSBuild Targets="Make" Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
 		</Target>
-		<Target DependsOnTargets="mp2dmoe" Name="mp2enc">
+		<Target Name="mp2enc">
 			<MSBuild Projects="mp2enc\mp2enc.cbproj"/>
 		</Target>
-		<Target DependsOnTargets="mp2dmoe:Clean" Name="mp2enc:Clean">
+		<Target Name="mp2enc:Clean">
 			<MSBuild Targets="Clean" Projects="mp2enc\mp2enc.cbproj"/>
 		</Target>
-		<Target DependsOnTargets="mp2dmoe:Make" Name="mp2enc:Make">
+		<Target Name="mp2enc:Make">
 			<MSBuild Targets="Make" Projects="mp2enc\mp2enc.cbproj"/>
 		</Target>
 		<Target Name="mp2enc_JPN">
