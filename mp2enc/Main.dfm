@@ -40,7 +40,7 @@ object MainForm: TMainForm
         OnClick = Encode1Click
       end
       object EncodeAs1: TMenuItem
-        Caption = 'E&ncode As...'
+        Caption = 'E&ncode as...'
         Enabled = False
         OnClick = EncodeAs1Click
       end
@@ -52,10 +52,25 @@ object MainForm: TMainForm
         OnClick = Exit1Click
       end
     end
+    object Tools1: TMenuItem
+      Caption = '&Tools'
+      object NewProfile1: TMenuItem
+        Caption = '&New profile'
+        Enabled = False
+      end
+      object SaveProfile1: TMenuItem
+        Caption = '&Save profile'
+        Enabled = False
+      end
+      object DeleteProfile1: TMenuItem
+        Caption = '&Delete profile...'
+        Enabled = False
+      end
+    end
     object Help1: TMenuItem
       Caption = '&Help'
       object About1: TMenuItem
-        Caption = '&About...'
+        Caption = '&About MP2 Encoder...'
         OnClick = About1Click
       end
     end
