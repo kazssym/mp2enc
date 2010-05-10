@@ -1,0 +1,6 @@
+#pragma code_page(932)
+//#include <winuser.h>
+
+#if MANIFEST
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "mp2enc.exe.manifest"
+#endif

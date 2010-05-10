@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\extra.rc" source-language="en-US" target-language="ja-JP" datatype="cpp" tool="ETM v10.0" ts="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\extra.rc">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">40308.8304398148</prop>
+        <prop prop-type="OrigDateTime">40308.8301157407</prop>
+        <prop prop-type="XlatDateTime">40305.9538194444</prop>
+        <prop prop-type="Translated">0</prop>
+        <prop prop-type="UnTranslated">0</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="1" resname="1">
+        <source>"Dummy"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.8263553588</prop>
+          <prop prop-type="Status">3</prop>
+        </prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

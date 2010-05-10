@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\Main.dfm" source-language="en-US" target-language="ja-JP" datatype="delphiform" tool="ETM v10.0" ts="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\Main.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">40308.8299074074</prop>
+        <prop prop-type="OrigDateTime">40308.8090509259</prop>
+        <prop prop-type="XlatDateTime">40308.770787037</prop>
+        <prop prop-type="Translated">50</prop>
+        <prop prop-type="UnTranslated">0</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:MainForm.Left" resname="O:MainForm.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055671</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">0</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Top" resname="O:MainForm.Top">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055671</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">1</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Caption" resname="O:MainForm.Caption">
+        <source>'MP2 Encoder'</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055671</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">2</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.ClientHeight" resname="O:MainForm.ClientHeight">
+        <source>282</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055671</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">3</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.ClientWidth" resname="O:MainForm.ClientWidth">
+        <source>418</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055787</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">4</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Color" resname="O:MainForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055787</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">5</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Font.Charset" resname="O:MainForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055787</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">6</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Font.Color" resname="O:MainForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055787</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">7</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Font.Height" resname="O:MainForm.Font.Height">
+        <source>-12</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055787</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">8</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Font.Name" resname="O:MainForm.Font.Name">
+        <source>'Segoe UI'</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055787</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">9</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Font.Style" resname="O:MainForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055903</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">10</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.Menu" resname="O:MainForm.Menu">
+        <source>MainMenu1</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055903</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">11</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.OldCreateOrder" resname="O:MainForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055903</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">12</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.OnClose" resname="O:MainForm.OnClose">
+        <source>FormClose</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055903</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">13</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.PixelsPerInch" resname="O:MainForm.PixelsPerInch">
+        <source>96</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915055903</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">14</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.TextHeight" resname="O:MainForm.TextHeight">
+        <source>15</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056019</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">15</prop>
+          <prop prop-type="Type">TMainForm</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.Top" resname="O:MainForm.O:MainMenu1.Top">
+        <source>256</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056019</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">16</prop>
+          <prop prop-type="Type">TMainMenu</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.Caption" resname="O:MainForm.O:MainMenu1.O:File1.Caption">
+        <source>'&amp;File'</source>
+        <target>'ファイル(&amp;F)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056019</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">17</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Open1.Caption" resname="O:MainForm.O:MainMenu1.O:File1.O:Open1.Caption">
+        <source>'&amp;Open...'</source>
+        <target>'開く(&amp;O)...'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056019</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">18</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Open1.ShortCut" resname="O:MainForm.O:MainMenu1.O:File1.O:Open1.ShortCut">
+        <source>16463</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056019</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">19</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Open1.OnClick" resname="O:MainForm.O:MainMenu1.O:File1.O:Open1.OnClick">
+        <source>Open1Click</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056019</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">20</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Close1.Caption" resname="O:MainForm.O:MainMenu1.O:File1.O:Close1.Caption">
+        <source>'&amp;Close'</source>
+        <target>'閉じる(&amp;C)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056134</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">21</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Close1.Enabled" resname="O:MainForm.O:MainMenu1.O:File1.O:Close1.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056134</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">22</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Close1.ShortCut" resname="O:MainForm.O:MainMenu1.O:File1.O:Close1.ShortCut">
+        <source>16471</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056134</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">23</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Close1.OnClick" resname="O:MainForm.O:MainMenu1.O:File1.O:Close1.OnClick">
+        <source>Close1Click</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056134</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">24</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:N1.Caption" resname="O:MainForm.O:MainMenu1.O:File1.O:N1.Caption">
+        <source>'-'</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056134</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">25</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Encode1.Caption" resname="O:MainForm.O:MainMenu1.O:File1.O:Encode1.Caption">
+        <source>'&amp;Encode'</source>
+        <target>'エンコード(&amp;E)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.791505625</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">26</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Encode1.Enabled" resname="O:MainForm.O:MainMenu1.O:File1.O:Encode1.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.791505625</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">27</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Encode1.ShortCut" resname="O:MainForm.O:MainMenu1.O:File1.O:Encode1.ShortCut">
+        <source>16453</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.791505625</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">28</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Encode1.OnClick" resname="O:MainForm.O:MainMenu1.O:File1.O:Encode1.OnClick">
+        <source>Encode1Click</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.791505625</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">29</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:EncodeAs1.Caption" resname="O:MainForm.O:MainMenu1.O:File1.O:EncodeAs1.Caption">
+        <source>'E&amp;ncode as...'</source>
+        <target>'名前を付けてエンコード(&amp;N)...'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.791505625</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">30</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:EncodeAs1.Enabled" resname="O:MainForm.O:MainMenu1.O:File1.O:EncodeAs1.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.791505625</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">31</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:EncodeAs1.OnClick" resname="O:MainForm.O:MainMenu1.O:File1.O:EncodeAs1.OnClick">
+        <source>EncodeAs1Click</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056366</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">32</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:N2.Caption" resname="O:MainForm.O:MainMenu1.O:File1.O:N2.Caption">
+        <source>'-'</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056366</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">33</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Exit1.Caption" resname="O:MainForm.O:MainMenu1.O:File1.O:Exit1.Caption">
+        <source>'E&amp;xit'</source>
+        <target>'終了(&amp;X)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056366</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">34</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:File1.O:Exit1.OnClick" resname="O:MainForm.O:MainMenu1.O:File1.O:Exit1.OnClick">
+        <source>Exit1Click</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056366</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">35</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Tools1.Caption" resname="O:MainForm.O:MainMenu1.O:Tools1.Caption">
+        <source>'&amp;Tools'</source>
+        <target>'ツール(&amp;T)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056366</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">36</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Tools1.O:NewProfile1.Caption" resname="O:MainForm.O:MainMenu1.O:Tools1.O:NewProfile1.Caption">
+        <source>'&amp;New profile'</source>
+        <target>'新規プロファイル(&amp;N)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056482</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">37</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Tools1.O:NewProfile1.Enabled" resname="O:MainForm.O:MainMenu1.O:Tools1.O:NewProfile1.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056482</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">38</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Tools1.O:SaveProfile1.Caption" resname="O:MainForm.O:MainMenu1.O:Tools1.O:SaveProfile1.Caption">
+        <source>'&amp;Save profile'</source>
+        <target>'プロファイルを保存(&amp;S)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056482</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">39</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Tools1.O:SaveProfile1.Enabled" resname="O:MainForm.O:MainMenu1.O:Tools1.O:SaveProfile1.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056482</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">40</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Tools1.O:DeleteProfile1.Caption" resname="O:MainForm.O:MainMenu1.O:Tools1.O:DeleteProfile1.Caption">
+        <source>'&amp;Delete profile'</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056482</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">41</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+        <target>'プロファイルを削除(&amp;D)'</target>
+        <alt-trans>
+          <source>'&amp;Delete profile...'</source>
+          <target>'プロファイルを削除(&amp;D)'</target>
+          <prop-group name="ITEFieldProp">
+            <prop prop-type="Modified">40308.4345124884</prop>
+          </prop-group>
+        </alt-trans>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Tools1.O:DeleteProfile1.Enabled" resname="O:MainForm.O:MainMenu1.O:Tools1.O:DeleteProfile1.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056482</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">42</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Help1.Caption" resname="O:MainForm.O:MainMenu1.O:Help1.Caption">
+        <source>'&amp;Help'</source>
+        <target>'ヘルプ(&amp;H)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056597</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">43</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Help1.O:About1.Caption" resname="O:MainForm.O:MainMenu1.O:Help1.O:About1.Caption">
+        <source>'&amp;About MP2 Encoder...'</source>
+        <target>'MP2 Encoderのバージョン情報(&amp;A)'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056597</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">44</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:MainMenu1.O:Help1.O:About1.OnClick" resname="O:MainForm.O:MainMenu1.O:Help1.O:About1.OnClick">
+        <source>About1Click</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056597</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">45</prop>
+          <prop prop-type="Type">TMenuItem</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:OpenDialog1.Left" resname="O:MainForm.O:OpenDialog1.Left">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056597</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">46</prop>
+          <prop prop-type="Type">TOpenDialog</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:OpenDialog1.Top" resname="O:MainForm.O:OpenDialog1.Top">
+        <source>256</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056597</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">47</prop>
+          <prop prop-type="Type">TOpenDialog</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:SaveDialog1.Left" resname="O:MainForm.O:SaveDialog1.Left">
+        <source>64</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056713</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">48</prop>
+          <prop prop-type="Type">TSaveDialog</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:SaveDialog1.Top" resname="O:MainForm.O:SaveDialog1.Top">
+        <source>256</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40308.7915056713</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">49</prop>
+          <prop prop-type="Type">TSaveDialog</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
