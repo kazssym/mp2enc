@@ -5,7 +5,7 @@
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40308.8584027778</prop>
+        <prop prop-type="SelfDateTime">40308.8596296296</prop>
         <prop prop-type="OrigDateTime">40308.8449074074</prop>
         <prop prop-type="XlatDateTime">40308.770787037</prop>
         <prop prop-type="Translated">49</prop>
@@ -463,7 +463,7 @@
       </trans-unit>
       <trans-unit id="O:MainForm.O:MainMenu1.O:Help1.O:About1.Caption" resname="O:MainForm.O:MainMenu1.O:Help1.O:About1.Caption">
         <source>'&amp;About MP2 Encoder...'</source>
-        <target>'MP2 Encoder のバージョン情報(&amp;A)'</target>
+        <target>'MP2 Encoder のバージョン情報(&amp;A)...'</target>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40308.7915056597</prop>
           <prop prop-type="Status">1</prop>
