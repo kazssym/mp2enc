@@ -30,7 +30,7 @@ void
 __fastcall TTestMp2Encoder::SetUp()
 {
   DelphiInterface<IUnknown> unknown1(CreateComObject(CLSID_Mp2Encoder));
-  if (unknown1 == 0 || FAILED(unknown1->QueryInterface(&MediaObject1)))
+  if (FAILED(unknown1->QueryInterface(&MediaObject1)))
     StopTests(L"Failed to instantiate an MP2 Encoder DMO");
 }
 
