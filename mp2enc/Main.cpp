@@ -5,6 +5,7 @@
 
 #include "Main.h"
 #include "About.h"
+#include "resource.h"
 #include <ComObj.hpp>
 
 //---------------------------------------------------------------------------
@@ -62,6 +63,7 @@ __fastcall TMainForm::Exit1Click(TObject *Sender)
 void
 __fastcall TMainForm::Open1Click(TObject *Sender)
 {
+    OpenDialog1->Filter = UnicodeString::LoadStr(IDS_OPEN_DIALOG_FILTER);
     if (OpenDialog1->Execute(Handle))
         OpenFile(OpenDialog1->FileName);
 }
