@@ -5,10 +5,10 @@
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40308.8304398148</prop>
-        <prop prop-type="OrigDateTime">40308.8301157407</prop>
+        <prop prop-type="SelfDateTime">40312.9594675926</prop>
+        <prop prop-type="OrigDateTime">40312.9586111111</prop>
         <prop prop-type="XlatDateTime">40305.9538194444</prop>
-        <prop prop-type="Translated">0</prop>
+        <prop prop-type="Translated">1</prop>
         <prop prop-type="UnTranslated">0</prop>
       </prop-group>
     </header>
@@ -19,6 +19,21 @@
           <prop prop-type="Created">40308.8263553588</prop>
           <prop prop-type="Status">3</prop>
         </prop-group>
+      </trans-unit>
+      <trans-unit id="32768" resname="32768">
+        <source>"Waveform Audio|*.wav"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40312.947328287</prop>
+          <prop prop-type="Status">1</prop>
+        </prop-group>
+        <target>"ウェーブ形式オーディオ|*.wav"</target>
+        <alt-trans>
+          <source>""</source>
+          <target>""</target>
+          <prop-group name="ITEFieldProp">
+            <prop prop-type="Modified">40312.5840423843</prop>
+          </prop-group>
+        </alt-trans>
       </trans-unit>
     </body>
   </file>
