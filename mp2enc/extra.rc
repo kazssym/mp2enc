@@ -8,5 +8,5 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "mp2enc.exe.manifest"
 
 STRINGTABLE
 BEGIN
-    32768 "Waveform Audio|*.wav"
+    32768 "Wave files|*.wav|All files|*.*"
 END

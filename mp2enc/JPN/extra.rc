@@ -9,5 +9,5 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "mp2enc.exe.manifest"
 
 STRINGTABLE
 BEGIN
-    32768 "ウェーブ形式オーディオ|*.wav"
+    32768 "Wave ファイル|*.wav|すべてのファイル|*.*"
 END
