@@ -1,5 +1,12 @@
 //#include <winuser.h>
 
-#if MANIFEST
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+#if DEFAULT_RESOURCES
 CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "mp2enc.exe.manifest"
 #endif
+
+STRINGTABLE
+BEGIN
+    32768 "Waveform Audio|*.wav"
+END
