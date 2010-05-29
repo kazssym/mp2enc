@@ -29,6 +29,8 @@
 #include <dmodshow.h>
 #include <ComObj.hpp>
 
+#pragma link "quartz.lib"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"

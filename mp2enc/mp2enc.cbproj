@@ -19,7 +19,6 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<ILINK_AdditionalOptions>quartz.lib</ILINK_AdditionalOptions>
 			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
 			<BRCC_Defines>DEFAULT_RESOURCES=1;$(BRCC_Defines)</BRCC_Defines>
 			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
