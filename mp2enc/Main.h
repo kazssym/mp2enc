@@ -3,7 +3,7 @@
 #ifndef MainH
 #define MainH 1
 
-#include <DShow.h>
+#include <dshow.h>
 
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
