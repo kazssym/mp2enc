@@ -13,5 +13,6 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res/mp2enc.exe.manifest"
 
 STRINGTABLE
 BEGIN
-    32768 "Wave files|*.wav|All files|*.*"
+    IDS_OPEN_DIALOG_FILTER "Wave files|*.wav|All files|*.*"
+    IDS_ENCODE_DIALOG_FILTER "MP2 files|*.mp2|All files|*.*"
 END
