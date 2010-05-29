@@ -1,10 +1,14 @@
+#if DEFAULT_RESOURCES
 #include <winuser.h>
+#include "resource.h"
+#else
 #include "../resource.h"
+#endif
 
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 
 #if DEFAULT_RESOURCES
-CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "mp2enc.exe.manifest"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res/mp2enc.exe.manifest"
 #endif
 
 STRINGTABLE
