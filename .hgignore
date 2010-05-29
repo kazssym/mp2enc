@@ -1,12 +1,18 @@
 syntax: glob
 
+*.RES
+
 # Binary directories.
 .libs/
 Debug/
 Release/
 
-# IDE local state files.
+# IDE state files/directories.
 *.local
+*.tvsconfig
+LibrarySupport/
 
 # Backup files.
 *~
+*.~*
+*.orig
