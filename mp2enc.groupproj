@@ -18,6 +18,9 @@
 			<Projects Include="mp2enc\JPN\mp2enc_JPN.bdsproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="mp2enc\ENU\mp2enc_ENU.bdsproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -71,14 +74,23 @@
 		<Target Name="mp2enc_JPN:Make">
 			<MSBuild Targets="Make" Projects="mp2enc\JPN\mp2enc_JPN.bdsproj"/>
 		</Target>
+		<Target Name="mp2enc_ENU">
+			<MSBuild Projects="mp2enc\ENU\mp2enc_ENU.bdsproj"/>
+		</Target>
+		<Target Name="mp2enc_ENU:Clean">
+			<MSBuild Targets="Clean" Projects="mp2enc\ENU\mp2enc_ENU.bdsproj"/>
+		</Target>
+		<Target Name="mp2enc_ENU:Make">
+			<MSBuild Targets="Make" Projects="mp2enc\ENU\mp2enc_ENU.bdsproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="libtwolame;mp2dmoe;mp2dmoeTests;mp2enc;mp2enc_JPN"/>
+			<CallTarget Targets="libtwolame;mp2dmoe;mp2dmoeTests;mp2enc;mp2enc_JPN;mp2enc_ENU"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="libtwolame:Clean;mp2dmoe:Clean;mp2dmoeTests:Clean;mp2enc:Clean;mp2enc_JPN:Clean"/>
+			<CallTarget Targets="libtwolame:Clean;mp2dmoe:Clean;mp2dmoeTests:Clean;mp2enc:Clean;mp2enc_JPN:Clean;mp2enc_ENU:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="libtwolame:Make;mp2dmoe:Make;mp2dmoeTests:Make;mp2enc:Make;mp2enc_JPN:Make"/>
+			<CallTarget Targets="libtwolame:Make;mp2dmoe:Make;mp2dmoeTests:Make;mp2enc:Make;mp2enc_JPN:Make;mp2enc_ENU:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

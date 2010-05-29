@@ -1,0 +1,19 @@
+#pragma code_page(1252)
+#if DEFAULT_RESOURCES
+#include <winuser.h>
+#include "resource.h"
+#else
+#include "../resource.h"
+#endif
+
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+#if DEFAULT_RESOURCES
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res/mp2enc.exe.manifest"
+#endif
+
+STRINGTABLE
+BEGIN
+    IDS_OPEN_DIALOG_FILTER "Wave files|*.wav|All files|*.*"
+    IDS_ENCODE_DIALOG_FILTER "MP2 files|*.mp2|All files|*.*"
+END
