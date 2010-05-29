@@ -5,11 +5,11 @@
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40327.8106712963</prop>
+        <prop prop-type="SelfDateTime">40328.0849768519</prop>
         <prop prop-type="OrigDateTime">0</prop>
         <prop prop-type="XlatDateTime">40308.7915277778</prop>
-        <prop prop-type="Translated">62</prop>
-        <prop prop-type="UnTranslated">169</prop>
+        <prop prop-type="Translated">69</prop>
+        <prop prop-type="UnTranslated">162</prop>
       </prop-group>
     </header>
     <body>
@@ -17,14 +17,14 @@
         <source>"- ドッキングゾーンはコントロールを持ちません。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.8105610185</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SDockZoneVersionConflict" resname="Consts_SDockZoneVersionConflict">
         <source>"ストリームからドックゾーンの読み取りエラー。バージョン %d が必要ですが %d が見つかりました。 "</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459028</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒgƒŠ[ƒ€‚©‚çƒhƒbƒNƒ][ƒ“‚Ì“Ç‚ÝŽæ‚èƒGƒ‰[Bƒo[ƒWƒ‡ƒ“ %d ‚ª•K—v‚Å‚·‚ª %d ‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½B "</source>
@@ -38,7 +38,7 @@
         <source>"%s は、Windows Vista 以降が必要です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459144</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ‚ÍAWindows Vista ˆÈ~‚ª•K—v‚Å‚·"</source>
@@ -52,7 +52,7 @@
         <source>"%s はテーマを有効にする必要があります"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459144</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ‚Íƒe[ƒ}‚ð—LŒø‚É‚·‚é•K—v‚ª‚ ‚è‚Ü‚·"</source>
@@ -66,21 +66,21 @@
         <source>"Button%d"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459144</prop>
-          <prop prop-type="Status">5</prop>
+          <prop prop-type="Status">6</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_STaskDlgRadioButtonCaption" resname="Consts_STaskDlgRadioButtonCaption">
         <source>"RadioButton%d"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459144</prop>
-          <prop prop-type="Status">5</prop>
+          <prop prop-type="Status">6</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SInvalidTaskDlgButtonCaption" resname="Consts_SInvalidTaskDlgButtonCaption">
         <source>"Caption は空白にはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459491</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Caption ‚Í‹ó”’‚É‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -339,7 +339,7 @@
         <source>"閉じる(&amp;C)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460185</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•Â‚¶‚é(&amp;C)"</source>
@@ -556,7 +556,7 @@
         <source>"確認"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460648</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Šm”F"</source>
@@ -598,7 +598,7 @@
         <source>"OK"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460648</prop>
-          <prop prop-type="Status">6</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SMsgDlgCancel" resname="Consts_SMsgDlgCancel">
@@ -1809,7 +1809,7 @@
         <source>"CTRL-C"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462963</prop>
-          <prop prop-type="Status">6</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Sysconst_SPrivilege" resname="Sysconst_SPrivilege">
@@ -2600,7 +2600,7 @@
         <source>"状況感知型ヘルプがインストールされていません。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464005</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ó‹µŠ´’mŒ^ƒwƒ‹ƒv‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB"</source>

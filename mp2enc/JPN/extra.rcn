@@ -5,11 +5,11 @@
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40327.8048148148</prop>
-        <prop prop-type="OrigDateTime">40327.8041666667</prop>
+        <prop prop-type="SelfDateTime">40328.0877777778</prop>
+        <prop prop-type="OrigDateTime">40328.0652777778</prop>
         <prop prop-type="XlatDateTime">40305.9538194444</prop>
         <prop prop-type="Translated">1</prop>
-        <prop prop-type="UnTranslated">0</prop>
+        <prop prop-type="UnTranslated">1</prop>
       </prop-group>
     </header>
     <body>
@@ -24,7 +24,7 @@
         <source>"Wave files|*.wav|All files|*.*"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40312.947328287</prop>
-          <prop prop-type="Status">1</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
         <target>"Wave ファイル|*.wav|すべてのファイル|*.*"</target>
         <alt-trans>
@@ -41,6 +41,21 @@
             <prop prop-type="Modified">40312.5840423843</prop>
           </prop-group>
         </alt-trans>
+      </trans-unit>
+      <trans-unit id="IDS_OPEN_DIALOG_FILTER" resname="IDS_OPEN_DIALOG_FILTER">
+        <source>"Wave files|*.wav|All files|*.*"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40328.0787269907</prop>
+          <prop prop-type="Status">1</prop>
+        </prop-group>
+        <target>"Wave ファイル|*.wav|すべてのファイル|*.*"</target>
+      </trans-unit>
+      <trans-unit id="IDS_ENCODE_DIALOG_FILTER" resname="IDS_ENCODE_DIALOG_FILTER">
+        <source>"MP2 files|*.mp2|All files|*.*"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40328.0787269907</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
       </trans-unit>
     </body>
   </file>
