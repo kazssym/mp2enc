@@ -72,6 +72,94 @@ static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
     MPEG1(1, 32000, 192000),
 };
 
+HRESULT
+TMp2EncoderImpl::SetInputParameters(twolame_options *options,
+                                    const DMO_MEDIA_TYPE *pmt)
+{
+    assert(options != 0);
+    assert(pmt != 0);
+
+    if (pmt->majortype == MEDIATYPE_Audio &&
+        pmt->subtype == MEDIASUBTYPE_PCM)
+    {
+        if (pmt->formattype == FORMAT_WaveFormatEx)
+        {
+            if (pmt->cbFormat < sizeof (WAVEFORMATEX) || pmt->pbFormat == 0)
+                return DMO_E_INVALIDTYPE;
+
+            WAVEFORMATEX *format =
+                reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
+            if (format->wFormatTag == WAVE_FORMAT_PCM ||
+                format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
+            {
+                if (format->wBitsPerSample != 16)
+                    return DMO_E_INVALIDTYPE;
+                if (pmt->lSampleSize != format->nChannels * 2UL ||
+                    pmt->cbFormat < sizeof (WAVEFORMATEX) + format->cbSize)
+                    return DMO_E_INVALIDTYPE;
+                if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
+                {
+                    if (format->cbSize < 22)
+                        return DMO_E_INVALIDTYPE;
+
+                    WAVEFORMATEXTENSIBLE *formatExt =
+                        reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
+                    if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_PCM &&
+                        formatExt->Samples.wValidBitsPerSample != 16)
+                        return DMO_E_INVALIDTYPE;
+                }
+
+                if (twolame_set_num_channels(options, format->nChannels) == 0 &&
+                    twolame_set_in_samplerate(options, format->nSamplesPerSec) == 0)
+                    return S_OK;
+            }
+        }
+    }
+    return DMO_E_INVALIDTYPE;
+}
+
+HRESULT
+TMp2EncoderImpl::SetOutputParameters(twolame_options *options,
+                                     const DMO_MEDIA_TYPE *pmt)
+{
+    assert(options != 0);
+    assert(pmt != 0);
+
+    if ((pmt->majortype == MEDIATYPE_Audio || pmt->majortype == MEDIATYPE_Stream) &&
+        pmt->subtype == MEDIASUBTYPE_MPEG1Payload)
+    {
+        if (pmt->formattype == FORMAT_WaveFormatEx)
+        {
+            if (pmt->cbFormat < sizeof (WAVEFORMATEX) || pmt->pbFormat == 0)
+                return DMO_E_INVALIDTYPE;
+
+            WAVEFORMATEX *format =
+                reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
+            if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
+            {
+                if (format->cbSize < 22 ||
+                    pmt->cbFormat < sizeof (WAVEFORMATEX) + format->cbSize)
+                    return DMO_E_INVALIDTYPE;
+
+                WAVEFORMATEXTENSIBLE *formatExt =
+                    reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
+                if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_MPEG1Payload &&
+                    formatExt->Samples.wSamplesPerBlock != 1152)
+                    return DMO_E_INVALIDTYPE;
+
+                int bitrate = format->nAvgBytesPerSec * 8;
+                if (bitrate % 1000 != 0)
+                    return DMO_E_INVALIDTYPE;
+                if (twolame_set_mode(options, format->nChannels == 1 ? TWOLAME_MONO : TWOLAME_JOINT_STEREO) == 0 &&
+                    twolame_set_out_samplerate(options, format->nSamplesPerSec) == 0 &&
+                    twolame_set_bitrate(options, bitrate / 1000) == 0)
+                    return S_OK;
+            }
+        }
+    }
+    return DMO_E_INVALIDTYPE;
+}
+
 HRESULT WINAPI
 TMp2EncoderImpl::UpdateRegistry(BOOL bRegister)
 {
@@ -96,6 +184,39 @@ void
 TMp2EncoderImpl::FinalRelease()
 {
     twolame_close(&Options);
+}
+
+HRESULT
+TMp2EncoderImpl::InitializeEncoder(const DMO_MEDIA_TYPE *pmtInput,
+                                   const DMO_MEDIA_TYPE *pmtOutput)
+{
+    twolame_close(&Options);
+
+    Options = twolame_init();
+    if (Options == 0)
+        return E_OUTOFMEMORY;
+
+    if (pmtInput != 0)
+    {
+        HRESULT hr = SetInputParameters(Options, pmtInput);
+        if (FAILED(hr))
+            return hr;
+    }
+    if (pmtOutput != 0)
+    {
+        HRESULT hr = SetOutputParameters(Options, pmtOutput);
+        if (FAILED(hr))
+            return hr;
+    }
+    twolame_set_copyright(Options, TRUE);
+
+    if (twolame_get_num_channels(Options) == 0)
+        twolame_set_num_channels(Options, 2);
+    if (twolame_get_in_samplerate(Options) == 0)
+        twolame_set_in_samplerate(Options, twolame_get_out_samplerate(Options));
+    if (twolame_init_params(Options) != 0)
+        return DMO_E_INVALIDTYPE;
+    return S_OK;
 }
 
 HRESULT
@@ -133,8 +254,7 @@ TMp2EncoderImpl::InternalGetInputType(DWORD dwInputStreamIndex,
 
     if (pmt != 0)
     {
-        HRESULT hr;
-        hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
+        HRESULT hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
         if (FAILED(hr))
             return hr;
         pmt->majortype = MEDIATYPE_Audio;
@@ -160,8 +280,7 @@ TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex,
 
     if (pmt != 0)
     {
-        HRESULT hr;
-        hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
+        HRESULT hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
         if (FAILED(hr))
             return hr;
         pmt->majortype = MEDIATYPE_Audio;
@@ -182,56 +301,8 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
     assert(dwInputStreamIndex < 1);
     assert(pmt != 0);
 
-    if (pmt->majortype == MEDIATYPE_Audio &&
-        pmt->subtype == MEDIASUBTYPE_PCM)
-    {
-        if (pmt->formattype == FORMAT_WaveFormatEx &&
-            pmt->cbFormat >= sizeof (WAVEFORMATEX) &&
-            pmt->pbFormat != 0)
-        {
-            WAVEFORMATEX *format =
-                reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
-            if ((format->wFormatTag == WAVE_FORMAT_PCM ||
-                 (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE &&
-                  format->cbSize >= 22)) &&
-                pmt->cbFormat >= sizeof (WAVEFORMATEX) + format->cbSize)
-            {
-                if (pmt->lSampleSize != format->nChannels * 2 ||
-                    format->wBitsPerSample != 16)
-                    return DMO_E_INVALIDTYPE;
-                if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
-                {
-                    WAVEFORMATEXTENSIBLE *formatExt =
-                        reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
-                    if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_PCM &&
-                        formatExt->Samples.wValidBitsPerSample != 16)
-                        return DMO_E_INVALIDTYPE;
-                }
-                switch (format->nSamplesPerSec)
-                {
-                case 48000:
-                case 44100:
-                case 32000:
-#if 0
-                    // We do not convert sampling rates.
-                    const DMO_MEDIA_TYPE *outputType =
-                        OutputType(dwInputStreamIndex);
-                    if (outputType != 0)
-                    {
-                        assert(outputType->formattype == FORMAT_WaveFormatEx);
-
-                        const WAVEFORMATEX *outputFormat =
-                            reinterpret_cast<const WAVEFORMATEX *>(outputType->pbFormat);
-                        if (format->nSamplesPerSec != outputFormat->nSamplesPerSec)
-                            return DMO_E_INVALIDTYPE;
-                    }
-#endif // 0
-                    return S_OK;
-                }
-            }
-        }
-    }
-    return DMO_E_INVALIDTYPE;
+    HRESULT hr = InitializeEncoder(pmt, OutputType(0));
+    return hr;
 }
 
 HRESULT
@@ -241,49 +312,8 @@ TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex,
     assert(dwOutputStreamIndex < 1);
     assert(pmt != 0);
 
-    if (pmt->majortype == MEDIATYPE_Audio &&
-        pmt->subtype == MEDIASUBTYPE_MPEG1Payload)
-    {
-        if (pmt->formattype == FORMAT_WaveFormatEx &&
-            pmt->cbFormat >= sizeof (WAVEFORMATEXTENSIBLE) &&
-            pmt->pbFormat != 0)
-        {
-            WAVEFORMATEX *format =
-                reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
-            if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE &&
-                format->cbSize >= 22 &&
-                pmt->cbFormat >= sizeof (WAVEFORMATEX) + format->cbSize)
-            {
-                WAVEFORMATEXTENSIBLE *formatExt =
-                    reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
-                if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_MPEG1Payload &&
-                    formatExt->Samples.wSamplesPerBlock != 1152)
-                    return DMO_E_INVALIDTYPE;
-                switch (format->nSamplesPerSec)
-                {
-                case 48000:
-                case 44100:
-                case 32000:
-#if 0
-                    // We do not convert sampling rates.
-                    const DMO_MEDIA_TYPE *inputType =
-                        InputType(dwOutputStreamIndex);
-                    if (inputType != 0)
-                    {
-                        assert(inputType->formattype == FORMAT_WaveFormatEx);
-
-                        const WAVEFORMATEX *inputFormat =
-                            reinterpret_cast<const WAVEFORMATEX *>(inputType->pbFormat);
-                        if (format->nSamplesPerSec != inputFormat->nSamplesPerSec)
-                            return DMO_E_INVALIDTYPE;
-                    }
-#endif // 0
-                    return S_OK;
-                }
-            }
-        }
-    }
-    return DMO_E_INVALIDTYPE;
+    HRESULT hr = InitializeEncoder(InputType(0), pmt);
+    return hr;
 }
 
 HRESULT

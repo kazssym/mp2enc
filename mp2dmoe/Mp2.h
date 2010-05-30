@@ -52,7 +52,7 @@ public:
     HRESULT FinalConstruct();
     void FinalRelease();
 
-  // IMediaObjectImpl internal methods
+    // IMediaObjectImpl internal methods
     HRESULT InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
                                        DWORD *pdwFlags);
     HRESULT InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
@@ -76,6 +76,13 @@ public:
     HRESULT InternalAcceptingInput(DWORD dwInputStreamIndex);
     HRESULT InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME);
     HRESULT InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *);
+protected:
+    static HRESULT SetInputParameters(twolame_options *options,
+                                      const DMO_MEDIA_TYPE *pmt);
+    static HRESULT SetOutputParameters(twolame_options *options,
+                                       const DMO_MEDIA_TYPE *pmt);
+    HRESULT InitializeEncoder(const DMO_MEDIA_TYPE *pmtInput,
+                              const DMO_MEDIA_TYPE *pmtOutput);
 private:
     twolame_options *Options;
 };
