@@ -83,10 +83,12 @@ TMp2EncoderImpl::UpdateRegistry(BOOL bRegister)
 HRESULT
 TMp2EncoderImpl::FinalConstruct()
 {
+#if 0
     Options = twolame_init();
     if (Options == 0)
         return E_OUTOFMEMORY;
     twolame_set_copyright(Options, TRUE);
+#endif // 0
     return S_OK;
 }
 
