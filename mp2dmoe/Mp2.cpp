@@ -180,10 +180,8 @@ HRESULT STDMETHODCALLTYPE
 TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
                                         const DMO_MEDIA_TYPE *pmt)
 {
+    assert(dwInputStreamIndex < 1);
     assert(pmt != 0);
-    
-    if (dwInputStreamIndex >= 1)
-        return DMO_E_INVALIDSTREAMINDEX;
 
     if (pmt->majortype == MEDIATYPE_Audio &&
         pmt->subtype == MEDIASUBTYPE_PCM)
