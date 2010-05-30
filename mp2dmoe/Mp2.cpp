@@ -39,6 +39,9 @@
 #pragma link "libtwolame.lib"
 #pragma link "msdmo.lib"
 
+const GUID KSDATAFORMAT_SUBTYPE_PCM = {STATIC_KSDATAFORMAT_SUBTYPE_PCM};
+const GUID KSDATAFORMAT_SUBTYPE_MPEG1Payload = {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload};
+
 #define CHANNEL_MASK(c)\
     ((c) == 2 ? SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT : 0)
 #define PCM(c, s, b, v) {\
@@ -176,7 +179,7 @@ TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIn
   return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE
+HRESULT
 TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
                                         const DMO_MEDIA_TYPE *pmt)
 {
@@ -187,32 +190,33 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
         pmt->subtype == MEDIASUBTYPE_PCM)
     {
         if (pmt->formattype == FORMAT_WaveFormatEx &&
-            pmt->cbFormat >= sizeof (WAVEFORMATEX) && 
+            pmt->cbFormat >= sizeof (WAVEFORMATEX) &&
             pmt->pbFormat != 0)
         {
-            WAVEFORMATEX *format = 
+            WAVEFORMATEX *format =
                 reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
-            if (format->wFormatTag == WAVE_FORMAT_PCM ||
-                (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE && format->cbSize >= 22U)) 
+            if ((format->wFormatTag == WAVE_FORMAT_PCM ||
+                 (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE &&
+                  format->cbSize >= 22)) &&
+                pmt->cbFormat >= sizeof (WAVEFORMATEX) + format->cbSize)
             {
-                if ((ULONG) format->nChannels != pmt->lSampleSize / 2U ||
-                    (ULONG) format->nBlockAlign != pmt->lSampleSize ||
-                    format->wBitsPerSample != 16U)
+                if (pmt->lSampleSize != format->nChannels * 2U ||
+                    format->wBitsPerSample != 16)
                     return DMO_E_INVALIDTYPE;
-                if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE) 
+                if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
                 {
                     WAVEFORMATEXTENSIBLE *formatExt =
                         reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
-                    if (formatExt->Samples.wValidBitsPerSample != 16U) {
+                    if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_PCM &&
+                        formatExt->Samples.wValidBitsPerSample != 16U)
                         return DMO_E_INVALIDTYPE;
-                    }
                 }
-                switch (format->nSamplesPerSec) 
+                switch (format->nSamplesPerSec)
                 {
                 case 48000:
                 case 44100:
                 case 32000:
-                    return S_OK;    
+                    return S_OK;
                 }
             }
         }
@@ -220,13 +224,42 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
     return DMO_E_INVALIDTYPE;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt)
+HRESULT
+TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex,
+                                         const DMO_MEDIA_TYPE *pmt)
 {
-  if (dwOutputStreamIndex >= 1)
-    return DMO_E_INVALIDSTREAMINDEX;
+    assert(dwOutputStreamIndex < 1);
+    assert(pmt != 0);
 
-  return E_NOTIMPL;
+    if (pmt->majortype == MEDIATYPE_Audio &&
+        pmt->subtype == MEDIASUBTYPE_MPEG1Payload)
+    {
+        if (pmt->formattype == FORMAT_WaveFormatEx &&
+            pmt->cbFormat >= sizeof (WAVEFORMATEXTENSIBLE) &&
+            pmt->pbFormat != 0)
+        {
+            WAVEFORMATEX *format =
+                reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
+            if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE &&
+                format->cbSize >= 22 &&
+                pmt->cbFormat >= sizeof (WAVEFORMATEX) + format->cbSize)
+            {
+                WAVEFORMATEXTENSIBLE *formatExt =
+                    reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
+                if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_MPEG1Payload &&
+                    formatExt->Samples.wSamplesPerBlock != 1152)
+                    return DMO_E_INVALIDTYPE;
+                switch (format->nSamplesPerSec)
+                {
+                case 48000:
+                case 44100:
+                case 32000:
+                    return S_OK;
+                }
+            }
+        }
+    }
+    return DMO_E_INVALIDTYPE;
 }
 
 HRESULT WINAPI
