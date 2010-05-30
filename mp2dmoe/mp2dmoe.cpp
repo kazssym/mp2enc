@@ -48,14 +48,10 @@
 //---------------------------------------------------------------------------
 
 // Exports functions.
-extern "C"
-{
-  __declspec(dllexport)
-  HRESULT WINAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
-  __declspec(dllexport) HRESULT WINAPI DllCanUnloadNow(void);
-  __declspec(dllexport) HRESULT WINAPI DllRegisterServer(void);
-  __declspec(dllexport) HRESULT WINAPI DllUnregisterServer(void);
-}
+STDAPI __declspec(dllexport) DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
+STDAPI __declspec(dllexport) DllCanUnloadNow(void);
+STDAPI __declspec(dllexport) DllRegisterServer(void);
+STDAPI __declspec(dllexport) DllUnregisterServer(void);
 
 static TComModule ThisModule;
 TComModule &_Module = ThisModule;
