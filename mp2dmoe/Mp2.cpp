@@ -22,43 +22,51 @@
 #include <initguid.h>
 
 #include "Mp2.h"
-#include <DShow.h>
+#include <dshow.h>
 //#include <mmreg.h>
 #include <ks.h>
 #pragma warn -8098
 #include <ksmedia.h>
 #pragma warn .8098
 #include <cstring>
+#include <cassert>
 
-using namespace std;
+//using namespace std;
 
 #pragma package(smart_init)
 
+// Specifies the libraries to link.
+#pragma link "libtwolame.lib"
+#pragma link "msdmo.lib"
+
 #define CHANNEL_MASK(c)\
-  ((c) == 2 ? SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT : 0)
+    ((c) == 2 ? SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT : 0)
 #define PCM(c, s, b, v) {\
-  {WAVE_FORMAT_EXTENSIBLE, (c), (s), (s) * (c) * (b), (c) * (b), 8 * (b), 22},\
-  (v), CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_PCM}\
+    {WAVE_FORMAT_PCM, (c), (s), (s) * (c) * (b), (c) * (b), 8 * (b), 0}\
+}
+#define PCM_EXT(c, s, b, v) {\
+    {WAVE_FORMAT_EXTENSIBLE, (c), (s), (s) * (c) * (b), (c) * (b), 8 * (b), 22},\
+    (v), CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_PCM}\
 }
 #define MPEG1(c, s, r) {\
-  {WAVE_FORMAT_EXTENSIBLE, (c), (s), (r) / 8, 1, 0, 22},\
-  1152, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
+    {WAVE_FORMAT_EXTENSIBLE, (c), (s), (r) / 8, 1, 0, 22},\
+    1152, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
 }
 static const WAVEFORMATEXTENSIBLE InputFormat[] = {
-  PCM(2, 48000, 2, 16),
-  PCM(1, 48000, 2, 16),
-  PCM(2, 44100, 2, 16),
-  PCM(1, 44100, 2, 16),
-  PCM(2, 32000, 2, 16),
-  PCM(1, 32000, 2, 16),
+    PCM_EXT(2, 48000, 2, 16),
+    PCM_EXT(1, 48000, 2, 16),
+    PCM(2, 44100, 2, 16),
+    PCM(1, 44100, 2, 16),
+    PCM(2, 32000, 2, 16),
+    PCM(1, 32000, 2, 16),
 };
 static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
-  MPEG1(2, 48000, 384000),
-  MPEG1(1, 48000, 192000),
-  MPEG1(2, 44100, 384000),
-  MPEG1(1, 44100, 192000),
-  MPEG1(2, 32000, 384000),
-  MPEG1(1, 32000, 192000),
+    MPEG1(2, 48000, 384000),
+    MPEG1(1, 48000, 192000),
+    MPEG1(2, 44100, 384000),
+    MPEG1(1, 44100, 192000),
+    MPEG1(2, 32000, 384000),
+    MPEG1(1, 32000, 192000),
 };
 
 HRESULT WINAPI
@@ -168,13 +176,50 @@ TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIn
   return S_OK;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt)
+HRESULT STDMETHODCALLTYPE
+TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
+                                        const DMO_MEDIA_TYPE *pmt)
 {
-  if (dwInputStreamIndex >= 1)
-    return DMO_E_INVALIDSTREAMINDEX;
+    assert(pmt != 0);
+    
+    if (dwInputStreamIndex >= 1)
+        return DMO_E_INVALIDSTREAMINDEX;
 
-  return E_NOTIMPL;
+    if (pmt->majortype == MEDIATYPE_Audio &&
+        pmt->subtype == MEDIASUBTYPE_PCM)
+    {
+        if (pmt->formattype == FORMAT_WaveFormatEx &&
+            pmt->cbFormat >= sizeof (WAVEFORMATEX) && 
+            pmt->pbFormat != 0)
+        {
+            WAVEFORMATEX *format = 
+                reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
+            if (format->wFormatTag == WAVE_FORMAT_PCM ||
+                (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE && format->cbSize >= 22U)) 
+            {
+                if ((ULONG) format->nChannels != pmt->lSampleSize / 2U ||
+                    (ULONG) format->nBlockAlign != pmt->lSampleSize ||
+                    format->wBitsPerSample != 16U)
+                    return DMO_E_INVALIDTYPE;
+                if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE) 
+                {
+                    WAVEFORMATEXTENSIBLE *formatExt =
+                        reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
+                    if (formatExt->Samples.wValidBitsPerSample != 16U) {
+                        return DMO_E_INVALIDTYPE;
+                    }
+                }
+                switch (format->nSamplesPerSec) 
+                {
+                case 48000:
+                case 44100:
+                case 32000:
+                    return S_OK;    
+                }
+            }
+        }
+    }
+    return DMO_E_INVALIDTYPE;
 }
 
 HRESULT WINAPI
