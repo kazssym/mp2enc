@@ -86,6 +86,7 @@ TMp2EncoderImpl::FinalConstruct()
     Options = twolame_init();
     if (Options == 0)
         return E_OUTOFMEMORY;
+    twolame_set_copyright(Options, TRUE);
     return S_OK;
 }
 
@@ -193,7 +194,7 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
                   format->cbSize >= 22)) &&
                 pmt->cbFormat >= sizeof (WAVEFORMATEX) + format->cbSize)
             {
-                if (pmt->lSampleSize != format->nChannels * 2U ||
+                if (pmt->lSampleSize != format->nChannels * 2 ||
                     format->wBitsPerSample != 16)
                     return DMO_E_INVALIDTYPE;
                 if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
@@ -209,6 +210,7 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
                 case 48000:
                 case 44100:
                 case 32000:
+#if 0
                     // We do not convert sampling rates.
                     const DMO_MEDIA_TYPE *outputType =
                         OutputType(dwInputStreamIndex);
@@ -221,6 +223,7 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
                         if (format->nSamplesPerSec != outputFormat->nSamplesPerSec)
                             return DMO_E_INVALIDTYPE;
                     }
+#endif // 0
                     return S_OK;
                 }
             }
@@ -259,6 +262,7 @@ TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex,
                 case 48000:
                 case 44100:
                 case 32000:
+#if 0
                     // We do not convert sampling rates.
                     const DMO_MEDIA_TYPE *inputType =
                         InputType(dwOutputStreamIndex);
@@ -271,6 +275,7 @@ TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex,
                         if (format->nSamplesPerSec != inputFormat->nSamplesPerSec)
                             return DMO_E_INVALIDTYPE;
                     }
+#endif // 0
                     return S_OK;
                 }
             }
