@@ -75,108 +75,101 @@ static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
 HRESULT WINAPI
 TMp2EncoderImpl::UpdateRegistry(BOOL bRegister)
 {
-  TComServerRegistrarT<TMp2EncoderImpl> reg(GetObjectCLSID(), 0, GetDescription());
-  return reg.UpdateRegistry(bRegister);
+    TComServerRegistrarT<TMp2EncoderImpl> reg(GetObjectCLSID(), 0,
+                                              TEXT("MP2 Encoder DMO"));
+    return reg.UpdateRegistry(bRegister);
 }
 
-/*
- * Initializes each member to a safe value.
- */
-TMp2EncoderImpl::TMp2EncoderImpl(void)
+HRESULT
+TMp2EncoderImpl::FinalConstruct()
 {
-  Options = 0;
+    Options = twolame_init();
+    if (Options == 0)
+        return E_OUTOFMEMORY;
+    return S_OK;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::FinalConstruct(void)
+void
+TMp2EncoderImpl::FinalRelease()
 {
-  Options = twolame_init();
-  if (Options == 0)
-    return E_OUTOFMEMORY;
-  return S_OK;
+    twolame_close(&Options);
 }
 
-void WINAPI
-TMp2EncoderImpl::FinalRelease(void)
-{
-  twolame_close(&Options);
-}
-
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
-                                        DWORD *pdwFlags)
+                                            DWORD *pdwFlags)
 {
-  if (dwInputStreamIndex >= 1)
-    return DMO_E_INVALIDSTREAMINDEX;
-  if (pdwFlags == 0)
-    return E_POINTER;
+    assert(dwInputStreamIndex < 1);
+    assert(pdwFlags != 0);
 
-  *pdwFlags = (DMO_INPUT_STREAMF_WHOLE_SAMPLES |
-               DMO_INPUT_STREAMF_FIXED_SAMPLE_SIZE);
-  return S_OK;
+    *pdwFlags = (DMO_INPUT_STREAMF_WHOLE_SAMPLES |
+                 DMO_INPUT_STREAMF_FIXED_SAMPLE_SIZE);
+    return S_OK;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
-                                         DWORD *pdwFlags)
+                                             DWORD *pdwFlags)
 {
-  if (dwOutputStreamIndex >= 1)
-    return DMO_E_INVALIDSTREAMINDEX;
-  if (pdwFlags == 0)
-    return E_POINTER;
+    assert(dwOutputStreamIndex < 1);
+    assert(pdwFlags != 0);
 
-  *pdwFlags = (DMO_OUTPUT_STREAMF_WHOLE_SAMPLES |
-               DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE);
-  return S_OK;
+    *pdwFlags = (DMO_OUTPUT_STREAMF_WHOLE_SAMPLES |
+                 DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE);
+    return S_OK;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::InternalGetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex,
-                                  DMO_MEDIA_TYPE *pmt)
+HRESULT
+TMp2EncoderImpl::InternalGetInputType(DWORD dwInputStreamIndex,
+                                      DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt)
 {
-  if (dwInputStreamIndex >= 1)
-    return DMO_E_INVALIDSTREAMINDEX;
-  if (dwTypeIndex >= sizeof InputFormat / sizeof InputFormat[0])
-    return DMO_E_NO_MORE_ITEMS;
+    assert(dwInputStreamIndex < 1);
 
-  if (pmt != 0)
-  {
-    HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
-    if (FAILED(hres))
-      return hres;
-    pmt->majortype = MEDIATYPE_Audio;
-    pmt->subtype = MEDIASUBTYPE_PCM;
-    pmt->bFixedSizeSamples = TRUE;
-    pmt->lSampleSize = 2 * 2;
-    pmt->formattype = FORMAT_WaveFormatEx;
-    WAVEFORMATEXTENSIBLE *pFormat = reinterpret_cast<WAVEFORMATEXTENSIBLE *>(pmt->pbFormat);
-    *pFormat = InputFormat[dwTypeIndex];
-  }
-  return S_OK;
+    if (dwTypeIndex >= sizeof InputFormat / sizeof InputFormat[0])
+        return DMO_E_NO_MORE_ITEMS;
+
+    if (pmt != 0)
+    {
+        HRESULT hr;
+        hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
+        if (FAILED(hr))
+            return hr;
+        pmt->majortype = MEDIATYPE_Audio;
+        pmt->subtype = MEDIASUBTYPE_PCM;
+        pmt->bFixedSizeSamples = TRUE;
+        pmt->lSampleSize = 2 * 2;
+        pmt->formattype = FORMAT_WaveFormatEx;
+        WAVEFORMATEXTENSIBLE *format =
+            reinterpret_cast<WAVEFORMATEXTENSIBLE *>(pmt->pbFormat);
+        *format = InputFormat[dwTypeIndex];
+    }
+    return S_OK;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex,
-                                   DMO_MEDIA_TYPE *pmt)
+HRESULT
+TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex,
+                                       DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt)
 {
-  if (dwOutputStreamIndex >= 1)
-    return DMO_E_INVALIDSTREAMINDEX;
-  if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
-    return DMO_E_NO_MORE_ITEMS;
+    assert(dwOutputStreamIndex < 1);
 
-  if (pmt != 0)
-  {
-    HRESULT hres = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
-    if (FAILED(hres))
-      return hres;
-    pmt->majortype = MEDIATYPE_Audio;
-    pmt->subtype = MEDIASUBTYPE_MPEG1Payload;
-    pmt->bFixedSizeSamples = TRUE;
-    pmt->formattype = FORMAT_WaveFormatEx;
-    WAVEFORMATEXTENSIBLE *pFormat = reinterpret_cast<WAVEFORMATEXTENSIBLE *>(pmt->pbFormat);
-    *pFormat = OutputFormat[dwTypeIndex];
-  }
-  return S_OK;
+    if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
+        return DMO_E_NO_MORE_ITEMS;
+
+    if (pmt != 0)
+    {
+        HRESULT hr;
+        hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
+        if (FAILED(hr))
+            return hr;
+        pmt->majortype = MEDIATYPE_Audio;
+        pmt->subtype = MEDIASUBTYPE_MPEG1Payload;
+        pmt->bFixedSizeSamples = TRUE;
+        pmt->formattype = FORMAT_WaveFormatEx;
+        WAVEFORMATEXTENSIBLE *format =
+            reinterpret_cast<WAVEFORMATEXTENSIBLE *>(pmt->pbFormat);
+        *format = OutputFormat[dwTypeIndex];
+    }
+    return S_OK;
 }
 
 HRESULT
@@ -208,7 +201,7 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
                     WAVEFORMATEXTENSIBLE *formatExt =
                         reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
                     if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_PCM &&
-                        formatExt->Samples.wValidBitsPerSample != 16U)
+                        formatExt->Samples.wValidBitsPerSample != 16)
                         return DMO_E_INVALIDTYPE;
                 }
                 switch (format->nSamplesPerSec)
@@ -216,6 +209,18 @@ TMp2EncoderImpl::InternalCheckInputType(DWORD dwInputStreamIndex,
                 case 48000:
                 case 44100:
                 case 32000:
+                    // We do not convert sampling rates.
+                    const DMO_MEDIA_TYPE *outputType =
+                        OutputType(dwInputStreamIndex);
+                    if (outputType != 0)
+                    {
+                        assert(outputType->formattype == FORMAT_WaveFormatEx);
+
+                        const WAVEFORMATEX *outputFormat =
+                            reinterpret_cast<const WAVEFORMATEX *>(outputType->pbFormat);
+                        if (format->nSamplesPerSec != outputFormat->nSamplesPerSec)
+                            return DMO_E_INVALIDTYPE;
+                    }
                     return S_OK;
                 }
             }
@@ -254,6 +259,18 @@ TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex,
                 case 48000:
                 case 44100:
                 case 32000:
+                    // We do not convert sampling rates.
+                    const DMO_MEDIA_TYPE *inputType =
+                        InputType(dwOutputStreamIndex);
+                    if (inputType != 0)
+                    {
+                        assert(inputType->formattype == FORMAT_WaveFormatEx);
+
+                        const WAVEFORMATEX *inputFormat =
+                            reinterpret_cast<const WAVEFORMATEX *>(inputType->pbFormat);
+                        if (format->nSamplesPerSec != inputFormat->nSamplesPerSec)
+                            return DMO_E_INVALIDTYPE;
+                    }
                     return S_OK;
                 }
             }
@@ -262,68 +279,68 @@ TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex,
     return DMO_E_INVALIDTYPE;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalSetInputMaxLatency(DWORD, REFERENCE_TIME)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::InternalFlush(void)
+HRESULT
+TMp2EncoderImpl::InternalFlush()
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalDiscontinuity(DWORD)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::InternalAllocateStreamingResources(void)
+HRESULT
+TMp2EncoderImpl::InternalAllocateStreamingResources()
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
-TMp2EncoderImpl::InternalFreeStreamingResources(void)
+HRESULT
+TMp2EncoderImpl::InternalFreeStreamingResources()
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalAcceptingInput(DWORD dwInputStreamIndex)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }
 
-HRESULT WINAPI
+HRESULT
 TMp2EncoderImpl::InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *)
 {
-  return E_NOTIMPL;
+    return E_NOTIMPL;
 }

@@ -27,49 +27,58 @@
 #include <dmoimpl.h>
 #undef FIX_LOCK_NAME
 
-class ATL_NO_VTABLE TMp2EncoderImpl
-: public CComObjectRootEx<CComMultiThreadModel>,
-  public CComCoClass<TMp2EncoderImpl, &CLSID_Mp2Encoder>,
-  public IMediaObjectImpl<TMp2EncoderImpl, 1, 1>
+class ATL_NO_VTABLE TMp2EncoderImpl :
+    public CComObjectRootEx<CComMultiThreadModel>,
+    public CComCoClass<TMp2EncoderImpl, &CLSID_Mp2Encoder>,
+    public IMediaObjectImpl<TMp2EncoderImpl, 1, 1>
 {
-  BEGIN_COM_MAP(TMp2EncoderImpl)
-  COM_INTERFACE_ENTRY(IMediaObject)
-  END_COM_MAP()
+    BEGIN_COM_MAP(TMp2EncoderImpl)
+    COM_INTERFACE_ENTRY(IMediaObject)
+    END_COM_MAP()
 public:
-  // For <atl/atlmod.h>
-  DECLARE_DESCRIPTION(_TEXT("MP2 Encoder DMO"));
-  DECLARE_THREADING_MODEL(otBoth);
-  static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
+    // For <atl/atlmod.h>
+    DECLARE_DESCRIPTION(TEXT("MP2 Encoder DMO"));
+    DECLARE_THREADING_MODEL(otBoth);
+    static HRESULT WINAPI UpdateRegistry(BOOL bRegister);
 public:
-  TMp2EncoderImpl(void);
+    /*
+     * Initializes each member to a safe value.
+     */
+    TMp2EncoderImpl()
+    {
+        Options = 0;
+    }
 
-  HRESULT WINAPI FinalConstruct(void);
-  void WINAPI FinalRelease(void);
+    HRESULT FinalConstruct();
+    void FinalRelease();
 
   // IMediaObjectImpl internal methods
-  HRESULT WINAPI InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
-                                            DWORD *pdwFlags);
-  HRESULT WINAPI InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
-                                             DWORD *pdwFlags);
-  HRESULT WINAPI InternalGetInputType(DWORD dwInputStreamIndex,
-                                      DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt);
-  HRESULT WINAPI InternalGetOutputType(DWORD dwOutputStreamIndex,
-                                       DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt);
-  HRESULT WINAPI InternalCheckInputType(DWORD dwInputStreamIndex, const DMO_MEDIA_TYPE *pmt);
-  HRESULT WINAPI InternalCheckOutputType(DWORD dwOutputStreamIndex, const DMO_MEDIA_TYPE *pmt);
-  HRESULT WINAPI InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *);
-  HRESULT WINAPI InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *);
-  HRESULT WINAPI InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *);
-  HRESULT WINAPI InternalSetInputMaxLatency(DWORD, REFERENCE_TIME);
-  HRESULT WINAPI InternalFlush(void);
-  HRESULT WINAPI InternalDiscontinuity(DWORD);
-  HRESULT WINAPI InternalAllocateStreamingResources(void);
-  HRESULT WINAPI InternalFreeStreamingResources(void);
-  HRESULT WINAPI InternalAcceptingInput(DWORD dwInputStreamIndex);
-  HRESULT WINAPI InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME);
-  HRESULT WINAPI InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *);
+    HRESULT InternalGetInputStreamInfo(DWORD dwInputStreamIndex,
+                                       DWORD *pdwFlags);
+    HRESULT InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
+                                        DWORD *pdwFlags);
+    HRESULT InternalGetInputType(DWORD dwInputStreamIndex,
+                                 DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt);
+    HRESULT InternalGetOutputType(DWORD dwOutputStreamIndex,
+                                  DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt);
+    HRESULT InternalCheckInputType(DWORD dwInputStreamIndex,
+                                   const DMO_MEDIA_TYPE *pmt);
+    HRESULT InternalCheckOutputType(DWORD dwOutputStreamIndex,
+                                    const DMO_MEDIA_TYPE *pmt);
+    HRESULT InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *);
+    HRESULT InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *);
+    HRESULT InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *);
+    HRESULT InternalSetInputMaxLatency(DWORD, REFERENCE_TIME);
+    HRESULT InternalFlush();
+    HRESULT InternalDiscontinuity(DWORD);
+    HRESULT InternalAllocateStreamingResources();
+    HRESULT InternalFreeStreamingResources();
+    HRESULT InternalAcceptingInput(DWORD dwInputStreamIndex);
+    HRESULT InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME);
+    HRESULT InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *);
 private:
-  twolame_options *Options;
+    twolame_options *Options;
 };
 
 #endif
+
