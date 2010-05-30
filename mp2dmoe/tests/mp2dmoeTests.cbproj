@@ -19,8 +19,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
 			<BCC_InstructionSet>5</BCC_InstructionSet>
-			<ILINK_AdditionalOptions>msdmo.lib</ILINK_AdditionalOptions>
 			<LinkPackageStatics>vclnp.lib</LinkPackageStatics>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<OutputExt>exe</OutputExt>

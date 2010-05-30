@@ -9,35 +9,62 @@
 #include <TestFramework.hpp>
 #include <ComObj.hpp>
 
+// Specifies the libraries to link.
+#pragma link "msdmo.lib"
+#pragma link "quartz.lib"
+
+/**
+ * Creates a COM object instance.  This version takes a typed pointer.
+ */
+template<class Interface>
+inline HRESULT
+STDAPICALLTYPE CoCreateInstance(REFCLSID rclsid, IUnknown *pUnkOuter,
+                                DWORD dwClsContext, Interface **pp)
+{
+    return CoCreateInstance(rclsid, pUnkOuter, dwClsContext, __uuidof (Interface),
+                            reinterpret_cast<void **>(pp));
+}
+
+inline UnicodeString
+__fastcall ErrorText(HRESULT hr)
+{
+    TCHAR text[128];
+    AMGetErrorText(hr, text, 128);
+    return UnicodeString(text);
+}
+
 class TTestMp2Encoder : public TTestCase
 {
 public:
-  __fastcall virtual TTestMp2Encoder(System::String name) : TTestCase(name) {}
-  virtual void __fastcall SetUp();
-  virtual void __fastcall TearDown();
+    __fastcall virtual TTestMp2Encoder(System::String name) : TTestCase(name) {}
+    virtual void __fastcall SetUp();
+    virtual void __fastcall TearDown();
 __published:
-  void __fastcall TestGetStreamCount();
-  void __fastcall TestGetInputStreamInfo();
-  void __fastcall TestGetOutputStreamInfo();
-  void __fastcall TestGetInputType();
-  void __fastcall TestGetOutputType();
+    void __fastcall TestGetStreamCount();
+    void __fastcall TestGetInputStreamInfo();
+    void __fastcall TestGetOutputStreamInfo();
+    void __fastcall TestGetInputType();
+    void __fastcall TestGetOutputType();
+    void __fastcall TestSetInputType();
+    void __fastcall TestSetOutputType();
 private:
-  DelphiInterface<IMediaObject> MediaObject1;
+    DelphiInterface<IMediaObject> Encoder;
 };
 
 
 void
 __fastcall TTestMp2Encoder::SetUp()
 {
-  DelphiInterface<IUnknown> unknown1(CreateComObject(CLSID_Mp2Encoder));
-  if (FAILED(unknown1->QueryInterface(&MediaObject1)))
-    StopTests(L"Failed to instantiate an MP2 Encoder DMO");
+    HRESULT hr;
+    hr = CoCreateInstance(CLSID_Mp2Encoder, 0, CLSCTX_INPROC_SERVER, &Encoder);
+    if (FAILED(hr))
+      StopTests(ErrorText(hr));
 }
 
 void
 __fastcall TTestMp2Encoder::TearDown()
 {
-  MediaObject1 = 0;
+    Encoder = 0;
 }
 
 
@@ -45,7 +72,7 @@ void __fastcall
 TTestMp2Encoder::TestGetStreamCount(void)
 {
   DWORD cInput, cOutput;
-  HRESULT hres = MediaObject1->GetStreamCount(&cInput, &cOutput);
+  HRESULT hres = Encoder->GetStreamCount(&cInput, &cOutput);
   Check(SUCCEEDED(hres), L"GetStreamCount failed");
   Check(cInput == 1);
   Check(cOutput == 1);
@@ -56,9 +83,9 @@ TTestMp2Encoder::TestGetInputStreamInfo(void)
 {
   HRESULT hres;
   DWORD flags;
-  hres = MediaObject1->GetInputStreamInfo(0, &flags);
+  hres = Encoder->GetInputStreamInfo(0, &flags);
   Check(SUCCEEDED(hres));
-  hres = MediaObject1->GetInputStreamInfo(1, &flags);
+  hres = Encoder->GetInputStreamInfo(1, &flags);
   Check(hres == DMO_E_INVALIDSTREAMINDEX);
 }
 
@@ -67,9 +94,9 @@ TTestMp2Encoder::TestGetOutputStreamInfo(void)
 {
   HRESULT hres;
   DWORD flags;
-  hres = MediaObject1->GetOutputStreamInfo(0, &flags);
+  hres = Encoder->GetOutputStreamInfo(0, &flags);
   Check(SUCCEEDED(hres));
-  hres = MediaObject1->GetOutputStreamInfo(1, &flags);
+  hres = Encoder->GetOutputStreamInfo(1, &flags);
   Check(hres == DMO_E_INVALIDSTREAMINDEX);
 }
 
@@ -78,11 +105,11 @@ TTestMp2Encoder::TestGetInputType(void)
 {
   HRESULT hres;
   // Tests stream index 0
-  hres = MediaObject1->GetInputType(0, 0, 0);
+  hres = Encoder->GetInputType(0, 0, 0);
   Check(SUCCEEDED(hres), L"GetInputType failed");
   // Gets media type actually.
   DMO_MEDIA_TYPE mt;
-  hres = MediaObject1->GetInputType(0, 0, &mt);
+  hres = Encoder->GetInputType(0, 0, &mt);
   Check(SUCCEEDED(hres), L"GetInputType failed");
   try
   {
@@ -95,7 +122,7 @@ TTestMp2Encoder::TestGetInputType(void)
     MoFreeMediaType(&mt);
   }
   // Tests stream index 1
-  hres = MediaObject1->GetInputType(1, 0, 0);
+  hres = Encoder->GetInputType(1, 0, 0);
   Check(hres == DMO_E_INVALIDSTREAMINDEX);
 }
 
@@ -103,7 +130,7 @@ void __fastcall
 TTestMp2Encoder::TestGetOutputType(void)
 {
   DMO_MEDIA_TYPE mt;
-  HRESULT hres = MediaObject1->GetOutputType(0, 0, &mt);
+  HRESULT hres = Encoder->GetOutputType(0, 0, &mt);
   Check(SUCCEEDED(hres), L"GetOutputType failed");
   try
   {
@@ -117,6 +144,45 @@ TTestMp2Encoder::TestGetOutputType(void)
   }
 }
 
+void
+__fastcall TTestMp2Encoder::TestSetInputType()
+{
+    HRESULT hr;
+    DMO_MEDIA_TYPE mt;
+    hr = Encoder->GetInputType(0, 0, &mt);
+    if (SUCCEEDED(hr))
+    {
+        try
+        {
+            hr = Encoder->SetInputType(0, &mt, 0);
+            Check(SUCCEEDED(hr), ErrorText(hr));
+        }
+        __finally
+        {
+            MoFreeMediaType(&mt);
+        }
+    }
+}
+
+void
+__fastcall TTestMp2Encoder::TestSetOutputType()
+{
+    HRESULT hr;
+    DMO_MEDIA_TYPE mt;
+    hr = Encoder->GetOutputType(0, 0, &mt);
+    if (SUCCEEDED(hr))
+    {
+        try
+        {
+            hr = Encoder->SetOutputType(0, &mt, 0);
+            Check(SUCCEEDED(hr), ErrorText(hr));
+        }
+        __finally
+        {
+            MoFreeMediaType(&mt);
+        }
+    }
+}
 
 static void registerTests()
 {
