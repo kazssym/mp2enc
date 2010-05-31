@@ -80,6 +80,7 @@ object MainForm: TMainForm
     Top = 256
   end
   object SaveDialog1: TSaveDialog
+    DefaultExt = 'mp2'
     Filter = 'MP2 files|*.mp2|All files|*.*'
     Left = 64
     Top = 256
