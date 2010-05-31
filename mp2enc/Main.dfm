@@ -75,10 +75,12 @@ object MainForm: TMainForm
     end
   end
   object OpenDialog1: TOpenDialog
+    Filter = 'Wave files|*.wav|All files|*.*'
     Left = 32
     Top = 256
   end
   object SaveDialog1: TSaveDialog
+    Filter = 'MP2 files|*.mp2|All files|*.*'
     Left = 64
     Top = 256
   end

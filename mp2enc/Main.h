@@ -62,8 +62,11 @@ public:		// ユーザー宣言
 protected:
     void __fastcall OpenFile(const UnicodeString Name);
     void __fastcall CloseFile(void);
+    void __fastcall EncodeAs(const UnicodeString OutputName);
 private:
     DelphiInterface<IGraphBuilder> GraphBuilder1;
+    DelphiInterface<IBaseFilter> EncoderFilter;
+    UnicodeString FileName;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TMainForm *MainForm;
