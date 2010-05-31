@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file original="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\Main.dfm" source-language="en-US" target-language="ja-JP" datatype="delphiform" tool="ETM v10.0" ts="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\Main.dfm">
+  <file original="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\Main.dfm" source-language="ja-JP" target-language="ja-JP" datatype="delphiform" tool="ETM v10.0" ts="E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\mp2enc\Main.dfm">
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40312.9736574074</prop>
-        <prop prop-type="OrigDateTime">40308.8449074074</prop>
+        <prop prop-type="SelfDateTime">40329.936712963</prop>
+        <prop prop-type="OrigDateTime">40329.9361111111</prop>
         <prop prop-type="XlatDateTime">40308.770787037</prop>
-        <prop prop-type="Translated">49</prop>
+        <prop prop-type="Translated">52</prop>
         <prop prop-type="UnTranslated">0</prop>
       </prop-group>
     </header>
@@ -37,7 +37,7 @@
         <source>'MP2 Encoder'</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40308.7915055671</prop>
-          <prop prop-type="Status">6</prop>
+          <prop prop-type="Status">1</prop>
           <prop prop-type="Order">2</prop>
           <prop prop-type="Type">TMainForm</prop>
           <prop prop-type="Localize">1</prop>
@@ -482,12 +482,23 @@
           <prop prop-type="Localize">1</prop>
         </prop-group>
       </trans-unit>
+      <trans-unit id="O:MainForm.O:OpenDialog1.Filter" resname="O:MainForm.O:OpenDialog1.Filter">
+        <source>'Wave files|*.wav|All files|*.*'</source>
+        <target>'Wave ファイル|*.wav|すべてのファイル|*.*'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40329.9207302083</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">45</prop>
+          <prop prop-type="Type">TOpenDialog</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
       <trans-unit id="O:MainForm.O:OpenDialog1.Left" resname="O:MainForm.O:OpenDialog1.Left">
         <source>32</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40308.7915056597</prop>
           <prop prop-type="Status">6</prop>
-          <prop prop-type="Order">45</prop>
+          <prop prop-type="Order">46</prop>
           <prop prop-type="Type">TOpenDialog</prop>
           <prop prop-type="Localize">1</prop>
         </prop-group>
@@ -497,8 +508,29 @@
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40308.7915056597</prop>
           <prop prop-type="Status">6</prop>
-          <prop prop-type="Order">46</prop>
+          <prop prop-type="Order">47</prop>
           <prop prop-type="Type">TOpenDialog</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:SaveDialog1.DefaultExt" resname="O:MainForm.O:SaveDialog1.DefaultExt">
+        <source>'mp2'</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40329.9365022685</prop>
+          <prop prop-type="Status">6</prop>
+          <prop prop-type="Order">48</prop>
+          <prop prop-type="Type">TSaveDialog</prop>
+          <prop prop-type="Localize">1</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="O:MainForm.O:SaveDialog1.Filter" resname="O:MainForm.O:SaveDialog1.Filter">
+        <source>'MP2 files|*.mp2|All files|*.*'</source>
+        <target>'MP2 ファイル|*.mp2|すべてのファイル|*.*'</target>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40329.9207302083</prop>
+          <prop prop-type="Status">1</prop>
+          <prop prop-type="Order">49</prop>
+          <prop prop-type="Type">TSaveDialog</prop>
           <prop prop-type="Localize">1</prop>
         </prop-group>
       </trans-unit>
@@ -507,7 +539,7 @@
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40308.7915056713</prop>
           <prop prop-type="Status">6</prop>
-          <prop prop-type="Order">47</prop>
+          <prop prop-type="Order">50</prop>
           <prop prop-type="Type">TSaveDialog</prop>
           <prop prop-type="Localize">1</prop>
         </prop-group>
@@ -517,7 +549,7 @@
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40308.7915056713</prop>
           <prop prop-type="Status">6</prop>
-          <prop prop-type="Order">48</prop>
+          <prop prop-type="Order">51</prop>
           <prop prop-type="Type">TSaveDialog</prop>
           <prop prop-type="Localize">1</prop>
         </prop-group>

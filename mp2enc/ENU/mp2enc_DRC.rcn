@@ -5,10 +5,10 @@
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40328.083587963</prop>
-        <prop prop-type="OrigDateTime">0</prop>
+        <prop prop-type="SelfDateTime">40329.9365046296</prop>
+        <prop prop-type="OrigDateTime">40329.9365277778</prop>
         <prop prop-type="XlatDateTime">40328.07875</prop>
-        <prop prop-type="Translated">230</prop>
+        <prop prop-type="Translated">223</prop>
         <prop prop-type="UnTranslated">1</prop>
       </prop-group>
     </header>
@@ -42,21 +42,21 @@
         <target>"%s requires themes to be enabled"</target>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40328.0787416319</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_STaskDlgButtonCaption" resname="Consts_STaskDlgButtonCaption">
         <source>"Button%d"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40328.0787416319</prop>
-          <prop prop-type="Status">6</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_STaskDlgRadioButtonCaption" resname="Consts_STaskDlgRadioButtonCaption">
         <source>"RadioButton%d"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40328.0787416435</prop>
-          <prop prop-type="Status">6</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SInvalidTaskDlgButtonCaption" resname="Consts_SInvalidTaskDlgButtonCaption">
@@ -64,7 +64,7 @@
         <target>"Caption cannot be empty"</target>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40328.0787416435</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SmkcLeft" resname="Consts_SmkcLeft">
@@ -135,7 +135,7 @@
         <target>"Value must be between %d and %d"</target>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40328.0787416782</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SIconToClipboard" resname="Consts_SIconToClipboard">
@@ -151,7 +151,7 @@
         <target>"Cannot open clipboard: %s"</target>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40328.0787416782</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SDuplicateMenus" resname="Consts_SDuplicateMenus">
@@ -516,7 +516,7 @@
         <target>"%s property out of range"</target>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40328.0787418287</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SMenuIndexError" resname="Consts_SMenuIndexError">

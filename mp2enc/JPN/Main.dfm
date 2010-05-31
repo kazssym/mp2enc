@@ -75,10 +75,13 @@ object MainForm: TMainForm
     end
   end
   object OpenDialog1: TOpenDialog
+    Filter = 'Wave '#12501#12449#12452#12523'|*.wav|'#12377#12409#12390#12398#12501#12449#12452#12523'|*.*'
     Left = 32
     Top = 256
   end
   object SaveDialog1: TSaveDialog
+    DefaultExt = 'mp2'
+    Filter = 'MP2 '#12501#12449#12452#12523'|*.mp2|'#12377#12409#12390#12398#12501#12449#12452#12523'|*.*'
     Left = 64
     Top = 256
   end

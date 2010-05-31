@@ -5,11 +5,11 @@
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40328.0849768519</prop>
-        <prop prop-type="OrigDateTime">0</prop>
+        <prop prop-type="SelfDateTime">40329.9365046296</prop>
+        <prop prop-type="OrigDateTime">40329.9365046296</prop>
         <prop prop-type="XlatDateTime">40308.7915277778</prop>
-        <prop prop-type="Translated">69</prop>
-        <prop prop-type="UnTranslated">162</prop>
+        <prop prop-type="Translated">224</prop>
+        <prop prop-type="UnTranslated">0</prop>
       </prop-group>
     </header>
     <body>
@@ -52,7 +52,7 @@
         <source>"%s はテーマを有効にする必要があります"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459144</prop>
-          <prop prop-type="Status">1</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ‚Íƒe[ƒ}‚ð—LŒø‚É‚·‚é•K—v‚ª‚ ‚è‚Ü‚·"</source>
@@ -66,21 +66,21 @@
         <source>"Button%d"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459144</prop>
-          <prop prop-type="Status">6</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_STaskDlgRadioButtonCaption" resname="Consts_STaskDlgRadioButtonCaption">
         <source>"RadioButton%d"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459144</prop>
-          <prop prop-type="Status">6</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
       </trans-unit>
       <trans-unit id="Consts_SInvalidTaskDlgButtonCaption" resname="Consts_SInvalidTaskDlgButtonCaption">
         <source>"Caption は空白にはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459491</prop>
-          <prop prop-type="Status">1</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
         <alt-trans>
           <source>"Caption ‚Í‹ó”’‚É‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -157,7 +157,7 @@
         <source>"%d から %d の間の値でなければなりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459838</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
         <alt-trans>
           <source>"%d ‚©‚ç %d ‚ÌŠÔ‚Ì’l‚Å‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñ"</source>
@@ -171,7 +171,7 @@
         <source>"クリップボードはアイコンには対応していません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459838</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒNƒŠƒbƒvƒ{[ƒh‚ÍƒAƒCƒRƒ“‚É‚Í‘Î‰ž‚µ‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -185,7 +185,7 @@
         <source>"クリップボード %s を開けません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459838</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒNƒŠƒbƒvƒ{[ƒh %s ‚ðŠJ‚¯‚Ü‚¹‚ñ"</source>
@@ -199,7 +199,7 @@
         <source>"メニュー '%s' は既に他のフォームで使われています"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459838</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒjƒ…[ '%s' ‚ÍŠù‚É‘¼‚ÌƒtƒH[ƒ€‚ÅŽg‚í‚ê‚Ä‚¢‚Ü‚·"</source>
@@ -213,7 +213,7 @@
         <source>"ドッキングコントロールは名前を持っていなければなりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459838</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒhƒbƒLƒ“ƒOƒRƒ“ƒgƒ[ƒ‹‚Í–¼‘O‚ðŽ‚Á‚Ä‚¢‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñ"</source>
@@ -227,7 +227,7 @@
         <source>"ドッキングツリーからコントロールを削除する際のエラー "</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459838</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒhƒbƒLƒ“ƒOƒcƒŠ[‚©‚çƒRƒ“ƒgƒ[ƒ‹‚ðíœ‚·‚éÛ‚ÌƒGƒ‰[ "</source>
@@ -241,7 +241,7 @@
         <source>"- ドッキングゾーンが見つかりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459954</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"- ƒhƒbƒLƒ“ƒOƒ][ƒ“‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"</source>
@@ -255,7 +255,7 @@
         <source>"中止(&amp;A)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459954</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"’†Ž~(&amp;A)"</source>
@@ -269,7 +269,7 @@
         <source>"再試行(&amp;R)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459954</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ÄŽŽs(&amp;R)"</source>
@@ -283,7 +283,7 @@
         <source>"無視(&amp;I)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459954</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"–³Ž‹(&amp;I)"</source>
@@ -297,7 +297,7 @@
         <source>"すべて(&amp;A)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951459954</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‚·‚×‚Ä(&amp;A)"</source>
@@ -311,7 +311,7 @@
         <source>"すべていいえ(&amp;O)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460069</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‚·‚×‚Ä‚¢‚¢‚¦(&amp;O)"</source>
@@ -325,7 +325,7 @@
         <source>"すべてはい(&amp;A)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460069</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‚·‚×‚Ä‚Í‚¢(&amp;A)"</source>
@@ -416,7 +416,7 @@
         <source>"フォームが作成できません。有効な MDI フォームがありません "</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460417</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒH[ƒ€‚ªì¬‚Å‚«‚Ü‚¹‚ñB—LŒø‚È MDI ƒtƒH[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñ "</source>
@@ -430,7 +430,7 @@
         <source>"自分自身を親とすることはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460417</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Ž©•ªŽ©g‚ðe‚Æ‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -444,7 +444,7 @@
         <source>"フォームをドラッグすることはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460417</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒH[ƒ€‚ðƒhƒ‰ƒbƒO‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -458,7 +458,7 @@
         <source>"メタファイル"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460532</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒ^ƒtƒ@ƒCƒ‹"</source>
@@ -472,7 +472,7 @@
         <source>"エンハンス メタファイル"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460532</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒGƒ“ƒnƒ“ƒX ƒƒ^ƒtƒ@ƒCƒ‹"</source>
@@ -486,7 +486,7 @@
         <source>"アイコン"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460532</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒAƒCƒRƒ“"</source>
@@ -500,7 +500,7 @@
         <source>"ビットマップ"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460532</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒrƒbƒgƒ}ƒbƒv"</source>
@@ -514,7 +514,7 @@
         <source>"警告"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460532</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Œx"</source>
@@ -528,7 +528,7 @@
         <source>"エラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460532</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒGƒ‰["</source>
@@ -542,7 +542,7 @@
         <source>"情報"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460648</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"î•ñ"</source>
@@ -570,7 +570,7 @@
         <source>"はい(&amp;Y)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460648</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‚Í‚¢(&amp;Y)"</source>
@@ -584,7 +584,7 @@
         <source>"いいえ(&amp;N)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460648</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‚¢‚¢‚¦(&amp;N)"</source>
@@ -605,7 +605,7 @@
         <source>"キャンセル"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460764</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒLƒƒƒ“ƒZƒ‹"</source>
@@ -619,7 +619,7 @@
         <source>"ヘルプ(&amp;H)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460764</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒwƒ‹ƒv(&amp;H)"</source>
@@ -633,7 +633,7 @@
         <source>"ストリームからの ImageList データの読み込みに失敗しました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460764</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒgƒŠ[ƒ€‚©‚ç‚Ì ImageList ƒf[ƒ^‚Ì“Ç‚Ýž‚Ý‚ÉŽ¸”s‚µ‚Ü‚µ‚½"</source>
@@ -647,7 +647,7 @@
         <source>"ストリームへの ImageList データの書き込みに失敗しました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460764</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒgƒŠ[ƒ€‚Ö‚Ì ImageList ƒf[ƒ^‚Ì‘‚«ž‚Ý‚ÉŽ¸”s‚µ‚Ü‚µ‚½"</source>
@@ -661,7 +661,7 @@
         <source>"デバイスコンテキストの作成に失敗しました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460764</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒfƒoƒCƒXƒRƒ“ƒeƒLƒXƒg‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½"</source>
@@ -675,7 +675,7 @@
         <source>"ウィンドウクラスの作成でエラーが発生しました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460764</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒEƒBƒ“ƒhƒEƒNƒ‰ƒX‚Ìì¬‚ÅƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½"</source>
@@ -689,7 +689,7 @@
         <source>"無効/非表示ウィンドウにはフォーカスを設定できません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460764</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"–³Œø/”ñ•\Ž¦ƒEƒBƒ“ƒhƒE‚É‚ÍƒtƒH[ƒJƒX‚ðÝ’è‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -703,7 +703,7 @@
         <source>"コントロール '%s' は親ウィンドウを持っていません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146088</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒRƒ“ƒgƒ[ƒ‹ '%s' ‚ÍeƒEƒBƒ“ƒhƒE‚ðŽ‚Á‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -717,7 +717,7 @@
         <source>"指定されたコントロールは '%s' の親コントロールではありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146088</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Žw’è‚³‚ê‚½ƒRƒ“ƒgƒ[ƒ‹‚Í '%s' ‚ÌeƒRƒ“ƒgƒ[ƒ‹‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -731,7 +731,7 @@
         <source>"MDI 子フォームを隠すことはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146088</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"MDI ŽqƒtƒH[ƒ€‚ð‰B‚·‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -745,7 +745,7 @@
         <source>"OnShow/OnHide イベントの処理中は表示状態の変更はできません "</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146088</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"OnShow/OnHide ƒCƒxƒ“ƒg‚Ìˆ—’†‚Í•\Ž¦ó‘Ô‚Ì•ÏX‚Í‚Å‚«‚Ü‚¹‚ñ "</source>
@@ -759,7 +759,7 @@
         <source>"表示されているウィンドウをモーダルにすることはできません "</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146088</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•\Ž¦‚³‚ê‚Ä‚¢‚éƒEƒBƒ“ƒhƒE‚ðƒ‚[ƒ_ƒ‹‚É‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ "</source>
@@ -773,7 +773,7 @@
         <source>"プロパティ %s の範囲を超えています"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146088</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">3</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒvƒƒpƒeƒB %s ‚Ì”ÍˆÍ‚ð’´‚¦‚Ä‚¢‚Ü‚·"</source>
@@ -787,7 +787,7 @@
         <source>"メニューインデックスが範囲を越えました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146088</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒjƒ…[ƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍ‚ð‰z‚¦‚Ü‚µ‚½"</source>
@@ -801,7 +801,7 @@
         <source>"メニューを二度追加しました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460995</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒjƒ…[‚ð“ñ“x’Ç‰Á‚µ‚Ü‚µ‚½"</source>
@@ -815,7 +815,7 @@
         <source>"サブメニューがメニューにありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460995</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒTƒuƒƒjƒ…[‚ªƒƒjƒ…[‚É‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -829,7 +829,7 @@
         <source>"タイマーが足りません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460995</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ^ƒCƒ}[‚ª‘«‚è‚Ü‚¹‚ñ"</source>
@@ -843,7 +843,7 @@
         <source>"GroupIndex は直前のメニューアイテムの GroupIndex より小さくすることができません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460995</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"GroupIndex ‚Í’¼‘O‚Ìƒƒjƒ…[ƒAƒCƒeƒ€‚Ì GroupIndex ‚æ‚è¬‚³‚­‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -857,7 +857,7 @@
         <source>"文字インデックスが範囲外です (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460995</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•¶ŽšƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍŠO‚Å‚· (%d)"</source>
@@ -871,7 +871,7 @@
         <source>"開始インデックスが範囲外です (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951460995</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ŠJŽnƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍŠO‚Å‚· (%d)"</source>
@@ -885,7 +885,7 @@
         <source>"カウントが無効です (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461111</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒJƒEƒ“ƒg‚ª–³Œø‚Å‚· (%d)"</source>
@@ -899,7 +899,7 @@
         <source>"ターゲット インデックスが無効です (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461111</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ^[ƒQƒbƒg ƒCƒ“ƒfƒbƒNƒX‚ª–³Œø‚Å‚· (%d)"</source>
@@ -913,7 +913,7 @@
         <source>"コード ページが無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461111</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒR[ƒh ƒy[ƒW‚ª–³Œø‚Å‚·"</source>
@@ -927,7 +927,7 @@
         <source>"ビットマップイメージが不正です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461111</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒrƒbƒgƒ}ƒbƒvƒCƒ[ƒW‚ª•s³‚Å‚·"</source>
@@ -941,7 +941,7 @@
         <source>"アイコンイメージが不正です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461111</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒAƒCƒRƒ“ƒCƒ[ƒW‚ª•s³‚Å‚·"</source>
@@ -955,7 +955,7 @@
         <source>"メタファイルが不正です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461111</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒ^ƒtƒ@ƒCƒ‹‚ª•s³‚Å‚·"</source>
@@ -969,7 +969,7 @@
         <source>"画像フォーマットが不正です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461227</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‰æ‘œƒtƒH[ƒ}ƒbƒg‚ª•s³‚Å‚·"</source>
@@ -983,7 +983,7 @@
         <source>"アイコンの大きさは変更できません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461227</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒAƒCƒRƒ“‚Ì‘å‚«‚³‚Í•ÏX‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -997,7 +997,7 @@
         <source>"未対応のクリップボード データです"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461227</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"–¢‘Î‰ž‚ÌƒNƒŠƒbƒvƒ{[ƒh ƒf[ƒ^‚Å‚·"</source>
@@ -1011,7 +1011,7 @@
         <source>"システムリソースが足りません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461227</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒVƒXƒeƒ€ƒŠƒ\[ƒX‚ª‘«‚è‚Ü‚¹‚ñ"</source>
@@ -1025,7 +1025,7 @@
         <source>"Canvas に対する描画ができません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461227</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Canvas ‚É‘Î‚·‚é•`‰æ‚ª‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -1039,7 +1039,7 @@
         <source>"画像サイズが無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461343</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‰æ‘œƒTƒCƒY‚ª–³Œø‚Å‚·"</source>
@@ -1053,7 +1053,7 @@
         <source>"イメージリストが無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461343</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒCƒ[ƒWƒŠƒXƒg‚ª–³Œø‚Å‚·"</source>
@@ -1067,7 +1067,7 @@
         <source>"不正なインデックスがイメージ リストに渡されました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951461343</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•s³‚ÈƒCƒ“ƒfƒbƒNƒX‚ªƒCƒ[ƒW ƒŠƒXƒg‚É“n‚³‚ê‚Ü‚µ‚½"</source>
@@ -1179,7 +1179,7 @@
         <source>"ソース配列が無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146169</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ\[ƒX”z—ñ‚ª–³Œø‚Å‚·"</source>
@@ -1193,7 +1193,7 @@
         <source>"ターゲット配列が無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146169</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ^[ƒQƒbƒg”z—ñ‚ª–³Œø‚Å‚·"</source>
@@ -1319,7 +1319,7 @@
         <source>"safecall メソッド内で例外が発生しました。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462153</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"safecall ƒƒ\ƒbƒh“à‚Å—áŠO‚ª”­¶‚µ‚Ü‚µ‚½B"</source>
@@ -1333,7 +1333,7 @@
         <source>"オブジェクト ロックが所有されていません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462153</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒIƒuƒWƒFƒNƒg ƒƒbƒN‚ªŠ—L‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -1347,7 +1347,7 @@
         <source>"モニタ サポート関数が初期化されていません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462153</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ‚ƒjƒ^ ƒTƒ|[ƒgŠÖ”‚ª‰Šú‰»‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -1361,7 +1361,7 @@
         <source>"%s (%s, %d 行)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462153</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s (%s, %d s)"</source>
@@ -1375,7 +1375,7 @@
         <source>"抽象エラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462269</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"’ŠÛƒGƒ‰["</source>
@@ -1389,7 +1389,7 @@
         <source>"モジュール '%1:s' のアドレス %0:p でアドレス %3:p に対する%2:s違反がおきました。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462269</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ‚ƒWƒ…[ƒ‹ '%1:s' ‚ÌƒAƒhƒŒƒX %0:p ‚ÅƒAƒhƒŒƒX %3:p ‚É‘Î‚·‚é%2:sˆá”½‚ª‚¨‚«‚Ü‚µ‚½B"</source>
@@ -1403,7 +1403,7 @@
         <source>"システムエラー。コード：%d.\r\n%s"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462269</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒVƒXƒeƒ€ƒGƒ‰[BƒR[ƒhF%d.\r\n%s"</source>
@@ -1417,7 +1417,7 @@
         <source>"OS 機能呼び出しの失敗"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462269</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"OS ‹@”\ŒÄ‚Ño‚µ‚ÌŽ¸”s"</source>
@@ -1487,7 +1487,7 @@
         <source>"バリアント配列を作成できません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.79514625</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒg”z—ñ‚ðì¬‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -1501,7 +1501,7 @@
         <source>"バリアントまたは安全な配列の添え字の範囲を超えています"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.79514625</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒg‚Ü‚½‚ÍˆÀ‘S‚È”z—ñ‚Ì“Y‚¦Žš‚Ì”ÍˆÍ‚ð’´‚¦‚Ä‚¢‚Ü‚·"</source>
@@ -1515,7 +1515,7 @@
         <source>"バリアント配列がロックされています"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.79514625</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒg”z—ñ‚ªƒƒbƒN‚³‚ê‚Ä‚¢‚Ü‚·"</source>
@@ -1529,7 +1529,7 @@
         <source>"バリアントの型変換が正しくありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.79514625</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒg‚ÌŒ^•ÏŠ·‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -1543,7 +1543,7 @@
         <source>"バリアントに対する演算が正しくありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462616</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒg‚É‘Î‚·‚é‰‰ŽZ‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -1557,7 +1557,7 @@
         <source>"無効なバリアント操作 (%s%.8x)\r\n%s"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462616</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"–³Œø‚ÈƒoƒŠƒAƒ“ƒg‘€ì (%s%.8x)\r\n%s"</source>
@@ -1571,7 +1571,7 @@
         <source>"%0:s型から %1:s 型へのバリアント型変換はできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462616</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%0:sŒ^‚©‚ç %1:s Œ^‚Ö‚ÌƒoƒŠƒAƒ“ƒgŒ^•ÏŠ·‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -1585,7 +1585,7 @@
         <source>"%0:s 型から %1:s 型へのバリアント型変換でのオーバーフローエラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462616</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%0:s Œ^‚©‚ç %1:s Œ^‚Ö‚ÌƒoƒŠƒAƒ“ƒgŒ^•ÏŠ·‚Å‚ÌƒI[ƒo[ƒtƒ[ƒGƒ‰["</source>
@@ -1599,7 +1599,7 @@
         <source>"バリアント オーバーフロー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462616</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒg ƒI[ƒo[ƒtƒ["</source>
@@ -1613,7 +1613,7 @@
         <source>"不正な引数が渡されました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462616</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•s³‚Èˆø”‚ª“n‚³‚ê‚Ü‚µ‚½"</source>
@@ -1627,7 +1627,7 @@
         <source>"バリアントタイプが不正です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462732</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒgƒ^ƒCƒv‚ª•s³‚Å‚·"</source>
@@ -1641,7 +1641,7 @@
         <source>"サポートされていない操作です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462732</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢‘€ì‚Å‚·"</source>
@@ -1655,7 +1655,7 @@
         <source>"予期しないバリアントエラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462732</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"—\Šú‚µ‚È‚¢ƒoƒŠƒAƒ“ƒgƒGƒ‰["</source>
@@ -1669,7 +1669,7 @@
         <source>"外部例外 %x"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462732</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ŠO•”—áŠO %x"</source>
@@ -1683,7 +1683,7 @@
         <source>"アサートが失敗しました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462732</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒAƒT[ƒg‚ªŽ¸”s‚µ‚Ü‚µ‚½"</source>
@@ -1697,7 +1697,7 @@
         <source>"Interface はサポートされていません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462732</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Interface ‚ÍƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -1711,7 +1711,7 @@
         <source>"浮動小数点数のオーバーフロー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462847</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•‚“®¬”“_”‚ÌƒI[ƒo[ƒtƒ["</source>
@@ -1725,7 +1725,7 @@
         <source>"浮動小数点数のアンダーフロー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462847</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•‚“®¬”“_”‚ÌƒAƒ“ƒ_[ƒtƒ["</source>
@@ -1739,7 +1739,7 @@
         <source>"無効なポインタ操作"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462847</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"–³Œø‚Èƒ|ƒCƒ“ƒ^‘€ì"</source>
@@ -1753,7 +1753,7 @@
         <source>"無効なクラス型キャスト"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462847</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"–³Œø‚ÈƒNƒ‰ƒXŒ^ƒLƒƒƒXƒg"</source>
@@ -1767,7 +1767,7 @@
         <source>"アドレス %0:p でアドレス %2:p に対する%1:s違反がおきました。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462847</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒAƒhƒŒƒX %0:p ‚ÅƒAƒhƒŒƒX %2:p ‚É‘Î‚·‚é%1:sˆá”½‚ª‚¨‚«‚Ü‚µ‚½B"</source>
@@ -1781,7 +1781,7 @@
         <source>"アクセス違反"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462847</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒAƒNƒZƒXˆá”½"</source>
@@ -1795,7 +1795,7 @@
         <source>"スタック オーバーフロー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462963</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒ^ƒbƒN ƒI[ƒo[ƒtƒ["</source>
@@ -1816,7 +1816,7 @@
         <source>"特権命令"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462963</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"“ÁŒ –½—ß"</source>
@@ -1830,7 +1830,7 @@
         <source>"%s がモジュール %s の %p で発生しました。\r\n%s%s"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462963</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ‚ªƒ‚ƒWƒ…[ƒ‹ %s ‚Ì %p ‚Å”­¶‚µ‚Ü‚µ‚½B\r\n%s%s"</source>
@@ -1844,7 +1844,7 @@
         <source>"アプリケーション エラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462963</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ ƒGƒ‰["</source>
@@ -1858,7 +1858,7 @@
         <source>"書式文字列 '%s' は正しくないか引数の型と一致しません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951462963</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‘Ž®•¶Žš—ñ '%s' ‚Í³‚µ‚­‚È‚¢‚©ˆø”‚ÌŒ^‚Æˆê’v‚µ‚Ü‚¹‚ñ"</source>
@@ -1872,7 +1872,7 @@
         <source>"書式文字列 '%s' の引数が見つかりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463079</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‘Ž®•¶Žš—ñ '%s' ‚Ìˆø”‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"</source>
@@ -1886,7 +1886,7 @@
         <source>"バリアントメソッド呼び出しはサポートされていません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463079</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒgƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ÍƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -1900,7 +1900,7 @@
         <source>"読み込み"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463079</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"“Ç‚Ýž‚Ý"</source>
@@ -1914,7 +1914,7 @@
         <source>"書き込み"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463079</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‘‚«ž‚Ý"</source>
@@ -1928,7 +1928,7 @@
         <source>"バリアントはオートメーション オブジェクトを参照していません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463079</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒoƒŠƒAƒ“ƒg‚ÍƒI[ƒgƒ[ƒVƒ‡ƒ“ ƒIƒuƒWƒFƒNƒg‚ðŽQÆ‚µ‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -1942,7 +1942,7 @@
         <source>"ディスパッチメソッドは 64 個を超えるパラメータを処理できません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463079</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒfƒBƒXƒpƒbƒ`ƒƒ\ƒbƒh‚Í 64 ŒÂ‚ð’´‚¦‚éƒpƒ‰ƒ[ƒ^‚ðˆ—‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -1956,7 +1956,7 @@
         <source>"'%s' は正しい GUID ではありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463079</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"'%s' ‚Í³‚µ‚¢ GUID ‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -1970,7 +1970,7 @@
         <source>"メモリが足りません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463194</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒ‚ƒŠ‚ª‘«‚è‚Ü‚¹‚ñ"</source>
@@ -1984,7 +1984,7 @@
         <source>"I/O エラー (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463194</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"I/O ƒGƒ‰[ (%d)"</source>
@@ -1998,7 +1998,7 @@
         <source>"ファイルが見つかりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463194</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"</source>
@@ -2012,7 +2012,7 @@
         <source>"開かれたファイルが多すぎます。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463194</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ŠJ‚©‚ê‚½ƒtƒ@ƒCƒ‹‚ª‘½‚·‚¬‚Ü‚·B"</source>
@@ -2026,7 +2026,7 @@
         <source>"ファイルへのアクセスが拒否されました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463194</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒ@ƒCƒ‹‚Ö‚ÌƒAƒNƒZƒX‚ª‹‘”Û‚³‚ê‚Ü‚µ‚½"</source>
@@ -2040,7 +2040,7 @@
         <source>"ファイルの末尾以降を読み込みました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463194</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒ@ƒCƒ‹‚Ì––”öˆÈ~‚ð“Ç‚Ýž‚Ý‚Ü‚µ‚½"</source>
@@ -2054,7 +2054,7 @@
         <source>"ディスクがいっぱいです"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146331</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒfƒBƒXƒN‚ª‚¢‚Á‚Ï‚¢‚Å‚·"</source>
@@ -2068,7 +2068,7 @@
         <source>"入力値が数値ではありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146331</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"“ü—Í’l‚ª”’l‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -2082,7 +2082,7 @@
         <source>"ゼロによる除算"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146331</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ[ƒ‚É‚æ‚éœŽZ"</source>
@@ -2096,7 +2096,7 @@
         <source>"範囲チェックエラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463426</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"”ÍˆÍƒ`ƒFƒbƒNƒGƒ‰["</source>
@@ -2110,7 +2110,7 @@
         <source>"整数のオーバーフロー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463426</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"®”‚ÌƒI[ƒo[ƒtƒ["</source>
@@ -2124,7 +2124,7 @@
         <source>"不正な浮動小数点数演算命令"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463426</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•s³‚È•‚“®¬”“_”‰‰ŽZ–½—ß"</source>
@@ -2138,7 +2138,7 @@
         <source>"0 による浮動小数点数除算"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463426</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"0 ‚É‚æ‚é•‚“®¬”“_”œŽZ"</source>
@@ -2152,7 +2152,7 @@
         <source>"プロパティは書き込み禁止です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463426</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒvƒƒpƒeƒB‚Í‘‚«ž‚Ý‹ÖŽ~‚Å‚·"</source>
@@ -2166,7 +2166,7 @@
         <source>"'%s' の取得に失敗しました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463426</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"'%s' ‚ÌŽæ“¾‚ÉŽ¸”s‚µ‚Ü‚µ‚½"</source>
@@ -2180,7 +2180,7 @@
         <source>"%s リソースが見つかりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463426</prop>
-          <prop prop-type="Status">2</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ƒŠƒ\[ƒX‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"</source>
@@ -2194,7 +2194,7 @@
         <source>"%s.Seek は実装されていません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463542</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s.Seek ‚ÍŽÀ‘•‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -2208,7 +2208,7 @@
         <source>"ソートされる文字列リストに対しては許されない動作です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463542</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒ\[ƒg‚³‚ê‚é•¶Žš—ñƒŠƒXƒg‚É‘Î‚µ‚Ä‚Í‹–‚³‚ê‚È‚¢“®ì‚Å‚·"</source>
@@ -2222,7 +2222,7 @@
         <source>"%s クラス登録グループに存在しません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463542</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ƒNƒ‰ƒX“o˜^ƒOƒ‹[ƒv‚É‘¶Ý‚µ‚Ü‚¹‚ñ"</source>
@@ -2236,7 +2236,7 @@
         <source>"プロパティ %s は存在しません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463542</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒvƒƒpƒeƒB %s ‚Í‘¶Ý‚µ‚Ü‚¹‚ñ"</source>
@@ -2250,7 +2250,7 @@
         <source>"ストリームへの書き込みエラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463542</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒgƒŠ[ƒ€‚Ö‚Ì‘‚«ž‚ÝƒGƒ‰["</source>
@@ -2264,7 +2264,7 @@
         <source>"スレッド作成エラー：%s"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463542</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒŒƒbƒhì¬ƒGƒ‰[F%s"</source>
@@ -2278,7 +2278,7 @@
         <source>"スレッドエラー：%s (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463542</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒŒƒbƒhƒGƒ‰[F%s (%d)"</source>
@@ -2292,7 +2292,7 @@
         <source>"外部から作成されたスレッドを終了させることはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463657</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ŠO•”‚©‚çì¬‚³‚ê‚½ƒXƒŒƒbƒh‚ðI—¹‚³‚¹‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -2306,7 +2306,7 @@
         <source>"外部から作成されたスレッドを待機することはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463657</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ŠO•”‚©‚çì¬‚³‚ê‚½ƒXƒŒƒbƒh‚ð‘Ò‹@‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -2320,7 +2320,7 @@
         <source>"フィルタをサポートするヘルプ ビューアがありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463657</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒBƒ‹ƒ^‚ðƒTƒ|[ƒg‚·‚éƒwƒ‹ƒv ƒrƒ…[ƒA‚ª‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -2334,7 +2334,7 @@
         <source>"''%s'' は整数ではありません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463657</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"''%s'' ‚Í®”‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"</source>
@@ -2348,7 +2348,7 @@
         <source>"OLE エラー %.8x"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463657</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"OLE ƒGƒ‰[ %.8x"</source>
@@ -2362,7 +2362,7 @@
         <source>"メソッド '%s' はオートメーション オブジェクトでサポートしていません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463657</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒ\ƒbƒh '%s' ‚ÍƒI[ƒgƒ[ƒVƒ‡ƒ“ ƒIƒuƒWƒFƒNƒg‚ÅƒTƒ|[ƒg‚µ‚Ä‚¢‚Ü‚¹‚ñ"</source>
@@ -2376,7 +2376,7 @@
         <source>"文字列リストは重複を許しません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463773</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•¶Žš—ñƒŠƒXƒg‚Íd•¡‚ð‹–‚µ‚Ü‚¹‚ñ"</source>
@@ -2390,7 +2390,7 @@
         <source>"ファイル \"%s\" を作成できません。%s"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463773</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒ@ƒCƒ‹ \"%s\" ‚ðì¬‚Å‚«‚Ü‚¹‚ñB%s"</source>
@@ -2404,7 +2404,7 @@
         <source>"ファイル %s は開けません。 %s "</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463773</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒtƒ@ƒCƒ‹ %s ‚ÍŠJ‚¯‚Ü‚¹‚ñB %s "</source>
@@ -2418,7 +2418,7 @@
         <source>"不正なファイル名 - %s"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463773</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"•s³‚Èƒtƒ@ƒCƒ‹–¼ - %s"</source>
@@ -2432,7 +2432,7 @@
         <source>"ストリーム形式が無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463773</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒgƒŠ[ƒ€Œ`Ž®‚ª–³Œø‚Å‚·"</source>
@@ -2446,7 +2446,7 @@
         <source>"コンポーネント名に ''%s'' は使えません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463773</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚É ''%s'' ‚ÍŽg‚¦‚Ü‚¹‚ñ"</source>
@@ -2460,7 +2460,7 @@
         <source>"プロパティ値が無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463889</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒvƒƒpƒeƒB’l‚ª–³Œø‚Å‚·"</source>
@@ -2474,7 +2474,7 @@
         <source>"プロパティのパスが無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463889</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒvƒƒpƒeƒB‚ÌƒpƒX‚ª–³Œø‚Å‚·"</source>
@@ -2488,7 +2488,7 @@
         <source>"プロパティ値が無効です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463889</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒvƒƒpƒeƒB’l‚ª–³Œø‚Å‚·"</source>
@@ -2502,7 +2502,7 @@
         <source>"'%s' のデータ型が不正です"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463889</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"'%s' ‚Ìƒf[ƒ^Œ^‚ª•s³‚Å‚·"</source>
@@ -2516,7 +2516,7 @@
         <source>"リストの容量が超えました (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463889</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒŠƒXƒg‚Ì—e—Ê‚ª’´‚¦‚Ü‚µ‚½ (%d)"</source>
@@ -2530,7 +2530,7 @@
         <source>"リストの個数を超えました (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951463889</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒŠƒXƒg‚ÌŒÂ”‚ð’´‚¦‚Ü‚µ‚½ (%d)"</source>
@@ -2544,7 +2544,7 @@
         <source>"リストのインデックスが範囲を超えています (%d)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464005</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒŠƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍ‚ð’´‚¦‚Ä‚¢‚Ü‚· (%d)"</source>
@@ -2558,7 +2558,7 @@
         <source>"メモリストリームの拡大中にメモリが足りなくなりました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464005</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒ‚ƒŠƒXƒgƒŠ[ƒ€‚ÌŠg‘å’†‚Éƒƒ‚ƒŠ‚ª‘«‚è‚È‚­‚È‚è‚Ü‚µ‚½"</source>
@@ -2572,7 +2572,7 @@
         <source>"%s%s%s の読み込み中のエラー : %s"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464005</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s%s%s ‚Ì“Ç‚Ýž‚Ý’†‚ÌƒGƒ‰[ : %s"</source>
@@ -2586,7 +2586,7 @@
         <source>"ストリームからの読み込みエラー"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464005</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒXƒgƒŠ[ƒ€‚©‚ç‚Ì“Ç‚Ýž‚ÝƒGƒ‰["</source>
@@ -2614,7 +2614,7 @@
         <source>"このコンテキストのヘルプが見つかりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464005</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"‚±‚ÌƒRƒ“ƒeƒLƒXƒg‚Ìƒwƒ‹ƒv‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"</source>
@@ -2628,7 +2628,7 @@
         <source>"[索引] を開けません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146412</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"[õˆø] ‚ðŠJ‚¯‚Ü‚¹‚ñ"</source>
@@ -2642,7 +2642,7 @@
         <source>"[検索] を開けません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146412</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"[ŒŸõ] ‚ðŠJ‚¯‚Ü‚¹‚ñ"</source>
@@ -2656,7 +2656,7 @@
         <source>"目次（TOC）が見つかりません。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146412</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"–ÚŽŸiTOCj‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"</source>
@@ -2670,7 +2670,7 @@
         <source>"キーワードヘルプがインストールされていません。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146412</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒL[ƒ[ƒhƒwƒ‹ƒv‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB"</source>
@@ -2684,7 +2684,7 @@
         <source>"%s に関するヘルプを見つけられませんでした。"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146412</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ‚ÉŠÖ‚·‚éƒwƒ‹ƒv‚ðŒ©‚Â‚¯‚ç‚ê‚Ü‚¹‚ñ‚Å‚µ‚½B"</source>
@@ -2698,7 +2698,7 @@
         <source>"継承元の '%s' が見つかりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.795146412</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"Œp³Œ³‚Ì '%s' ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"</source>
@@ -2712,7 +2712,7 @@
         <source>"%s を %s に代入することはできません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464236</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"%s ‚ð %s ‚É‘ã“ü‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"</source>
@@ -2726,7 +2726,7 @@
         <source>"インデックスが範囲を超えました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464236</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍ‚ð’´‚¦‚Ü‚µ‚½"</source>
@@ -2740,7 +2740,7 @@
         <source>"読み込み専用リソース ストリームには書き込めません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464236</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"“Ç‚Ýž‚Ýê—pƒŠƒ\[ƒX ƒXƒgƒŠ[ƒ€‚É‚Í‘‚«ž‚ß‚Ü‚¹‚ñ"</source>
@@ -2754,7 +2754,7 @@
         <source>"メインスレッドではないスレッド $%x から CheckSynchronize が呼び出されました"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464236</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒƒCƒ“ƒXƒŒƒbƒh‚Å‚Í‚È‚¢ƒXƒŒƒbƒh $%x ‚©‚ç CheckSynchronize ‚ªŒÄ‚Ño‚³‚ê‚Ü‚µ‚½"</source>
@@ -2768,7 +2768,7 @@
         <source>"クラス %s が見つかりません"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464236</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒNƒ‰ƒX %s ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ"</source>
@@ -2782,7 +2782,7 @@
         <source>"クラス名 %s はすでに使われています"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464236</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒNƒ‰ƒX–¼ %s ‚Í‚·‚Å‚ÉŽg‚í‚ê‚Ä‚¢‚Ü‚·"</source>
@@ -2796,7 +2796,7 @@
         <source>"リストは重複を許しません。($0%x)"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464236</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒŠƒXƒg‚Íd•¡‚ð‹–‚µ‚Ü‚¹‚ñB($0%x)"</source>
@@ -2810,7 +2810,7 @@
         <source>"コンポーネント名 %s はすでに使われています"</source>
         <prop-group name="ITEFieldProp">
           <prop prop-type="Created">40327.7951464352</prop>
-          <prop prop-type="Status">0</prop>
+          <prop prop-type="Status">1</prop>
         </prop-group>
         <alt-trans>
           <source>"ƒRƒ“ƒ|[ƒlƒ“ƒg–¼ %s ‚Í‚·‚Å‚ÉŽg‚í‚ê‚Ä‚¢‚Ü‚·"</source>
