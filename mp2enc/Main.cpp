@@ -112,14 +112,6 @@ __fastcall Connect(IGraphBuilder *pGraphBuilder, IBaseFilter *pOutput,
         return pGraphBuilder->Connect(outputPin, inputPin);
 }
 
-inline UnicodeString
-__fastcall ErrorText(HRESULT hr)
-{
-    TCHAR text[128];
-    AMGetErrorText(hr, text, 128);
-    return UnicodeString(text);
-}
-
 inline void
 __fastcall RaiseError(HRESULT hr)
 {
@@ -133,6 +125,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 {
 }
 
+UnicodeString
+__fastcall TMainForm::GetDefaultOutputFileName() const
+{
+    return FileName + ".mp2"; // @todo
+}
+
 void
 __fastcall TMainForm::OpenFile(const UnicodeString Name)
 {
@@ -142,93 +140,66 @@ __fastcall TMainForm::OpenFile(const UnicodeString Name)
     if (FAILED(hr))
         RaiseError(hr);
 
-    DelphiInterface<IBaseFilter> source;
-    hr = graphBuilder1->AddSourceFilter(Name.t_str(), 0, &source);
+    DelphiInterface<IBaseFilter> source1;
+    hr = graphBuilder1->AddSourceFilter(Name.t_str(), 0, &source1);
     if (FAILED(hr))
         RaiseError(hr);
 
-#if 1
-    DelphiInterface<IBaseFilter> writer;
-    hr = CoCreateInstance(CLSID_FileWriter, 0, CLSCTX_INPROC_SERVER, &writer);
-    if (SUCCEEDED(hr))
-        hr = graphBuilder1->AddFilter(writer, 0);
-    if (FAILED(hr))
-        RaiseError(hr);
-#endif
-
-    DelphiInterface<IBaseFilter> encoder;
-    hr = CoCreateInstance(CLSID_DMOWrapperFilter, 0, CLSCTX_INPROC_SERVER, &encoder);
+    DelphiInterface<IBaseFilter> encoder1;
+    hr = CoCreateInstance(CLSID_DMOWrapperFilter, 0, CLSCTX_INPROC_SERVER, &encoder1);
     if (SUCCEEDED(hr))
     {
         DelphiInterface<IDMOWrapperFilter> dmoWrapper;
-        hr = encoder->QueryInterface(&dmoWrapper);
+        hr = encoder1->QueryInterface(&dmoWrapper);
         if (SUCCEEDED(hr))
             hr = dmoWrapper->Init(CLSID_Mp2Encoder, DMOCATEGORY_AUDIO_ENCODER);
         if (SUCCEEDED(hr))
-            hr = graphBuilder1->AddFilter(encoder, 0);
+            hr = graphBuilder1->AddFilter(encoder1, 0);
     }
     if (FAILED(hr))
         RaiseError(hr);
 
-    hr = Connect(graphBuilder1, source, encoder);
+    hr = Connect(graphBuilder1, source1, encoder1);
     if (FAILED(hr))
         RaiseError(hr);
 
+    DelphiInterface<IAMStreamConfig> streamConfig1;
     DelphiInterface<IPin> pin1;
-    hr = FindUnconnectedPin(encoder, PINDIR_OUTPUT, &pin1);
+    hr = FindUnconnectedPin(encoder1, PINDIR_OUTPUT, &pin1);
     if (SUCCEEDED(hr))
     {
-        DelphiInterface<IAMStreamConfig> config;
-        hr = pin1->QueryInterface(&config);
+        hr = pin1->QueryInterface(&streamConfig1);
         if (SUCCEEDED(hr))
         {
-            int n1, n2;
-            hr = config->GetNumberOfCapabilities(&n1, &n2);
-            AM_MEDIA_TYPE *pmt;
-            AUDIO_STREAM_CONFIG_CAPS caps;
-            hr = config->GetStreamCaps(0, &pmt, reinterpret_cast<BYTE *>(&caps));
-#if 0
-            hr = config->GetFormat(&pmt);
-#endif
-            WAVEFORMATEXTENSIBLE *format = reinterpret_cast<WAVEFORMATEXTENSIBLE *>(pmt->pbFormat);
-            CoTaskMemFree(pmt->pbFormat);
-            CoTaskMemFree(pmt);
-#if 0
-            AM_MEDIA_TYPE mt = {};
-            mt.majortype = MEDIATYPE_Stream;
-            mt.subtype = MEDIASUBTYPE_MPEG1Payload;
-            mt.bFixedSizeSamples = TRUE;
-            mt.bTemporalCompression = FALSE;
-            mt.formattype = FORMAT_WaveFormatEx;
-            mt.cbFormat = sizeof (WAVEFORMATEXTENSIBLE);
-            mt.pbFormat = static_cast<BYTE *>(CoTaskMemAlloc(sizeof (WAVEFORMATEXTENSIBLE)));
-            WAVEFORMATEXTENSIBLE *format = reinterpret_cast<WAVEFORMATEXTENSIBLE *>(mt.pbFormat);
-            format->Format.wFormatTag = WAVE_FORMAT_EXTENSIBLE;
-            format->Format.nChannels = 2;
-            format->Format.nSamplesPerSec = 48000;
-            format->Format.nAvgBytesPerSec = 384000 / 8;
-            format->Format.nBlockAlign = 0;
-            format->Format.wBitsPerSample = 0;
-            format->Format.cbSize = 22;
-            format->Samples.wSamplesPerBlock = 1152;
-            format->dwChannelMask = 0;
-            format->SubFormat = KSDATAFORMAT_SUBTYPE_MPEG1Payload;
-
-            hr = config->SetFormat(&mt);
-#endif
+            int n, size;
+            hr = streamConfig1->GetNumberOfCapabilities(&n, &size);
+            if (SUCCEEDED(hr) && n > 0 && size >= (int) sizeof (AUDIO_STREAM_CONFIG_CAPS))
+            {
+                for (int i = 0; i != n; ++i)
+                {
+                    AM_MEDIA_TYPE *pmt;
+                    AUDIO_STREAM_CONFIG_CAPS caps;
+                    hr = streamConfig1->GetStreamCaps(i, &pmt, reinterpret_cast<BYTE *>(&caps));
+                    if (SUCCEEDED(hr) && pmt->majortype == MEDIATYPE_Stream)
+                    {
+                        assert(pmt != 0);
+                        hr = streamConfig1->SetFormat(pmt);
+                        CoTaskMemFree(pmt->pbFormat);
+                        CoTaskMemFree(pmt);
+                        if (SUCCEEDED(hr))
+                            break;
+                    }
+                }
+            }
         }
     }
     if (FAILED(hr))
         RaiseError(hr);
 
-#if 1
-    hr = Connect(graphBuilder1, encoder, writer, true);
-    if (FAILED(hr))
-        RaiseError(hr);
-#endif
-
     GraphBuilder1 = graphBuilder1;
-    EncoderFilter = encoder;
+    Source = source1;
+    Encoder = encoder1;
+    StreamConfig = streamConfig1;
     FileName = Name;
 
     Close1->Enabled = true;
@@ -240,7 +211,7 @@ void
 __fastcall TMainForm::CloseFile()
 {
     GraphBuilder1 = 0;
-    EncoderFilter = 0;
+    Encoder = 0;
     FileName = L"";
 
     Close1->Enabled = false;
@@ -249,9 +220,45 @@ __fastcall TMainForm::CloseFile()
 }
 
 void
-__fastcall TMainForm::EncodeAs(const UnicodeString OutputName)
+__fastcall TMainForm::EncodeAs(const UnicodeString FileName)
 {
-    // @todo
+    HRESULT hr;
+    DelphiInterface<IBaseFilter> writer1;
+    hr = CoCreateInstance(CLSID_FileWriter, 0, CLSCTX_INPROC_SERVER, &writer1);
+    if (SUCCEEDED(hr))
+    {
+        DelphiInterface<IFileSinkFilter2> fileSink1;
+        hr = writer1->QueryInterface(&fileSink1);
+        if (SUCCEEDED(hr))
+        {
+            AM_MEDIA_TYPE *pmt;
+            hr = StreamConfig->GetFormat(&pmt);
+            if (SUCCEEDED(hr))
+            {
+                hr = fileSink1->SetFileName(FileName.t_str(), pmt);
+                CoTaskMemFree(pmt->pbFormat);
+                CoTaskMemFree(pmt);
+            }
+        }
+        if (SUCCEEDED(hr))
+            hr = GraphBuilder1->AddFilter(writer1, 0);
+    }
+    if (FAILED(hr))
+        RaiseError(hr);
+
+    hr = Connect(GraphBuilder1, Encoder, writer1, true);
+    if (FAILED(hr))
+        RaiseError(hr);
+
+    DelphiInterface<IMediaFilter> mediaFilter1;
+    hr = GraphBuilder1->QueryInterface(mediaFilter1);
+    if (SUCCEEDED(hr))
+    {
+        hr = mediaFilter1->SetSyncSource(0);
+        hr = mediaFilter1->Run(0);
+    }
+    if (FAILED(hr))
+        RaiseError(hr);
 }
 //---------------------------------------------------------------------------
 
@@ -286,12 +293,13 @@ __fastcall TMainForm::Close1Click(TObject *Sender)
 
 void __fastcall TMainForm::Encode1Click(TObject *Sender)
 {
-    // @todo
+    EncodeAs(GetDefaultOutputFileName());
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::EncodeAs1Click(TObject *Sender)
 {
+    SaveDialog1->FileName = GetDefaultOutputFileName();
     if (SaveDialog1->Execute(Handle))
         EncodeAs(SaveDialog1->FileName);
 }

@@ -82,6 +82,7 @@ object MainForm: TMainForm
   object SaveDialog1: TSaveDialog
     DefaultExt = 'mp2'
     Filter = 'MP2 files|*.mp2|All files|*.*'
+    Title = 'Encode as'
     Left = 64
     Top = 256
   end

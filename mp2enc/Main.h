@@ -60,12 +60,15 @@ private:	// ユーザー宣言
 public:		// ユーザー宣言
     __fastcall TMainForm(TComponent* Owner);
 protected:
-    void __fastcall OpenFile(const UnicodeString Name);
+    UnicodeString __fastcall GetDefaultOutputFileName() const;
+    void __fastcall OpenFile(const UnicodeString FileName);
     void __fastcall CloseFile(void);
-    void __fastcall EncodeAs(const UnicodeString OutputName);
+    void __fastcall EncodeAs(const UnicodeString FileName);
 private:
     DelphiInterface<IGraphBuilder> GraphBuilder1;
-    DelphiInterface<IBaseFilter> EncoderFilter;
+    DelphiInterface<IBaseFilter> Source;
+    DelphiInterface<IBaseFilter> Encoder;
+    DelphiInterface<IAMStreamConfig> StreamConfig;
     UnicodeString FileName;
 };
 //---------------------------------------------------------------------------
