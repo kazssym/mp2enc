@@ -328,15 +328,34 @@ TMp2EncoderImpl::InternalCheckOutputType(DWORD dwOutputStreamIndex,
 }
 
 HRESULT
-TMp2EncoderImpl::InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *)
+TMp2EncoderImpl::InternalGetInputSizeInfo(DWORD dwInputStreamIndex,
+                                          DWORD *pcbSize,
+                                          DWORD *pcbMaxLookahead,
+                                          DWORD *pcbAlignment)
 {
-    return E_NOTIMPL;
+    assert(dwInputStreamIndex < 1);
+    assert(pcbSize != 0);
+    assert(pcbMaxLookahead != 0);
+    assert(pcbAlignment != 0);
+
+    int n = twolame_get_num_channels(Options);
+    *pcbSize = n * 2;
+    *pcbMaxLookahead = 0;
+    *pcbAlignment = n * 2;
+    return S_OK;
 }
 
 HRESULT
-TMp2EncoderImpl::InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *)
+TMp2EncoderImpl::InternalGetOutputSizeInfo(DWORD dwOutputStreamIndex,
+                                           DWORD *pcbSize, DWORD *pcbAlignment)
 {
-    return E_NOTIMPL;
+    assert(dwOutputStreamIndex < 1);
+    assert(pcbSize != 0);
+    assert(pcbAlignment != 0);
+
+    *pcbSize = twolame_get_framelength(Options);
+    *pcbAlignment = 1;
+    return S_OK;
 }
 
 HRESULT
@@ -354,41 +373,70 @@ TMp2EncoderImpl::InternalSetInputMaxLatency(DWORD, REFERENCE_TIME)
 HRESULT
 TMp2EncoderImpl::InternalFlush()
 {
-    return E_NOTIMPL;
+    InputBuffer = 0;
+    InitializeEncoder(InputType(0), OutputType(0));
+    return S_OK;
 }
 
 HRESULT
-TMp2EncoderImpl::InternalDiscontinuity(DWORD)
+TMp2EncoderImpl::InternalDiscontinuity(DWORD dwInputStreamIndex)
 {
-    return E_NOTIMPL;
+    assert(dwInputStreamIndex < 1);
+
+    // We do nothing.
+    return S_OK;
 }
 
 HRESULT
 TMp2EncoderImpl::InternalAllocateStreamingResources()
 {
-    return E_NOTIMPL;
+    // We do nothing.
+    return S_OK;
 }
 
 HRESULT
 TMp2EncoderImpl::InternalFreeStreamingResources()
 {
-    return E_NOTIMPL;
+    // We do nothing.
+    return S_OK;
 }
 
 HRESULT
 TMp2EncoderImpl::InternalAcceptingInput(DWORD dwInputStreamIndex)
 {
-    return E_NOTIMPL;
+    assert(dwInputStreamIndex < 1);
+
+    if (InputBuffer == 0)
+        return S_OK;
+    else
+        return S_FALSE;
 }
 
 HRESULT
-TMp2EncoderImpl::InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME)
+TMp2EncoderImpl::InternalProcessInput(DWORD dwInputStreamIndex,
+                                      IMediaBuffer *pBuffer, DWORD dwFlags,
+                                      REFERENCE_TIME rtTimestamp,
+                                      REFERENCE_TIME rtTimelength)
 {
-    return E_NOTIMPL;
+    assert(dwInputStreamIndex < 1);
+    assert(pBuffer != 0);
+    assert(InputBuffer == 0);
+
+    InputBuffer = pBuffer;
+    return S_OK;
 }
 
 HRESULT
-TMp2EncoderImpl::InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *)
+TMp2EncoderImpl::InternalProcessOutput(DWORD dwFlags, DWORD cOutputBufferCount,
+                                       DMO_OUTPUT_DATA_BUFFER *pOutputBuffers,
+                                       DWORD *pdwStatus)
 {
-    return E_NOTIMPL;
+    assert(pOutputBuffers != 0);
+    assert(pdwStatus != 0);
+
+    if (InputBuffer != 0)
+    {
+        // @todo
+    }
+    return S_FALSE;
 }

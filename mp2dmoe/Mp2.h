@@ -65,17 +65,26 @@ public:
                                    const DMO_MEDIA_TYPE *pmt);
     HRESULT InternalCheckOutputType(DWORD dwOutputStreamIndex,
                                     const DMO_MEDIA_TYPE *pmt);
-    HRESULT InternalGetInputSizeInfo(DWORD, DWORD *, DWORD *, DWORD *);
-    HRESULT InternalGetOutputSizeInfo(DWORD, DWORD *, DWORD *);
+    HRESULT InternalGetInputSizeInfo(DWORD dwInputStreamIndex,
+                                     DWORD *pcbSize,
+                                     DWORD *pcbMaxLookahead,
+                                     DWORD *pcbAlignment);
+    HRESULT InternalGetOutputSizeInfo(DWORD dwOutputStreamIndex,
+                                      DWORD *pcbSize, DWORD *pcbAlignment);
     HRESULT InternalGetInputMaxLatency(DWORD, REFERENCE_TIME *);
     HRESULT InternalSetInputMaxLatency(DWORD, REFERENCE_TIME);
     HRESULT InternalFlush();
-    HRESULT InternalDiscontinuity(DWORD);
+    HRESULT InternalDiscontinuity(DWORD dwInputStreamIndex);
     HRESULT InternalAllocateStreamingResources();
     HRESULT InternalFreeStreamingResources();
     HRESULT InternalAcceptingInput(DWORD dwInputStreamIndex);
-    HRESULT InternalProcessInput(DWORD, IMediaBuffer *, DWORD, REFERENCE_TIME, REFERENCE_TIME);
-    HRESULT InternalProcessOutput(DWORD, DWORD, DMO_OUTPUT_DATA_BUFFER *, DWORD *);
+    HRESULT InternalProcessInput(DWORD dwInputStreamIndex,
+                                 IMediaBuffer *pBuffer, DWORD dwFlags,
+                                 REFERENCE_TIME rtTimestamp,
+                                 REFERENCE_TIME rtTimelength);
+    HRESULT InternalProcessOutput(DWORD dwFlags, DWORD cOutputBufferCount,
+                                  DMO_OUTPUT_DATA_BUFFER *pOutputBuffers,
+                                  DWORD *pdwStatus);
 protected:
     static HRESULT SetInputParameters(twolame_options *options,
                                       const DMO_MEDIA_TYPE *pmt);
@@ -85,6 +94,7 @@ protected:
                               const DMO_MEDIA_TYPE *pmtOutput);
 private:
     twolame_options *Options;
+    DelphiInterface<IMediaBuffer> InputBuffer;
 };
 
 #endif
