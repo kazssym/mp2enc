@@ -40,7 +40,9 @@
 #pragma link "msdmo.lib"
 
 const GUID KSDATAFORMAT_SUBTYPE_PCM = {STATIC_KSDATAFORMAT_SUBTYPE_PCM};
+#if 0
 const GUID KSDATAFORMAT_SUBTYPE_MPEG1Payload = {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload};
+#endif
 
 #define CHANNEL_MASK(c)\
     ((c) == 2 ? SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT : 0)
@@ -89,30 +91,27 @@ TMp2EncoderImpl::SetInputParameters(twolame_options *options,
 
             WAVEFORMATEX *format =
                 reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
-            if (format->wFormatTag == WAVE_FORMAT_PCM ||
-                format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
+            if (format->wBitsPerSample != 16) // We support 16-bit audio only.
+                return DMO_E_INVALIDTYPE;
+            if (pmt->lSampleSize != format->nChannels * 2UL ||
+                pmt->cbFormat < sizeof (WAVEFORMATEX) + format->cbSize)
+                return DMO_E_INVALIDTYPE;
+            // We just ignores any wrong wFormatTag value.
+            if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
             {
-                if (format->wBitsPerSample != 16)
+                if (format->cbSize < 22)
                     return DMO_E_INVALIDTYPE;
-                if (pmt->lSampleSize != format->nChannels * 2UL ||
-                    pmt->cbFormat < sizeof (WAVEFORMATEX) + format->cbSize)
+
+                WAVEFORMATEXTENSIBLE *formatExt =
+                    reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
+                if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_PCM &&
+                    formatExt->Samples.wValidBitsPerSample != 16)
                     return DMO_E_INVALIDTYPE;
-                if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
-                {
-                    if (format->cbSize < 22)
-                        return DMO_E_INVALIDTYPE;
-
-                    WAVEFORMATEXTENSIBLE *formatExt =
-                        reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
-                    if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_PCM &&
-                        formatExt->Samples.wValidBitsPerSample != 16)
-                        return DMO_E_INVALIDTYPE;
-                }
-
-                if (twolame_set_num_channels(options, format->nChannels) == 0 &&
-                    twolame_set_in_samplerate(options, format->nSamplesPerSec) == 0)
-                    return S_OK;
             }
+
+            if (twolame_set_num_channels(options, format->nChannels) == 0 &&
+                twolame_set_in_samplerate(options, format->nSamplesPerSec) == 0)
+                return S_OK;
         }
     }
     return DMO_E_INVALIDTYPE;
@@ -125,8 +124,11 @@ TMp2EncoderImpl::SetOutputParameters(twolame_options *options,
     assert(options != 0);
     assert(pmt != 0);
 
-    if ((pmt->majortype == MEDIATYPE_Audio || pmt->majortype == MEDIATYPE_Stream) &&
-        pmt->subtype == MEDIASUBTYPE_MPEG1Payload)
+    if (pmt->majortype == MEDIATYPE_Audio &&
+        (pmt->subtype == MEDIASUBTYPE_MPEG1Audio ||
+         pmt->subtype == MEDIASUBTYPE_MPEG1Payload) ||
+        pmt->majortype == MEDIATYPE_Stream &&
+        pmt->subtype == MEDIASUBTYPE_MPEG1Audio)
     {
         if (pmt->formattype == FORMAT_WaveFormatEx)
         {
@@ -135,10 +137,12 @@ TMp2EncoderImpl::SetOutputParameters(twolame_options *options,
 
             WAVEFORMATEX *format =
                 reinterpret_cast<WAVEFORMATEX *>(pmt->pbFormat);
+            if (pmt->cbFormat < sizeof (WAVEFORMATEX) + format->cbSize)
+                return DMO_E_INVALIDTYPE;
+#if 0 // I do not know what is the standard value for MPEG audio.
             if (format->wFormatTag == WAVE_FORMAT_EXTENSIBLE)
             {
-                if (format->cbSize < 22 ||
-                    pmt->cbFormat < sizeof (WAVEFORMATEX) + format->cbSize)
+                if (format->cbSize < 22)
                     return DMO_E_INVALIDTYPE;
 
                 WAVEFORMATEXTENSIBLE *formatExt =
@@ -146,15 +150,16 @@ TMp2EncoderImpl::SetOutputParameters(twolame_options *options,
                 if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_MPEG1Payload &&
                     formatExt->Samples.wSamplesPerBlock != 1152)
                     return DMO_E_INVALIDTYPE;
-
-                int bitrate = format->nAvgBytesPerSec * 8;
-                if (bitrate % 1000 != 0)
-                    return DMO_E_INVALIDTYPE;
-                if (twolame_set_mode(options, format->nChannels == 1 ? TWOLAME_MONO : TWOLAME_JOINT_STEREO) == 0 &&
-                    twolame_set_out_samplerate(options, format->nSamplesPerSec) == 0 &&
-                    twolame_set_bitrate(options, bitrate / 1000) == 0)
-                    return S_OK;
             }
+#endif // 0
+
+            int bitrate = format->nAvgBytesPerSec * 8;
+            if (bitrate % 1000 != 0)
+                return DMO_E_INVALIDTYPE;
+            if (twolame_set_mode(options, format->nChannels == 1 ? TWOLAME_MONO : TWOLAME_JOINT_STEREO) == 0 &&
+                twolame_set_out_samplerate(options, format->nSamplesPerSec) == 0 &&
+                twolame_set_bitrate(options, bitrate / 1000) == 0)
+                return S_OK;
         }
     }
     return DMO_E_INVALIDTYPE;
@@ -275,7 +280,7 @@ TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex,
 {
     assert(dwOutputStreamIndex < 1);
 
-    if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
+    if (dwTypeIndex >= 2 * sizeof OutputFormat / sizeof OutputFormat[0])
         return DMO_E_NO_MORE_ITEMS;
 
     if (pmt != 0)
@@ -283,8 +288,14 @@ TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex,
         HRESULT hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
         if (FAILED(hr))
             return hr;
-        pmt->majortype = MEDIATYPE_Audio;
-        pmt->subtype = MEDIASUBTYPE_MPEG1Payload;
+        if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
+        {
+            pmt->majortype = MEDIATYPE_Stream;
+            dwTypeIndex -= sizeof OutputFormat / sizeof OutputFormat[0];
+        }
+        else
+            pmt->majortype = MEDIATYPE_Audio;
+        pmt->subtype = MEDIASUBTYPE_MPEG1Audio;
         pmt->bFixedSizeSamples = TRUE;
         pmt->formattype = FORMAT_WaveFormatEx;
         WAVEFORMATEXTENSIBLE *format =
