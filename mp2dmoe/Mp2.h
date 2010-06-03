@@ -26,6 +26,8 @@
 #include <dmo.h>
 #include <dmoimpl.h>
 #undef FIX_LOCK_NAME
+#include <deque>
+#include <new>
 
 class ATL_NO_VTABLE TMp2EncoderImpl :
     public CComObjectRootEx<CComMultiThreadModel>,
@@ -47,6 +49,10 @@ public:
     TMp2EncoderImpl()
     {
         Options = 0;
+        Discontinuous = false;
+        OutputTimestamp = 0;
+        FrameBufferCopied = 0;
+        FrameBufferLength = 0;
     }
 
     HRESULT FinalConstruct();
@@ -94,7 +100,33 @@ protected:
                               const DMO_MEDIA_TYPE *pmtOutput);
 private:
     twolame_options *Options;
-    DelphiInterface<IMediaBuffer> InputBuffer;
+    bool Discontinuous;
+    REFERENCE_TIME OutputTimestamp;
+
+    struct frame_buffer
+    {
+        BYTE *base;
+        DWORD length;
+        frame_buffer() : base(0), length(0) {}
+        frame_buffer(const frame_buffer &a) : base(0), length(0) {}
+        ~frame_buffer()
+        {
+            delete[] base;
+        }
+        frame_buffer &operator=(const frame_buffer &a)
+        {
+            return *this;
+        }
+        void Allocate(std::size_t capacity)
+        {
+            delete[] base;
+            base = new (std::nothrow) BYTE[capacity];
+            length = 0;
+        }
+    };
+    std::deque<frame_buffer> FrameBuffers;
+    DWORD FrameBufferCopied;
+    DWORD FrameBufferLength;
 };
 
 #endif

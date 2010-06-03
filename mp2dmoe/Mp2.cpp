@@ -28,6 +28,7 @@
 #pragma warn -8098
 #include <ksmedia.h>
 #pragma warn .8098
+#include <algorithm>
 #include <cstring>
 #include <cassert>
 
@@ -55,7 +56,7 @@ const GUID KSDATAFORMAT_SUBTYPE_MPEG1Payload = {STATIC_KSDATAFORMAT_SUBTYPE_MPEG
 }
 #define MPEG1(c, s, r) {\
     {WAVE_FORMAT_EXTENSIBLE, (c), (s), (r) / 8, 1, 0, 22},\
-    1152, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
+    TWOLAME_SAMPLES_PER_FRAME, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
 }
 static const WAVEFORMATEXTENSIBLE InputFormat[] = {
     PCM_EXT(2, 48000, 2, 16),
@@ -148,7 +149,7 @@ TMp2EncoderImpl::SetOutputParameters(twolame_options *options,
                 WAVEFORMATEXTENSIBLE *formatExt =
                     reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
                 if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_MPEG1Payload &&
-                    formatExt->Samples.wSamplesPerBlock != 1152)
+                    formatExt->Samples.wSamplesPerBlock != TWOLAME_SAMPLES_PER_FRAME)
                     return DMO_E_INVALIDTYPE;
             }
 #endif // 0
@@ -243,8 +244,7 @@ TMp2EncoderImpl::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
     assert(dwOutputStreamIndex < 1);
     assert(pdwFlags != 0);
 
-    *pdwFlags = (DMO_OUTPUT_STREAMF_WHOLE_SAMPLES |
-                 DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE);
+    *pdwFlags = DMO_OUTPUT_STREAMF_WHOLE_SAMPLES | DMO_OUTPUT_STREAMF_SINGLE_SAMPLE_PER_BUFFER;
     return S_OK;
 }
 
@@ -338,10 +338,10 @@ TMp2EncoderImpl::InternalGetInputSizeInfo(DWORD dwInputStreamIndex,
     assert(pcbMaxLookahead != 0);
     assert(pcbAlignment != 0);
 
-    int n = twolame_get_num_channels(Options);
-    *pcbSize = n * 2;
+    const int nChannels = twolame_get_num_channels(Options);
+    *pcbSize = nChannels * 2;
     *pcbMaxLookahead = 0;
-    *pcbAlignment = n * 2;
+    *pcbAlignment = nChannels * 2;
     return S_OK;
 }
 
@@ -373,9 +373,13 @@ TMp2EncoderImpl::InternalSetInputMaxLatency(DWORD, REFERENCE_TIME)
 HRESULT
 TMp2EncoderImpl::InternalFlush()
 {
-    InputBuffer = 0;
-    InitializeEncoder(InputType(0), OutputType(0));
-    return S_OK;
+    Discontinuous = false;
+    OutputTimestamp = 0;
+    FrameBuffers.clear();
+    FrameBufferCopied = 0;
+    FrameBufferLength = 0;
+    HRESULT hr = InitializeEncoder(InputType(0), OutputType(0));
+    return hr;
 }
 
 HRESULT
@@ -383,7 +387,7 @@ TMp2EncoderImpl::InternalDiscontinuity(DWORD dwInputStreamIndex)
 {
     assert(dwInputStreamIndex < 1);
 
-    // We do nothing.
+    Discontinuous = true;
     return S_OK;
 }
 
@@ -406,7 +410,7 @@ TMp2EncoderImpl::InternalAcceptingInput(DWORD dwInputStreamIndex)
 {
     assert(dwInputStreamIndex < 1);
 
-    if (InputBuffer == 0)
+    if (!Discontinuous)
         return S_OK;
     else
         return S_FALSE;
@@ -420,9 +424,43 @@ TMp2EncoderImpl::InternalProcessInput(DWORD dwInputStreamIndex,
 {
     assert(dwInputStreamIndex < 1);
     assert(pBuffer != 0);
-    assert(InputBuffer == 0);
 
-    InputBuffer = pBuffer;
+    BYTE *input;
+    DWORD inputLength;
+    HRESULT hr = pBuffer->GetBufferAndLength(&input, &inputLength);
+    if (FAILED(hr))
+        return hr;
+
+    const unsigned int sampleSize =
+        twolame_get_num_channels(Options) * sizeof (short);
+    const unsigned int frameLength = twolame_get_framelength(Options);
+    assert(inputLength % sampleSize == 0);
+
+    DWORD encoded = 0;
+    while (encoded != inputLength)
+    {
+        if (FrameBuffers.empty() || FrameBuffers.back().length != 0)
+        {
+            FrameBuffers.resize(FrameBuffers.size() + 1);
+            FrameBuffers.back().Allocate(frameLength + 1);
+            if (FrameBuffers.back().base == 0)
+                return E_OUTOFMEMORY;
+        }
+
+        DWORD unitLength = TWOLAME_SAMPLES_PER_FRAME * sampleSize;
+        if (encoded + unitLength > inputLength)
+            unitLength = inputLength - encoded;
+        int n = twolame_encode_buffer_interleaved
+            (Options, reinterpret_cast<short *>(input), unitLength / sampleSize,
+             FrameBuffers.back().base, frameLength + 1);
+        if (n < 0)
+            return E_FAIL;
+        assert((DWORD) n <= frameLength);
+        FrameBuffers.back().length = n;
+        FrameBufferLength += n;
+        input += unitLength;
+        encoded += unitLength;
+    }
     return S_OK;
 }
 
@@ -434,9 +472,60 @@ TMp2EncoderImpl::InternalProcessOutput(DWORD dwFlags, DWORD cOutputBufferCount,
     assert(pOutputBuffers != 0);
     assert(pdwStatus != 0);
 
-    if (InputBuffer != 0)
+    HRESULT hr;
+    const unsigned int nChannels = twolame_get_num_channels(Options);
+    const unsigned int frameLength = twolame_get_framelength(Options);
+    const unsigned int samplerate = twolame_get_out_samplerate(Options);
+
+    BYTE *output;
+    DWORD outputLength;
+    DWORD outputMaxLength;
+    hr = pOutputBuffers[0].pBuffer->GetBufferAndLength(&output, &outputLength);
+    if (SUCCEEDED(hr))
+        hr = pOutputBuffers[0].pBuffer->GetMaxLength(&outputMaxLength);
+    if (FAILED(hr))
+        return hr;
+    output += outputLength;
+#if 1
+    if (outputLength == 0)
     {
-        // @todo
+        pOutputBuffers[0].dwStatus |= DMO_OUTPUT_DATA_BUFFERF_TIME;
+        pOutputBuffers[0].rtTimestamp = OutputTimestamp;
     }
-    return S_FALSE;
+#endif // 0
+
+    if (Discontinuous ||
+        outputLength + FrameBufferLength - FrameBufferCopied >= outputMaxLength)
+    {
+        while (!FrameBuffers.empty() && outputLength < outputMaxLength)
+        {
+            BYTE *buffer = FrameBuffers.front().base + FrameBufferCopied;
+            DWORD copyLength = FrameBuffers.front().length - FrameBufferCopied;
+            if (outputLength + copyLength > outputMaxLength)
+                copyLength = outputMaxLength - outputLength;
+            output = std::copy(buffer, buffer + copyLength, output);
+            outputLength += copyLength;
+            buffer += copyLength;
+            FrameBufferCopied += copyLength;
+            if (FrameBufferCopied == FrameBuffers.front().length)
+            {
+                FrameBufferCopied = 0;
+                FrameBufferLength -= FrameBuffers.front().length;
+                FrameBuffers.pop_front();
+            }
+        }
+        if (Discontinuous && FrameBuffers.empty())
+            Discontinuous = false;
+        }
+
+    hr = pOutputBuffers[0].pBuffer->SetLength(outputLength);
+    if (FAILED(hr))
+        return hr;
+
+#if 1
+    pOutputBuffers[0].dwStatus |= DMO_OUTPUT_DATA_BUFFERF_TIMELENGTH;
+    pOutputBuffers[0].rtTimelength = outputLength;
+    OutputTimestamp += outputLength;
+#endif // 0
+    return S_OK;
 }
