@@ -47,6 +47,7 @@ public:
     TMp2EncoderImpl()
     {
         Options = 0;
+        GotDiscontinuity = 0;
     }
 
     HRESULT FinalConstruct();
@@ -94,7 +95,9 @@ protected:
                               const DMO_MEDIA_TYPE *pmtOutput);
 private:
     twolame_options *Options;
+    bool GotDiscontinuity;
     DelphiInterface<IMediaBuffer> InputBuffer;
+    DWORD EncodedLength;
 };
 
 #endif

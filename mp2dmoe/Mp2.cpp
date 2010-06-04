@@ -55,7 +55,7 @@ const GUID KSDATAFORMAT_SUBTYPE_MPEG1Payload = {STATIC_KSDATAFORMAT_SUBTYPE_MPEG
 }
 #define MPEG1(c, s, r) {\
     {WAVE_FORMAT_EXTENSIBLE, (c), (s), (r) / 8, 1, 0, 22},\
-    1152, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
+    TWOLAME_SAMPLES_PER_FRAME, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
 }
 static const WAVEFORMATEXTENSIBLE InputFormat[] = {
     PCM_EXT(2, 48000, 2, 16),
@@ -148,7 +148,7 @@ TMp2EncoderImpl::SetOutputParameters(twolame_options *options,
                 WAVEFORMATEXTENSIBLE *formatExt =
                     reinterpret_cast<WAVEFORMATEXTENSIBLE *>(format);
                 if (formatExt->SubFormat != KSDATAFORMAT_SUBTYPE_MPEG1Payload &&
-                    formatExt->Samples.wSamplesPerBlock != 1152)
+                    formatExt->Samples.wSamplesPerBlock != TWOLAME_SAMPLES_PER_FRAME)
                     return DMO_E_INVALIDTYPE;
             }
 #endif // 0
@@ -338,10 +338,10 @@ TMp2EncoderImpl::InternalGetInputSizeInfo(DWORD dwInputStreamIndex,
     assert(pcbMaxLookahead != 0);
     assert(pcbAlignment != 0);
 
-    int n = twolame_get_num_channels(Options);
-    *pcbSize = n * 2;
+    const int nChannels = twolame_get_num_channels(Options);
+    *pcbSize = nChannels * 2;
     *pcbMaxLookahead = 0;
-    *pcbAlignment = n * 2;
+    *pcbAlignment = nChannels * 2;
     return S_OK;
 }
 
@@ -374,8 +374,9 @@ HRESULT
 TMp2EncoderImpl::InternalFlush()
 {
     InputBuffer = 0;
-    InitializeEncoder(InputType(0), OutputType(0));
-    return S_OK;
+    GotDiscontinuity = false;
+    HRESULT hr = InitializeEncoder(InputType(0), OutputType(0));
+    return hr;
 }
 
 HRESULT
@@ -383,7 +384,7 @@ TMp2EncoderImpl::InternalDiscontinuity(DWORD dwInputStreamIndex)
 {
     assert(dwInputStreamIndex < 1);
 
-    // We do nothing.
+    GotDiscontinuity = true;
     return S_OK;
 }
 
@@ -406,7 +407,7 @@ TMp2EncoderImpl::InternalAcceptingInput(DWORD dwInputStreamIndex)
 {
     assert(dwInputStreamIndex < 1);
 
-    if (InputBuffer == 0)
+    if (InputBuffer == 0 && !GotDiscontinuity)
         return S_OK;
     else
         return S_FALSE;
@@ -423,6 +424,7 @@ TMp2EncoderImpl::InternalProcessInput(DWORD dwInputStreamIndex,
     assert(InputBuffer == 0);
 
     InputBuffer = pBuffer;
+    EncodedLength = 0;
     return S_OK;
 }
 
@@ -431,12 +433,80 @@ TMp2EncoderImpl::InternalProcessOutput(DWORD dwFlags, DWORD cOutputBufferCount,
                                        DMO_OUTPUT_DATA_BUFFER *pOutputBuffers,
                                        DWORD *pdwStatus)
 {
+    assert(cOutputBufferCount >= 1);
     assert(pOutputBuffers != 0);
     assert(pdwStatus != 0);
 
+    HRESULT hr;
+    BYTE *output;
+    DWORD outputLength;
+    DWORD outputCapacity;
+    assert(pOutputBuffers[0].pBuffer != 0);
+    hr = pOutputBuffers[0].pBuffer->GetBufferAndLength(&output, &outputLength);
+    if (FAILED(hr))
+        return hr;
+    hr = pOutputBuffers[0].pBuffer->GetMaxLength(&outputCapacity);
+    if (FAILED(hr))
+        return hr;
+    assert(outputLength == 0);
+
+    const std::size_t sampleSize =
+        twolame_get_num_channels(Options) * sizeof (short);
+    const DWORD frameLength = twolame_get_framelength(Options);
+
     if (InputBuffer != 0)
     {
-        // @todo
+        BYTE *input;
+        DWORD inputLength;
+        hr = InputBuffer->GetBufferAndLength(&input, &inputLength);
+        if (FAILED(hr))
+            return hr;
+        input += EncodedLength;
+        inputLength -= EncodedLength;
+
+        assert(inputLength % sampleSize == 0);
+        while (inputLength != 0 && outputCapacity >= frameLength)
+        {
+            DWORD m = TWOLAME_SAMPLES_PER_FRAME * sampleSize;
+            if (m > inputLength)
+                m = inputLength;
+
+            int n = twolame_encode_buffer_interleaved
+                (Options, reinterpret_cast<short *>(input), m / sampleSize,
+                 output, outputCapacity);
+            if (n < 0)
+                return E_FAIL;
+            EncodedLength += m;
+            outputLength += n;
+
+            input += m;
+            inputLength -= m;
+            output += n;
+            outputCapacity -= n;
+        }
+        if (inputLength == 0)
+            InputBuffer = 0;
+        else
+            pOutputBuffers[0].dwStatus |= DMO_OUTPUT_DATA_BUFFERF_INCOMPLETE;
     }
-    return S_FALSE;
+
+    if (InputBuffer == 0 && GotDiscontinuity && outputCapacity >= frameLength)
+    {
+        int n = twolame_encode_flush(Options, output, outputCapacity);
+        if (n < 0)
+            return E_FAIL;
+        outputLength += n;
+        GotDiscontinuity = false;
+    }
+
+    if (outputLength != 0)
+    {
+        hr = pOutputBuffers[0].pBuffer->SetLength(outputLength);
+        if (FAILED(hr))
+            return hr;
+
+        return S_OK;
+    }
+    else
+        return S_FALSE;
 }
