@@ -49,7 +49,7 @@ const GUID KSDATAFORMAT_SUBTYPE_MPEG1Payload = {STATIC_KSDATAFORMAT_SUBTYPE_MPEG
 #define PCM(c, s, b, v) {\
     {WAVE_FORMAT_PCM, (c), (s), (s) * (c) * (b), (c) * (b), 8 * (b), 0}\
 }
-#define PCM_EXT(c, s, b, v) {\
+#define PCMX(c, s, b, v) {\
     {WAVE_FORMAT_EXTENSIBLE, (c), (s), (s) * (c) * (b), (c) * (b), 8 * (b), 22},\
     (v), CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_PCM}\
 }
@@ -58,19 +58,19 @@ const GUID KSDATAFORMAT_SUBTYPE_MPEG1Payload = {STATIC_KSDATAFORMAT_SUBTYPE_MPEG
     TWOLAME_SAMPLES_PER_FRAME, CHANNEL_MASK(c), {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload}\
 }
 static const WAVEFORMATEXTENSIBLE InputFormat[] = {
-    PCM_EXT(2, 48000, 2, 16),
-    PCM_EXT(1, 48000, 2, 16),
+    PCMX(2, 48000, 2, 16),
     PCM(2, 44100, 2, 16),
-    PCM(1, 44100, 2, 16),
     PCM(2, 32000, 2, 16),
+    PCMX(1, 48000, 2, 16),
+    PCM(1, 44100, 2, 16),
     PCM(1, 32000, 2, 16),
 };
 static const WAVEFORMATEXTENSIBLE OutputFormat[] = {
     MPEG1(2, 48000, 384000),
-    MPEG1(1, 48000, 192000),
     MPEG1(2, 44100, 384000),
-    MPEG1(1, 44100, 192000),
     MPEG1(2, 32000, 384000),
+    MPEG1(1, 48000, 192000),
+    MPEG1(1, 44100, 192000),
     MPEG1(1, 32000, 192000),
 };
 
