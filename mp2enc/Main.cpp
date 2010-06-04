@@ -244,7 +244,7 @@ __fastcall TMainForm::EncodeAs(const UnicodeString FileName)
     DelphiInterface<IMediaFilter> mediaFilter1;
     CheckSucceeded(GraphBuilder1->QueryInterface(&mediaFilter1));
     CheckSucceeded(mediaFilter1->SetSyncSource(0));
-#else
+#elif 0
     // Test the encoder.
     DelphiInterface<IPin> pin1;
     CheckSucceeded(FindUnconnectedPin(Encoder, PINDIR_OUTPUT, &pin1));
