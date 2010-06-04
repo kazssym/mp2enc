@@ -71,8 +71,7 @@ private:
     DelphiInterface<IMediaControl> MediaControl1;
     DelphiInterface<IMediaEvent> MediaEvent1;
     DelphiInterface<IBaseFilter> Encoder;
-    DelphiInterface<IAMStreamConfig> StreamConfig;
-    UnicodeString FileName;
+    UnicodeString InputFileName;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TMainForm *MainForm;

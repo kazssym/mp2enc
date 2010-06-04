@@ -120,10 +120,13 @@ __fastcall RaiseError(HRESULT hr)
     throw Exception(text);
 }
 
+/**
+ * Raises an exception if an operation result indicates a failure.
+ */
 inline void
 __fastcall CheckSucceeded(HRESULT hr)
 {
-    if (SUCCEEDED(hr))
+    if (FAILED(hr))
         RaiseError(hr);
 }
 
@@ -135,68 +138,57 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 UnicodeString
 __fastcall TMainForm::GetDefaultOutputFileName() const
 {
-    return FileName + ".mp2"; // @todo
+    return InputFileName + ".mp2"; // @todo
 }
 
 void
-__fastcall TMainForm::OpenFile(const UnicodeString Name)
+__fastcall TMainForm::OpenFile(const UnicodeString FileName)
 {
-    HRESULT hr;
     DelphiInterface<IGraphBuilder> graphBuilder1;
     CheckSucceeded(CoCreateInstance(CLSID_FilterGraph, 0, CLSCTX_INPROC_SERVER,
                                     &graphBuilder1));
 
     DelphiInterface<IBaseFilter> source1;
-    CheckSucceeded(graphBuilder1->AddSourceFilter(Name.t_str(), 0, &source1));
+    CheckSucceeded(graphBuilder1->AddSourceFilter(FileName.t_str(), 0, &source1));
 
     DelphiInterface<IBaseFilter> encoder1;
-    hr = CoCreateInstance(CLSID_DMOWrapperFilter, 0, CLSCTX_INPROC_SERVER, &encoder1);
-    if (SUCCEEDED(hr))
-    {
-        DelphiInterface<IDMOWrapperFilter> dmoWrapper;
-        hr = encoder1->QueryInterface(&dmoWrapper);
-        if (SUCCEEDED(hr))
-            hr = dmoWrapper->Init(CLSID_Mp2Encoder, DMOCATEGORY_AUDIO_ENCODER);
-        if (SUCCEEDED(hr))
-            hr = graphBuilder1->AddFilter(encoder1, 0);
-    }
-    if (FAILED(hr))
-        RaiseError(hr);
+    CheckSucceeded(CoCreateInstance(CLSID_DMOWrapperFilter, 0,
+                                    CLSCTX_INPROC_SERVER, &encoder1));
+    CheckSucceeded(graphBuilder1->AddFilter(encoder1, 0));
 
+    DelphiInterface<IDMOWrapperFilter> dmoWrapper1;
+    CheckSucceeded(encoder1->QueryInterface(&dmoWrapper1));
+    CheckSucceeded(dmoWrapper1->Init(CLSID_Mp2Encoder, DMOCATEGORY_AUDIO_ENCODER));
+
+    // Now we can connect the two.
     CheckSucceeded(Connect(graphBuilder1, source1, encoder1));
 
-    DelphiInterface<IAMStreamConfig> streamConfig1;
     DelphiInterface<IPin> pin1;
-    hr = FindUnconnectedPin(encoder1, PINDIR_OUTPUT, &pin1);
-    if (SUCCEEDED(hr))
+    CheckSucceeded(FindUnconnectedPin(encoder1, PINDIR_OUTPUT, &pin1));
+
+    DelphiInterface<IAMStreamConfig> streamConfig1;
+    CheckSucceeded(pin1->QueryInterface(&streamConfig1));
+
+    int n, size;
+    CheckSucceeded(streamConfig1->GetNumberOfCapabilities(&n, &size));
+    if (n > 0 && size >= (int) sizeof (AUDIO_STREAM_CONFIG_CAPS))
     {
-        hr = pin1->QueryInterface(&streamConfig1);
-        if (SUCCEEDED(hr))
+        for (int i = 0; i != n; ++i)
         {
-            int n, size;
-            hr = streamConfig1->GetNumberOfCapabilities(&n, &size);
-            if (SUCCEEDED(hr) && n > 0 && size >= (int) sizeof (AUDIO_STREAM_CONFIG_CAPS))
+            AM_MEDIA_TYPE *pmt;
+            AUDIO_STREAM_CONFIG_CAPS caps;
+            HRESULT hr = streamConfig1->GetStreamCaps(i, &pmt, reinterpret_cast<BYTE *>(&caps));
+            if (SUCCEEDED(hr) && pmt->majortype == MEDIATYPE_Stream)
             {
-                for (int i = 0; i != n; ++i)
-                {
-                    AM_MEDIA_TYPE *pmt;
-                    AUDIO_STREAM_CONFIG_CAPS caps;
-                    hr = streamConfig1->GetStreamCaps(i, &pmt, reinterpret_cast<BYTE *>(&caps));
-                    if (SUCCEEDED(hr) && pmt->majortype == MEDIATYPE_Stream)
-                    {
-                        assert(pmt != 0);
-                        hr = streamConfig1->SetFormat(pmt);
-                        CoTaskMemFree(pmt->pbFormat);
-                        CoTaskMemFree(pmt);
-                        if (SUCCEEDED(hr))
-                            break;
-                    }
-                }
+                assert(pmt != 0);
+                hr = streamConfig1->SetFormat(pmt);
+                CoTaskMemFree(pmt->pbFormat);
+                CoTaskMemFree(pmt);
+                if (SUCCEEDED(hr))
+                    break;
             }
         }
     }
-    if (FAILED(hr))
-        RaiseError(hr);
 
     GraphBuilder1 = graphBuilder1;
     // QueryInterface does not Release.
@@ -205,8 +197,7 @@ __fastcall TMainForm::OpenFile(const UnicodeString Name)
     CheckSucceeded(GraphBuilder1->QueryInterface(&MediaControl1));
     CheckSucceeded(GraphBuilder1->QueryInterface(&MediaEvent1));
     Encoder = encoder1;
-    StreamConfig = streamConfig1;
-    FileName = Name;
+    InputFileName = FileName;
 
     Close1->Enabled = true;
     Encode1->Enabled = true;
@@ -220,8 +211,7 @@ __fastcall TMainForm::CloseFile()
     MediaControl1 = 0;
     MediaEvent1 = 0;
     Encoder = 0;
-    StreamConfig = 0;
-    FileName = L"";
+    InputFileName = L"";
 
     Close1->Enabled = false;
     Encode1->Enabled = false;
@@ -239,16 +229,7 @@ __fastcall TMainForm::EncodeAs(const UnicodeString FileName)
         DelphiInterface<IFileSinkFilter2> fileSink1;
         hr = writer1->QueryInterface(&fileSink1);
         if (SUCCEEDED(hr))
-        {
-            AM_MEDIA_TYPE *pmt;
-            hr = StreamConfig->GetFormat(&pmt);
-            if (SUCCEEDED(hr))
-            {
-                hr = fileSink1->SetFileName(FileName.t_str(), pmt);
-                CoTaskMemFree(pmt->pbFormat);
-                CoTaskMemFree(pmt);
-            }
-        }
+            hr = fileSink1->SetFileName(FileName.t_str(), 0);
         if (SUCCEEDED(hr))
             hr = GraphBuilder1->AddFilter(writer1, 0);
     }
@@ -260,14 +241,10 @@ __fastcall TMainForm::EncodeAs(const UnicodeString FileName)
         RaiseError(hr);
 
     DelphiInterface<IMediaFilter> mediaFilter1;
-    hr = GraphBuilder1->QueryInterface(&mediaFilter1);
-    if (SUCCEEDED(hr))
-    {
-        hr = mediaFilter1->SetSyncSource(0);
-        hr = mediaFilter1->Run(0);
-    }
-    if (FAILED(hr))
-        RaiseError(hr);
+    CheckSucceeded(GraphBuilder1->QueryInterface(&mediaFilter1));
+    CheckSucceeded(mediaFilter1->SetSyncSource(0));
+
+    CheckSucceeded(MediaControl1->Run());
 }
 //---------------------------------------------------------------------------
 
