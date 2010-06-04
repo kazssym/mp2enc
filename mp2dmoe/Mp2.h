@@ -48,6 +48,7 @@ public:
     {
         Options = 0;
         GotDiscontinuity = 0;
+        InternalBuffer = 0;
     }
 
     HRESULT FinalConstruct();
@@ -96,6 +97,7 @@ protected:
 private:
     twolame_options *Options;
     bool GotDiscontinuity;
+    BYTE *InternalBuffer;
     DelphiInterface<IMediaBuffer> InputBuffer;
     DWORD EncodedLength;
 };

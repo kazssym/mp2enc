@@ -28,6 +28,7 @@
 #pragma warn -8098
 #include <ksmedia.h>
 #pragma warn .8098
+#include <new>
 #include <cstring>
 #include <cassert>
 
@@ -188,6 +189,7 @@ TMp2EncoderImpl::FinalConstruct()
 void
 TMp2EncoderImpl::FinalRelease()
 {
+    delete[] InternalBuffer;
     twolame_close(&Options);
 }
 
@@ -244,7 +246,8 @@ TMp2EncoderImpl::InternalGetOutputStreamInfo(DWORD dwOutputStreamIndex,
     assert(pdwFlags != 0);
 
     *pdwFlags = (DMO_OUTPUT_STREAMF_WHOLE_SAMPLES |
-                 DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE);
+                 DMO_OUTPUT_STREAMF_FIXED_SAMPLE_SIZE |
+                 DMO_OUTPUT_STREAMF_DISCARDABLE);
     return S_OK;
 }
 
@@ -441,14 +444,28 @@ TMp2EncoderImpl::InternalProcessOutput(DWORD dwFlags, DWORD cOutputBufferCount,
     BYTE *output;
     DWORD outputLength;
     DWORD outputCapacity;
-    assert(pOutputBuffers[0].pBuffer != 0);
-    hr = pOutputBuffers[0].pBuffer->GetBufferAndLength(&output, &outputLength);
-    if (FAILED(hr))
-        return hr;
-    hr = pOutputBuffers[0].pBuffer->GetMaxLength(&outputCapacity);
-    if (FAILED(hr))
-        return hr;
-    assert(outputLength == 0);
+    if (pOutputBuffers[0].pBuffer == 0)
+    {
+        if (InternalBuffer == 0)
+        {
+            InternalBuffer = new (std::nothrow) BYTE[8192];
+            if (InternalBuffer == 0)
+                return E_OUTOFMEMORY;
+        }
+        output = InternalBuffer;
+        outputLength = 0;
+        outputCapacity = 8192;
+    }
+    else
+    {
+        hr = pOutputBuffers[0].pBuffer->GetBufferAndLength(&output, &outputLength);
+        if (FAILED(hr))
+            return hr;
+        hr = pOutputBuffers[0].pBuffer->GetMaxLength(&outputCapacity);
+        if (FAILED(hr))
+            return hr;
+        assert(outputLength == 0);
+    }
 
     const std::size_t sampleSize =
         twolame_get_num_channels(Options) * sizeof (short);
@@ -461,6 +478,7 @@ TMp2EncoderImpl::InternalProcessOutput(DWORD dwFlags, DWORD cOutputBufferCount,
         hr = InputBuffer->GetBufferAndLength(&input, &inputLength);
         if (FAILED(hr))
             return hr;
+        assert(inputLength >= EncodedLength);
         input += EncodedLength;
         inputLength -= EncodedLength;
 
@@ -501,9 +519,12 @@ TMp2EncoderImpl::InternalProcessOutput(DWORD dwFlags, DWORD cOutputBufferCount,
 
     if (outputLength != 0)
     {
-        hr = pOutputBuffers[0].pBuffer->SetLength(outputLength);
-        if (FAILED(hr))
-            return hr;
+        if (pOutputBuffers[0].pBuffer != 0)
+        {
+            hr = pOutputBuffers[0].pBuffer->SetLength(outputLength);
+            if (FAILED(hr))
+                return hr;
+        }
 
         return S_OK;
     }
