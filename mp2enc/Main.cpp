@@ -222,6 +222,7 @@ void
 __fastcall TMainForm::EncodeAs(const UnicodeString FileName)
 {
     HRESULT hr;
+#if 0
     DelphiInterface<IBaseFilter> writer1;
     hr = CoCreateInstance(CLSID_FileWriter, 0, CLSCTX_INPROC_SERVER, &writer1);
     if (SUCCEEDED(hr))
@@ -243,6 +244,12 @@ __fastcall TMainForm::EncodeAs(const UnicodeString FileName)
     DelphiInterface<IMediaFilter> mediaFilter1;
     CheckSucceeded(GraphBuilder1->QueryInterface(&mediaFilter1));
     CheckSucceeded(mediaFilter1->SetSyncSource(0));
+#else
+    // Test the encoder.
+    DelphiInterface<IPin> pin1;
+    CheckSucceeded(FindUnconnectedPin(Encoder, PINDIR_OUTPUT, &pin1));
+    CheckSucceeded(GraphBuilder1->Render(pin1));
+#endif
 
     CheckSucceeded(MediaControl1->Run());
 }
