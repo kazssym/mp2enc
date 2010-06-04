@@ -21,13 +21,13 @@
 
 #include <dshow.h>
 
-//---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <Dialogs.hpp>
 #include <Menus.hpp>
+#include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -47,6 +47,7 @@ __published:	// IDE 管理のコンポーネント
     TMenuItem *SaveProfile1;
     TMenuItem *Help1;
     TMenuItem *About1;
+    TTimer *Timer1;
     TOpenDialog *OpenDialog1;
     TSaveDialog *SaveDialog1;
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
@@ -56,16 +57,21 @@ __published:	// IDE 管理のコンポーネント
     void __fastcall About1Click(TObject *Sender);
     void __fastcall Encode1Click(TObject *Sender);
     void __fastcall EncodeAs1Click(TObject *Sender);
+    void __fastcall Timer1Timer(TObject *Sender);
 private:	// ユーザー宣言
 public:		// ユーザー宣言
     __fastcall TMainForm(TComponent* Owner);
 protected:
-    void __fastcall OpenFile(const UnicodeString Name);
+    UnicodeString __fastcall GetDefaultOutputFileName() const;
+    void __fastcall OpenFile(const UnicodeString FileName);
     void __fastcall CloseFile(void);
-    void __fastcall EncodeAs(const UnicodeString OutputName);
+    void __fastcall EncodeAs(const UnicodeString FileName);
 private:
     DelphiInterface<IGraphBuilder> GraphBuilder1;
-    DelphiInterface<IBaseFilter> EncoderFilter;
+    DelphiInterface<IMediaControl> MediaControl1;
+    DelphiInterface<IMediaEvent> MediaEvent1;
+    DelphiInterface<IBaseFilter> Encoder;
+    DelphiInterface<IAMStreamConfig> StreamConfig;
     UnicodeString FileName;
 };
 //---------------------------------------------------------------------------
