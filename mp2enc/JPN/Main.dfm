@@ -13,8 +13,22 @@ object MainForm: TMainForm
   Menu = MainMenu1
   OldCreateOrder = False
   OnClose = FormClose
+  DesignSize = (
+    418
+    282)
   PixelsPerInch = 96
   TextHeight = 15
+  object EncodeButton: TButton
+    Left = 336
+    Top = 8
+    Width = 74
+    Height = 25
+    Anchors = [akTop, akRight]
+    Caption = '&Encode'
+    Enabled = False
+    TabOrder = 0
+    OnClick = Encode1Click
+  end
   object MainMenu1: TMainMenu
     Top = 256
     object File1: TMenuItem
@@ -76,13 +90,21 @@ object MainForm: TMainForm
   end
   object OpenDialog1: TOpenDialog
     Filter = 'Wave '#12501#12449#12452#12523'|*.wav|'#12377#12409#12390#12398#12501#12449#12452#12523'|*.*'
-    Left = 32
+    Left = 64
     Top = 256
   end
   object SaveDialog1: TSaveDialog
     DefaultExt = 'mp2'
     Filter = 'MP2 '#12501#12449#12452#12523'|*.mp2|'#12377#12409#12390#12398#12501#12449#12452#12523'|*.*'
-    Left = 64
+    Title = 'Encode as'
+    Left = 96
+    Top = 256
+  end
+  object Timer1: TTimer
+    Tag = 1
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 32
     Top = 256
   end
 end
