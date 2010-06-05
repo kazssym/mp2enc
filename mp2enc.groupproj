@@ -12,6 +12,9 @@
 			<Projects Include="mp2dmoe\tests\mp2dmoeTests.cbproj">
 				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
 			</Projects>
+			<Projects Include="id3mux\id3mux.cbproj">
+				<Dependencies/>
+			</Projects>
 			<Projects Include="mp2enc\mp2enc.cbproj">
 				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
 			</Projects>
@@ -56,6 +59,15 @@
 		<Target DependsOnTargets="mp2dmoe:Make" Name="mp2dmoeTests:Make">
 			<MSBuild Targets="Make" Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
 		</Target>
+		<Target Name="id3mux">
+			<MSBuild Projects="id3mux\id3mux.cbproj"/>
+		</Target>
+		<Target Name="id3mux:Clean">
+			<MSBuild Targets="Clean" Projects="id3mux\id3mux.cbproj"/>
+		</Target>
+		<Target Name="id3mux:Make">
+			<MSBuild Targets="Make" Projects="id3mux\id3mux.cbproj"/>
+		</Target>
 		<Target DependsOnTargets="mp2dmoe" Name="mp2enc">
 			<MSBuild Projects="mp2enc\mp2enc.cbproj"/>
 		</Target>
@@ -84,13 +96,13 @@
 			<MSBuild Targets="Make" Projects="mp2enc\JPN\mp2enc_JPN.bdsproj"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="libtwolame;mp2dmoe;mp2dmoeTests;mp2enc;mp2enc_ENU;mp2enc_JPN"/>
+			<CallTarget Targets="libtwolame;mp2dmoe;mp2dmoeTests;id3mux;mp2enc;mp2enc_ENU;mp2enc_JPN"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="libtwolame:Clean;mp2dmoe:Clean;mp2dmoeTests:Clean;mp2enc:Clean;mp2enc_ENU:Clean;mp2enc_JPN:Clean"/>
+			<CallTarget Targets="libtwolame:Clean;mp2dmoe:Clean;mp2dmoeTests:Clean;id3mux:Clean;mp2enc:Clean;mp2enc_ENU:Clean;mp2enc_JPN:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="libtwolame:Make;mp2dmoe:Make;mp2dmoeTests:Make;mp2enc:Make;mp2enc_ENU:Make;mp2enc_JPN:Make"/>
+			<CallTarget Targets="libtwolame:Make;mp2dmoe:Make;mp2dmoeTests:Make;id3mux:Make;mp2enc:Make;mp2enc_ENU:Make;mp2enc_JPN:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>
