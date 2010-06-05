@@ -202,6 +202,7 @@ __fastcall TMainForm::OpenFile(const UnicodeString FileName)
     Close1->Enabled = true;
     Encode1->Enabled = true;
     EncodeAs1->Enabled = true;
+    EncodeButton->Enabled = true;
 }
 
 void
@@ -216,6 +217,7 @@ __fastcall TMainForm::CloseFile()
     Close1->Enabled = false;
     Encode1->Enabled = false;
     EncodeAs1->Enabled = false;
+    EncodeButton = false;
 }
 
 void

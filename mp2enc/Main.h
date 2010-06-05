@@ -47,6 +47,7 @@ __published:	// IDE 管理のコンポーネント
     TMenuItem *SaveProfile1;
     TMenuItem *Help1;
     TMenuItem *About1;
+    TButton *EncodeButton;
     TTimer *Timer1;
     TOpenDialog *OpenDialog1;
     TSaveDialog *SaveDialog1;

@@ -13,8 +13,22 @@ object MainForm: TMainForm
   Menu = MainMenu1
   OldCreateOrder = False
   OnClose = FormClose
+  DesignSize = (
+    418
+    282)
   PixelsPerInch = 96
   TextHeight = 15
+  object EncodeButton: TButton
+    Left = 336
+    Top = 8
+    Width = 74
+    Height = 25
+    Anchors = [akTop, akRight]
+    Caption = '&Encode'
+    Enabled = False
+    TabOrder = 0
+    OnClick = Encode1Click
+  end
   object MainMenu1: TMainMenu
     Top = 256
     object File1: TMenuItem
