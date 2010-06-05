@@ -283,7 +283,7 @@ TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex,
 {
     assert(dwOutputStreamIndex < 1);
 
-    if (dwTypeIndex >= 2 * sizeof OutputFormat / sizeof OutputFormat[0])
+    if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
         return DMO_E_NO_MORE_ITEMS;
 
     if (pmt != 0)
@@ -291,13 +291,7 @@ TMp2EncoderImpl::InternalGetOutputType(DWORD dwOutputStreamIndex,
         HRESULT hr = MoInitMediaType(pmt, sizeof (WAVEFORMATEXTENSIBLE));
         if (FAILED(hr))
             return hr;
-        if (dwTypeIndex >= sizeof OutputFormat / sizeof OutputFormat[0])
-        {
-            pmt->majortype = MEDIATYPE_Stream;
-            dwTypeIndex -= sizeof OutputFormat / sizeof OutputFormat[0];
-        }
-        else
-            pmt->majortype = MEDIATYPE_Audio;
+        pmt->majortype = MEDIATYPE_Audio;
         pmt->subtype = MEDIASUBTYPE_MPEG1Audio;
         pmt->bFixedSizeSamples = TRUE;
         pmt->formattype = FORMAT_WaveFormatEx;
