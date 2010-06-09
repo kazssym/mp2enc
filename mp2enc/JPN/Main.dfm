@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  Caption = 'MP2 Encoder'
+  Caption = 'Empitu MP2 Encoder'
   ClientHeight = 282
   ClientWidth = 418
   Color = clBtnFace

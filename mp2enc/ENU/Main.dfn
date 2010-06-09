@@ -5,11 +5,11 @@
     <header>
       <prop-group name="ITEHeaderProp">
         <prop prop-type="Version">9.0</prop>
-        <prop prop-type="SelfDateTime">40334.8984490741</prop>
-        <prop prop-type="OrigDateTime">40334.8961111111</prop>
+        <prop prop-type="SelfDateTime">40338.8728240741</prop>
+        <prop prop-type="OrigDateTime">40338.8724768519</prop>
         <prop prop-type="XlatDateTime">40308.8449074074</prop>
-        <prop prop-type="Translated">49</prop>
-        <prop prop-type="UnTranslated">20</prop>
+        <prop prop-type="Translated">48</prop>
+        <prop prop-type="UnTranslated">21</prop>
       </prop-group>
     </header>
     <body>
@@ -24,10 +24,14 @@
         <prop prop-type="Created">40328.0787394097</prop><prop prop-type="Status">6</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TMainForm</prop><prop prop-type="Localize">1</prop></prop-group>
       </trans-unit>
       <trans-unit id="O:MainForm.Caption" resname="O:MainForm.Caption">
-        <source>'MP2 Encoder'</source>
+        <source>'Empitu MP2 Encoder'</source>
         <prop-group name="ITEFieldProp">
-        <prop prop-type="Created">40328.0787394097</prop><prop prop-type="Status">1</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TMainForm</prop><prop prop-type="Localize">1</prop></prop-group>
-      </trans-unit>
+        <prop prop-type="Created">40328.0787394097</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TMainForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      <alt-trans>  <source>'MP2 Encoder'</source>
+          <target>'MP2 Encoder'</target>
+          <prop-group name="ITEFieldProp">
+          <prop prop-type="Modified">40338.496529537</prop></prop-group>
+        </alt-trans></trans-unit>
       <trans-unit id="O:MainForm.ClientHeight" resname="O:MainForm.ClientHeight">
         <source>282</source>
         <prop-group name="ITEFieldProp">
