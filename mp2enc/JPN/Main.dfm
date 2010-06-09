@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  Caption = 'Empitu MP2 Encoder'
+  Caption = #12360#12435#12404#12388' MP2 '#12456#12531#12467#12540#12480#12540
   ClientHeight = 282
   ClientWidth = 418
   Color = clBtnFace
@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Width = 74
     Height = 25
     Anchors = [akTop, akRight]
-    Caption = '&Encode'
+    Caption = #12456#12531#12467#12540#12489'(&E)'
     Enabled = False
     TabOrder = 0
     OnClick = Encode1Click
@@ -96,7 +96,7 @@ object MainForm: TMainForm
   object SaveDialog1: TSaveDialog
     DefaultExt = 'mp2'
     Filter = 'MP2 '#12501#12449#12452#12523'|*.mp2|'#12377#12409#12390#12398#12501#12449#12452#12523'|*.*'
-    Title = 'Encode as'
+    Title = #21517#21069#12434#20184#12369#12390#12456#12531#12467#12540#12489
     Left = 96
     Top = 256
   end
