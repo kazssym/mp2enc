@@ -1,20 +1,21 @@
 object AboutBox: TAboutBox
   Left = 355
   Top = 378
+  Anchors = [akTop, akRight]
   BorderStyle = bsDialog
-  Caption = #12496#12540#12472#12519#12531#24773#22577
-  ClientHeight = 213
-  ClientWidth = 298
+  Caption = 'About Empitu MP2 Encoder'
+  ClientHeight = 180
+  ClientWidth = 379
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
   Font.Style = []
   OldCreateOrder = True
   Position = poScreenCenter
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 8
     Top = 8
@@ -57,16 +58,16 @@ object AboutBox: TAboutBox
     object ProductName: TLabel
       Left = 88
       Top = 16
-      Width = 55
-      Height = 13
+      Width = 72
+      Height = 15
       Caption = #12503#12525#12480#12463#12488#21517
       IsControl = True
     end
     object Version: TLabel
       Left = 88
       Top = 40
-      Width = 69
-      Height = 13
+      Width = 84
+      Height = 15
       Caption = #12496#12540#12472#12519#12531#30058#21495
       IsControl = True
     end
@@ -74,23 +75,23 @@ object AboutBox: TAboutBox
       Left = 8
       Top = 80
       Width = 60
-      Height = 13
+      Height = 15
       Caption = #33879#20316#27177#34920#35352
       IsControl = True
     end
     object Comments: TLabel
       Left = 8
       Top = 104
-      Width = 33
-      Height = 13
+      Width = 24
+      Height = 30
       Caption = #12467#12513#12531#12488
       WordWrap = True
       IsControl = True
     end
   end
   object OKButton: TButton
-    Left = 111
-    Top = 180
+    Left = 296
+    Top = 8
     Width = 75
     Height = 25
     Caption = 'OK'
