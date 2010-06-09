@@ -179,9 +179,9 @@
 						<Resource_DLL_Projects Name="Item1">英語 (米国)*$00000409*ENU*ENU</Resource_DLL_Projects>
 					</Resource_DLL_Projects>
 					<RDP_Source_Files>
-						<RDP_Source_Files Name="Item0">About.dfm</RDP_Source_Files>
+						<RDP_Source_Files Name="Item0">Main.dfm</RDP_Source_Files>
 						<RDP_Source_Files Name="Item1">extra.rc</RDP_Source_Files>
-						<RDP_Source_Files Name="Item2">Main.dfm</RDP_Source_Files>
+						<RDP_Source_Files Name="Item2">About.dfm</RDP_Source_Files>
 						<RDP_Source_Files Name="Item3">mp2enc.drc</RDP_Source_Files>
 					</RDP_Source_Files>
 				</CPlusPlusBuilder.Personality>

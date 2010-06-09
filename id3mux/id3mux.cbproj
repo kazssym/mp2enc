@@ -19,9 +19,9 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
-			<LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
 			<OutputExt>dll</OutputExt>
 			<Multithreaded>true</Multithreaded>
 			<PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;dbrtl.bpi;vcldb.bpi;vcldbx.bpi;bdertl.bpi;dsnap.bpi;dsnapcon.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;vclie.bpi;DbxClientDriver.bpi;DbxCommonDriver.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;dbxcds.bpi;dbexpress.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;webdsnap.bpi;soaprtl.bpi;websnap.bpi</PackageImports>
@@ -30,8 +30,6 @@
 			<BCC_IncludePath>$(BDS)\include\atl;$(BCC_IncludePath)</BCC_IncludePath>
 			<ProjectType>CppActiveLibrary</ProjectType>
 			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-			<DynamicRTL>true</DynamicRTL>
-			<UsePackages>true</UsePackages>
 			<IncludePath>mp2enc\id3mux;$(CG_BOOST_ROOT)\boost\tr1\tr1;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;$(CG_BOOST_ROOT)</IncludePath>
 			<ILINK_LibraryPath>mp2enc\id3mux;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
 			<BCC_wpar>false</BCC_wpar>
