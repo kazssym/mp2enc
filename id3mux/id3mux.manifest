@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity name="id3mux" processorArchitecture="x86" type="win32" version="1.0.0.0" />
+  <file name="id3mux.dll">
+    <comClass clsid="{571F34D1-09C9-4F87-9676-A013F5F701EF}" description="ID3 Mux" threadingModel="Both" />
+  </file>
+</assembly>

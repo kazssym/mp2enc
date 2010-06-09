@@ -19,6 +19,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<_TCHARMapping>wchar_t</_TCHARMapping>
+			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
 			<LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
 			<OutputExt>dll</OutputExt>
 			<Multithreaded>true</Multithreaded>
@@ -36,6 +38,7 @@
 			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<FinalOutputDir>..\Debug</FinalOutputDir>
 			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
 			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
 			<DCC_Optimize>false</DCC_Optimize>
@@ -55,28 +58,41 @@
 			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<FinalOutputDir>..\Release</FinalOutputDir>
 			<Defines>NDEBUG;$(Defines)</Defines>
 			<IntermediateOutputDir>Release</IntermediateOutputDir>
 			<ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
+			<None Include="id3muxguid.h">
+				<VirtualFolder>{956137B5-FDDB-4E4E-9307-F6344885E539}</VirtualFolder>
+				<BuildOrder>5</BuildOrder>
+			</None>
+			<None Include="id3mux.manifest">
+				<VirtualFolder>{BDA2CE22-C7FA-4C74-8CE0-59C4CB614121}</VirtualFolder>
+			</None>
+			<ResourceCompile Include="extra.rc">
+				<Form>extra.res</Form>
+				<BuildOrder>0</BuildOrder>
+			</ResourceCompile>
 			<CppCompile Include="id3mux.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
 			<ResFiles Include="id3mux.res">
-				<ModuleName>id3mux.res</ModuleName>
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
-			<RidlCompile Include="id3mux.ridl">
-				<ModuleName>Project1</ModuleName>
-			</RidlCompile>
-			<CppCompile Include="id3mux_TLB.cpp">
-				<BuildOrder>3</BuildOrder>
-			</CppCompile>
+			<RidlCompile Include="id3mux.ridl"/>
 			<CppCompile Include="id3mux_ATL.cpp">
 				<DependentOn>id3mux_ATL.h</DependentOn>
-				<BuildOrder>4</BuildOrder>
+				<BuildOrder>1</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="id3mux_TLB.cpp">
+				<BuildOrder>2</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="Id3.cpp">
+				<DependentOn>Id3.h</DependentOn>
+				<BuildOrder>3</BuildOrder>
 			</CppCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
@@ -152,6 +168,7 @@
 						<ProjectProperties Name="VerifyPackages">True</ProjectProperties>
 					</ProjectProperties>
 					<VFOLDERS>
+						<VFOLDER ID="{956137B5-FDDB-4E4E-9307-F6344885E539}" name="Headers"/>
 						<VFOLDER ID="{BDA2CE22-C7FA-4C74-8CE0-59C4CB614121}" name="Resources"/>
 					</VFOLDERS>
 				</CPlusPlusBuilder.Personality>
