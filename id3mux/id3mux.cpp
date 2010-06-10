@@ -1,23 +1,34 @@
-//$$---- axlib proj source ---- (stAXLibProjectSource)
+﻿//$$---- axlib proj source ---- (stAXLibProjectSource)
 #include <vcl.h>
 #pragma hdrstop
-#include <atl\atlvcl.h>
+
+#include <initguid.h>
+
+#include "Id3MuxImpl.h"
 
 #pragma package(smart_init)
 #pragma link "vclnp.lib"
 #pragma resource "*.tlb"
+
+// Exports functions.
+STDAPI __declspec(dllexport) DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv);
+STDAPI __declspec(dllexport) DllCanUnloadNow(void);
+STDAPI __declspec(dllexport) DllRegisterServer(void);
+STDAPI __declspec(dllexport) DllUnregisterServer(void);
+
 TComModule  Project1Module;
 TComModule &_Module = Project1Module;
 
-// ATL �I�u�W�F�N�g �}�b�v�� _ATL_OBJMAP_ENTRY �\����
-// (���[�U�[�� OLE �T�[�o�[�̃I�u�W�F�N�g���L�q) �̔z���ێ����܂��BMAP ��
-// ���[�U�[ �v���W�F�N�g�� CComModule-derived _Module �I�u�W�F�N�g�� Init ���\�b�h�o�R�œn����܂��B
+// ATL オブジェクト マップは _ATL_OBJMAP_ENTRY 構造体
+// (ユーザーの OLE サーバーのオブジェクトを記述) の配列を保持します。MAP は
+// ユーザー プロジェクトの CComModule-derived _Module オブジェクトに Init メソッド経由で渡されます。
 //
 BEGIN_OBJECT_MAP(ObjectMap)
+OBJECT_ENTRY(CLSID_Id3Mux, TId3MuxImpl)
 END_OBJECT_MAP()
 
-// �������܂��͏I�����ꂽ�X���b�h��v���Z�X�ɑ΂��� Windows �ɂ����
-// �Ăяo���ꂽ�T�[�o�[�̃G���g�� �|�C���g�B
+// 初期化または終了されたスレッドやプロセスに対して Windows によって
+// 呼び出されたサーバーのエントリ ポイント。
 //
 int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
 {
@@ -29,10 +40,10 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
     return TRUE;
 }
 
-// _Module.Term �͒ʏ�A���[�U�[�� DllEntryPoint �� DLL_PROCESS_DETACH ����
-// �Ăяo����܂��B�������A���̌��ʂƂ��ăV���b�g�_�E�� �V�[�P���X���s���ɂȂ邱�Ƃ�����܂��B
-// ����� Exit ���[�`����ݒ肵�āA�N���[���A�b�v ���[�`��
-// CComModule::Term ���Ăяo���܂��B
+// _Module.Term は通常、ユーザーの DllEntryPoint の DLL_PROCESS_DETACH から
+// 呼び出されます。ただし、この結果としてシャットダウン シーケンスが不正になることがあります。
+// 代わりに Exit ルーチンを設定して、クリーンアップ ルーチン
+// CComModule::Term を呼び出します。
 //
 void ModuleTerm(void)
 {
@@ -40,32 +51,32 @@ void ModuleTerm(void)
 }
 #pragma exit ModuleTerm 63
 
-// DLL ���g�p����Ȃ��Ȃ�A�A�����[�h���K�v���ǂ�����
-// �₢���킹�邽�߂ɌĂяo���ꂽ�T�[�o�[�̃G���g�� �|�C���g�B
+// DLL が使用されなくなり、アンロードが必要かどうかを
+// 問い合わせるために呼び出されたサーバーのエントリ ポイント。
 //
 STDAPI __export DllCanUnloadNow(void)
 {
     return (_Module.GetLockCount()==0) ? S_OK : S_FALSE;
 }
 
-// ���[�U�[�̃T�[�o�[����N���X �I�u�W�F�N�g���擾���邱�Ƃ� OLE �ɋ�����
-// �T�[�o�[�̃G���g�� �|�C���g�B
+// ユーザーのサーバーからクラス オブジェクトを取得することを OLE に許可した
+// サーバーのエントリ ポイント。
 //
 STDAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
 {
     return _Module.GetClassObject(rclsid, riid, ppv);
 }
 
-// ���W���[���ŃT�|�[�g���ꂽ���ׂẴN���X�ɑ΂��郌�W�X�g�� �G���g��
-// ���쐬����悤�ɃT�[�o�[�Ɏw�����邽�ߌĂяo���ꂽ�T�[�o�[�̃G���g�� �|�C���g�B
+// モジュールでサポートされたすべてのクラスに対するレジストリ エントリ
+// を作成するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
 //
 STDAPI __export DllRegisterServer(void)
 {
     return _Module.RegisterServer(TRUE);
 }
 
-// DllRegisterServer ��ʂ��č쐬���ꂽ���ׂẴ��W�X�g�� �G���g����
-// �폜����悤�ɃT�[�o�[�Ɏw�����邽�ߌĂяo���ꂽ�T�[�o�[�̃G���g�� �|�C���g�B
+// DllRegisterServer を通じて作成されたすべてのレジストリ エントリを
+// 削除するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
 //
 STDAPI __export DllUnregisterServer(void)
 {

@@ -88,8 +88,8 @@
 			<CppCompile Include="id3mux_TLB.cpp">
 				<BuildOrder>2</BuildOrder>
 			</CppCompile>
-			<CppCompile Include="Id3.cpp">
-				<DependentOn>Id3.h</DependentOn>
+			<CppCompile Include="Id3MuxImpl.cpp">
+				<DependentOn>Id3MuxImpl.h</DependentOn>
 				<BuildOrder>3</BuildOrder>
 			</CppCompile>
 			<BuildConfiguration Include="Base">
