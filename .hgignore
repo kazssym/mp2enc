@@ -1,6 +1,9 @@
 syntax: glob
 
 *.RES
+*.tlb
+*.rcn
+*.dfn
 
 # Binary directories.
 .libs/
@@ -12,7 +15,8 @@ Release/
 *.tvsconfig
 LibrarySupport/
 
-# Backup files.
+# Backup and garbage files.
 *~
 *.~*
 *.orig
+*.rej
