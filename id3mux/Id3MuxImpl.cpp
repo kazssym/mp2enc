@@ -28,8 +28,9 @@
 HRESULT WINAPI
 TId3MuxImpl::UpdateRegistry(BOOL bRegister)
 {
-    TTypedComServerRegistrarT<TId3MuxImpl> reg(GetObjectCLSID(), 0,
-                                               TEXT("ID3 Mux"));
+    // We do not want to register our type library.
+    TComServerRegistrarT<TId3MuxImpl> reg(GetObjectCLSID(), 0,
+                                          TEXT("ID3 Mux"));
     return reg.UpdateRegistry(bRegister);
 }
 
@@ -45,7 +46,7 @@ TId3MuxImpl::FinalRelease()
     if (Clock != 0)
         Clock->Release();
     Clock = 0;
-    // We must not have a reference count on the filter graph.
+    // We do not have a reference count on the filter graph.
 }
 
 STDMETHODIMP
