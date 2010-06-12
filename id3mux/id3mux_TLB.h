@@ -11,7 +11,7 @@
 
 
 // $Rev: 17252 $
-// 下に説明されたタイプ ライブラリから 2010/06/05 15:21:25 に生成されたファイル。
+// 下に説明されたタイプ ライブラリから 2010/06/12 21:02:32 に生成されたファイル。
 
 // ************************************************************************  //
 // タイプ ライブラリ: E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\id3mux\id3mux (1)
@@ -86,66 +86,17 @@ typedef TComInterface<IConfigId3Mux, &IID_IConfigId3Mux> IConfigId3MuxPtr;
 
 // *********************************************************************//
 // インターフェイス: IConfigId3Mux
-// フラグ: (320) Dual OleAutomation
+// フラグ: (0)
 // GUID: {F82FF012-2B6A-4CB8-8989-6DCB5A6EB49A}
 // *********************************************************************//
 interface IConfigId3Mux  : public IUnknown
 {
 public:
-
-#if !defined(__TLB_NO_INTERFACE_WRAPPERS)
-
-
-
-#endif //   __TLB_NO_INTERFACE_WRAPPERS
-
 };
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 typedef TComInterface<IConfigId3Mux>  TCOMIConfigId3Mux;
 
-// *********************************************************************//
-// DispIntf:  IConfigId3Mux
-// フラグ:     (320) Dual OleAutomation
-// GUID:      {F82FF012-2B6A-4CB8-8989-6DCB5A6EB49A}
-// *********************************************************************//
-template<class T>
-class IConfigId3MuxDispT : public TAutoDriver<IConfigId3Mux>
-{
-public:
-  IConfigId3MuxDispT(){}
-
-  IConfigId3MuxDispT(IConfigId3Mux *pintf)
-  {
-    TAutoDriver<IConfigId3Mux>::Bind(pintf, false);
-  }
-
-  IConfigId3MuxDispT(IConfigId3MuxPtr pintf)
-  {
-    TAutoDriver<IConfigId3Mux>::Bind(pintf, true);
-  }
-
-  IConfigId3MuxDispT& operator=(IConfigId3Mux *pintf)
-  {
-    TAutoDriver<IConfigId3Mux>::Bind(pintf, false);
-    return *this;
-  }
-
-  IConfigId3MuxDispT& operator=(IConfigId3MuxPtr pintf)
-  {
-    TAutoDriver<IConfigId3Mux>::Bind(pintf, true);
-    return *this;
-  }
-
-
-};
-typedef IConfigId3MuxDispT<IConfigId3Mux> IConfigId3MuxDisp;
-
-// *********************************************************************//
-// DispIntf:  IConfigId3Mux
-// フラグ:     (320) Dual OleAutomation
-// GUID:      {F82FF012-2B6A-4CB8-8989-6DCB5A6EB49A}
-// *********************************************************************//
 #endif  //   __TLB_NO_INTERFACE_WRAPPERS
 
 
