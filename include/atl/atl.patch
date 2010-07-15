@@ -1,14 +1,6 @@
-# HG changeset patch
-# User Kaz Sasa <kazssym@nifty.com>
-# Date 1270993552 -32400
-# Branch local
-# Node ID 544ff05eed68582f2c23c092bf32af7d407b4e2d
-# Parent  4137e41087f6d22fbf5685d268e141d368446b9a
-Fix bugs.
-
-diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
---- a/atlmod.h	Sun Apr 11 22:42:05 2010 +0900
-+++ b/atlmod.h	Sun Apr 11 22:45:52 2010 +0900
+diff --git a/include/atl/atlmod.h b/include/atl/atlmod.h
+--- a/include/atl/atlmod.h
++++ b/include/atl/atlmod.h
 @@ -381,7 +381,7 @@
  HRESULT TRegistrarBaseT<T>::CreateRegKey(LPCTSTR keyStr, LPCTSTR ValueName, LPCTSTR Value)
  {
@@ -27,29 +19,38 @@ diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
  }
  
  // Deletes a Registry Key
-@@ -403,7 +403,7 @@
+@@ -403,7 +403,8 @@
  template <class T>
  HRESULT TRegistrarBaseT<T>::DeleteRegKey(LPCTSTR keyStr)
  {
 -  return ::RegDeleteKey(HKEY_CLASSES_ROOT, keyStr);
-+  return HRESULT_FROM_WIN32(::RegDeleteKey(HKEY_CLASSES_ROOT, keyStr));
++  LONG status = ::RegDeleteKey(HKEY_CLASSES_ROOT, keyStr);
++  return HRESULT_FROM_WIN32(status);
  }
  
  // Delete a Registry Key and all subkeys
-@@ -415,7 +415,7 @@
+@@ -415,7 +416,8 @@
    //
    CRegKey key;
    key.Attach(HKEY_CLASSES_ROOT);
 -  return key.RecurseDeleteKey(keyStr);
-+  return HRESULT_FROM_WIN32(key.RecurseDeleteKey(keyStr));
++  LONG status = key.RecurseDeleteKey(keyStr);
++  return HRESULT_FROM_WIN32(status);
  }
  
  // Convert GUID to String
-@@ -555,13 +555,16 @@
+@@ -555,9 +557,10 @@
  template <class T> HRESULT
  TComServerRegistrarT<T>::UpdateRegistry(bool bRegister)
  {
 +  HRESULT hres;
+   if (bRegister)
+   {
+     static TCHAR szAutomation[] = _T(" /Automation");
+ 
+     // Create registry entries
+     //
+@@ -558,10 +561,12 @@
    if (bRegister)
    {
      static TCHAR szAutomation[] = _T(" /Automation");
@@ -63,7 +64,7 @@ diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
  
      // ClassKey\ServerType
      //
-@@ -581,7 +584,9 @@
+@@ -581,7 +586,9 @@
  
      // Register ClassKey\ServerType
      //
@@ -74,28 +75,44 @@ diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
  
      // Store Threading Model
      // Ambient relies on defines (a la CBuilder3)
-@@ -590,66 +595,74 @@
+@@ -590,5 +597,5 @@
      if (IsEqual(T::GetThreadModel(), otAmbientThreadModel))
      {
  #if   defined(_ATL_SINGLE_THREADED)
 -      CreateRegKey(key, szThrdMdl, _T("Single"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Single"));
  #elif defined(_ATL_BOTH_THREADED)
+@@ -594,3 +601,3 @@
+ #elif defined(_ATL_BOTH_THREADED)
 -      CreateRegKey(key, szThrdMdl, _T("Both"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Both"));
  #elif defined(_ATL_APARTMENT_THREADED)
+@@ -596,3 +603,3 @@
+ #elif defined(_ATL_APARTMENT_THREADED)
 -      CreateRegKey(key, szThrdMdl, _T("Apartment"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Apartment"));
+ #elif defined(_ATL_NEUTRAL_THREADED)
+@@ -598,4 +605,4 @@
  #elif defined(_ATL_NEUTRAL_THREADED)
 -      CreateRegKey(key, szThrdMdl, _T("Neutral"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Neutral"));
  #elif defined(_ATL_FREE_THREADED)           // NOTE: Check _ATL_FREE_THREADED last
                                              //       because ATLBASE.H defines it for BOTH
+@@ -600,4 +607,4 @@
+ #elif defined(_ATL_FREE_THREADED)           // NOTE: Check _ATL_FREE_THREADED last
+                                             //       because ATLBASE.H defines it for BOTH
 -      CreateRegKey(key, szThrdMdl, _T("Free"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Free"));
  #else
+@@ -603,6 +610,6 @@
+ #else
 -      CreateRegKey(key, _T("NoThreadingModel"), _T(""));
 +      hres = CreateRegKey(key, _T("NoThreadingModel"), _T(""));
+ #endif
+     }
+     else if (IsEqual(T::GetThreadModel(), otSingle))
+     {
+@@ -605,8 +612,8 @@
  #endif
      }
      else if (IsEqual(T::GetThreadModel(), otSingle))
@@ -105,8 +122,16 @@ diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
      }
      else if (IsEqual(T::GetThreadModel(), otFree))
      {
+@@ -610,7 +617,7 @@
+     }
+     else if (IsEqual(T::GetThreadModel(), otFree))
+     {
 -      CreateRegKey(key, szThrdMdl, _T("Free"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Free"));
+     }
+     else if (IsEqual(T::GetThreadModel(), otBoth))
+     {
+@@ -614,7 +621,7 @@
      }
      else if (IsEqual(T::GetThreadModel(), otBoth))
      {
@@ -115,16 +140,32 @@ diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
      }
      else if (IsEqual(T::GetThreadModel(), otNeutral))
      {
+@@ -618,7 +625,7 @@
+     }
+     else if (IsEqual(T::GetThreadModel(), otNeutral))
+     {
 -      CreateRegKey(key, szThrdMdl, _T("Neutral"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Neutral"));
+     }
+     else /* if (T::GetThreadModel() == otApartment)  (Default case) */
+     {
+@@ -622,5 +629,5 @@
      }
      else /* if (T::GetThreadModel() == otApartment)  (Default case) */
      {
 -      CreateRegKey(key, szThrdMdl, _T("Apartment"));
 +      hres = CreateRegKey(key, szThrdMdl, _T("Apartment"));
      }
+@@ -626,6 +633,8 @@
+     }
 +    if (FAILED(hres))
 +      return hres;
+ 
+     // Register CLSID/ProgID
+     //
+     if (m_ProgID && *m_ProgID)
+     {
+@@ -627,10 +636,12 @@
  
      // Register CLSID/ProgID
      //
@@ -138,10 +179,19 @@ diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
        TAPtr<TCHAR> buff(new TCHAR[_MAX_PATH]);
        lstrcpy(buff, m_ProgID);
        lstrcat(buff, _T("\\CLSID"));
+@@ -633,8 +644,10 @@
+ 
+       TAPtr<TCHAR> buff(new TCHAR[_MAX_PATH]);
+       lstrcpy(buff, m_ProgID);
+       lstrcat(buff, _T("\\CLSID"));
 -      CreateRegKey(buff, _T(""), m_ClassIDstr);
 +      hres = CreateRegKey(buff, _T(""), m_ClassIDstr);
 +      if (FAILED(hres))
 +        return hres;
+ 
+       lstrcpy(buff, m_ClassKey);
+       lstrcat(buff, _T("\\ProgID"));
+@@ -638,10 +651,10 @@
  
        lstrcpy(buff, m_ClassKey);
        lstrcat(buff, _T("\\ProgID"));
@@ -153,13 +203,24 @@ diff -r 4137e41087f6 -r 544ff05eed68 atlmod.h
    {
      // Remove registry entries
      //
+@@ -642,8 +655,10 @@
+     }
+   }
+   else
+   {
+     // Remove registry entries
+     //
 -    NukeRegKey(m_ClassKey);
 +    hres = NukeRegKey(m_ClassKey);
 +    if (FAILED(hres))
 +      return hres;
      if (m_ProgID && *m_ProgID)
+@@ -649,3 +664,3 @@
+     if (m_ProgID && *m_ProgID)
 -      NukeRegKey(m_ProgID);
 +      hres = NukeRegKey(m_ProgID);
+   }
+@@ -651,5 +666,5 @@
    }
 -  return S_OK;
 +  return hres;
