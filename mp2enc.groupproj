@@ -3,6 +3,9 @@
 			<ProjectGuid>{1572FEC2-613C-4F28-BB87-DA3E0C60735F}</ProjectGuid>
 		</PropertyGroup>
 		<ItemGroup>
+			<Projects Include="twolame\libtwolame\libtwolame.cbproj">
+				<Dependencies/>
+			</Projects>
 			<Projects Include="mp2dmoeATL\mp2dmoeATL.cbproj">
 				<Dependencies/>
 			</Projects>
@@ -23,6 +26,15 @@
 				<Default.Personality/>
 			</BorlandProject>
 		</ProjectExtensions>
+		<Target Name="libtwolame">
+			<MSBuild Projects="twolame\libtwolame\libtwolame.cbproj"/>
+		</Target>
+		<Target Name="libtwolame:Clean">
+			<MSBuild Projects="twolame\libtwolame\libtwolame.cbproj" Targets="Clean"/>
+		</Target>
+		<Target Name="libtwolame:Make">
+			<MSBuild Projects="twolame\libtwolame\libtwolame.cbproj" Targets="Make"/>
+		</Target>
 		<Target Name="mp2dmoeATL">
 			<MSBuild Projects="mp2dmoeATL\mp2dmoeATL.cbproj"/>
 		</Target>
@@ -60,13 +72,13 @@
 			<MSBuild Projects="mp2enc\JPN\mp2enc_JPN.bdsproj" Targets="Make"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="mp2dmoeATL;mp2enc;mp2enc_ENU;mp2enc_JPN"/>
+			<CallTarget Targets="libtwolame;mp2dmoeATL;mp2enc;mp2enc_ENU;mp2enc_JPN"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="mp2dmoeATL:Clean;mp2enc:Clean;mp2enc_ENU:Clean;mp2enc_JPN:Clean"/>
+			<CallTarget Targets="libtwolame:Clean;mp2dmoeATL:Clean;mp2enc:Clean;mp2enc_ENU:Clean;mp2enc_JPN:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="mp2dmoeATL:Make;mp2enc:Make;mp2enc_ENU:Make;mp2enc_JPN:Make"/>
+			<CallTarget Targets="libtwolame:Make;mp2dmoeATL:Make;mp2enc:Make;mp2enc_ENU:Make;mp2enc_JPN:Make"/>
 		</Target>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>
