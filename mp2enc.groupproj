@@ -3,23 +3,8 @@
 			<ProjectGuid>{1572FEC2-613C-4F28-BB87-DA3E0C60735F}</ProjectGuid>
 		</PropertyGroup>
 		<ItemGroup>
-			<Projects Include="..\twolame\libtwolame\libtwolame.cbproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="mp2dmoe\mp2dmoe.cbproj">
-				<Dependencies>..\twolame\libtwolame\libtwolame.cbproj</Dependencies>
-			</Projects>
-			<Projects Include="mp2dmoe\tests\mp2dmoeTests.cbproj">
-				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
-			</Projects>
-			<Projects Include="id3mux\id3mux.cbproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="id3mux\tests\id3muxTests.cbproj">
-				<Dependencies/>
-			</Projects>
 			<Projects Include="mp2enc\mp2enc.cbproj">
-				<Dependencies>mp2dmoe\mp2dmoe.cbproj</Dependencies>
+				<Dependencies/>
 			</Projects>
 			<Projects Include="mp2enc\ENU\mp2enc_ENU.bdsproj">
 				<Dependencies/>
@@ -35,86 +20,41 @@
 				<Default.Personality/>
 			</BorlandProject>
 		</ProjectExtensions>
-		<Target Name="libtwolame">
-			<MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
-		</Target>
-		<Target Name="libtwolame:Clean">
-			<MSBuild Targets="Clean" Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
-		</Target>
-		<Target Name="libtwolame:Make">
-			<MSBuild Targets="Make" Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
-		</Target>
-		<Target DependsOnTargets="libtwolame" Name="mp2dmoe">
-			<MSBuild Projects="mp2dmoe\mp2dmoe.cbproj"/>
-		</Target>
-		<Target DependsOnTargets="libtwolame:Clean" Name="mp2dmoe:Clean">
-			<MSBuild Targets="Clean" Projects="mp2dmoe\mp2dmoe.cbproj"/>
-		</Target>
-		<Target DependsOnTargets="libtwolame:Make" Name="mp2dmoe:Make">
-			<MSBuild Targets="Make" Projects="mp2dmoe\mp2dmoe.cbproj"/>
-		</Target>
-		<Target DependsOnTargets="mp2dmoe" Name="mp2dmoeTests">
-			<MSBuild Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
-		</Target>
-		<Target DependsOnTargets="mp2dmoe:Clean" Name="mp2dmoeTests:Clean">
-			<MSBuild Targets="Clean" Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
-		</Target>
-		<Target DependsOnTargets="mp2dmoe:Make" Name="mp2dmoeTests:Make">
-			<MSBuild Targets="Make" Projects="mp2dmoe\tests\mp2dmoeTests.cbproj"/>
-		</Target>
-		<Target Name="id3mux">
-			<MSBuild Projects="id3mux\id3mux.cbproj"/>
-		</Target>
-		<Target Name="id3mux:Clean">
-			<MSBuild Targets="Clean" Projects="id3mux\id3mux.cbproj"/>
-		</Target>
-		<Target Name="id3mux:Make">
-			<MSBuild Targets="Make" Projects="id3mux\id3mux.cbproj"/>
-		</Target>
-		<Target Name="id3muxTests">
-			<MSBuild Projects="id3mux\tests\id3muxTests.cbproj"/>
-		</Target>
-		<Target Name="id3muxTests:Clean">
-			<MSBuild Targets="Clean" Projects="id3mux\tests\id3muxTests.cbproj"/>
-		</Target>
-		<Target Name="id3muxTests:Make">
-			<MSBuild Targets="Make" Projects="id3mux\tests\id3muxTests.cbproj"/>
-		</Target>
-		<Target DependsOnTargets="mp2dmoe" Name="mp2enc">
+		<Target Name="mp2enc">
 			<MSBuild Projects="mp2enc\mp2enc.cbproj"/>
 		</Target>
-		<Target DependsOnTargets="mp2dmoe:Clean" Name="mp2enc:Clean">
-			<MSBuild Targets="Clean" Projects="mp2enc\mp2enc.cbproj"/>
+		<Target Name="mp2enc:Clean">
+			<MSBuild Projects="mp2enc\mp2enc.cbproj" Targets="Clean"/>
 		</Target>
-		<Target DependsOnTargets="mp2dmoe:Make" Name="mp2enc:Make">
-			<MSBuild Targets="Make" Projects="mp2enc\mp2enc.cbproj"/>
+		<Target Name="mp2enc:Make">
+			<MSBuild Projects="mp2enc\mp2enc.cbproj" Targets="Make"/>
 		</Target>
 		<Target Name="mp2enc_ENU">
 			<MSBuild Projects="mp2enc\ENU\mp2enc_ENU.bdsproj"/>
 		</Target>
 		<Target Name="mp2enc_ENU:Clean">
-			<MSBuild Targets="Clean" Projects="mp2enc\ENU\mp2enc_ENU.bdsproj"/>
+			<MSBuild Projects="mp2enc\ENU\mp2enc_ENU.bdsproj" Targets="Clean"/>
 		</Target>
 		<Target Name="mp2enc_ENU:Make">
-			<MSBuild Targets="Make" Projects="mp2enc\ENU\mp2enc_ENU.bdsproj"/>
+			<MSBuild Projects="mp2enc\ENU\mp2enc_ENU.bdsproj" Targets="Make"/>
 		</Target>
 		<Target Name="mp2enc_JPN">
 			<MSBuild Projects="mp2enc\JPN\mp2enc_JPN.bdsproj"/>
 		</Target>
 		<Target Name="mp2enc_JPN:Clean">
-			<MSBuild Targets="Clean" Projects="mp2enc\JPN\mp2enc_JPN.bdsproj"/>
+			<MSBuild Projects="mp2enc\JPN\mp2enc_JPN.bdsproj" Targets="Clean"/>
 		</Target>
 		<Target Name="mp2enc_JPN:Make">
-			<MSBuild Targets="Make" Projects="mp2enc\JPN\mp2enc_JPN.bdsproj"/>
+			<MSBuild Projects="mp2enc\JPN\mp2enc_JPN.bdsproj" Targets="Make"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="libtwolame;mp2dmoe;mp2dmoeTests;id3mux;id3muxTests;mp2enc;mp2enc_ENU;mp2enc_JPN"/>
+			<CallTarget Targets="mp2enc;mp2enc_ENU;mp2enc_JPN"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="libtwolame:Clean;mp2dmoe:Clean;mp2dmoeTests:Clean;id3mux:Clean;id3muxTests:Clean;mp2enc:Clean;mp2enc_ENU:Clean;mp2enc_JPN:Clean"/>
+			<CallTarget Targets="mp2enc:Clean;mp2enc_ENU:Clean;mp2enc_JPN:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="libtwolame:Make;mp2dmoe:Make;mp2dmoeTests:Make;id3mux:Make;id3muxTests:Make;mp2enc:Make;mp2enc_ENU:Make;mp2enc_JPN:Make"/>
+			<CallTarget Targets="mp2enc:Make;mp2enc_ENU:Make;mp2enc_JPN:Make"/>
 		</Target>
-		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>
