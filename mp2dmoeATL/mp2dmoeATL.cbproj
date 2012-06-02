@@ -1,9 +1,13 @@
 ﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{4E8FBFBA-8621-46C4-9C0C-CBB213CC3DD2}</ProjectGuid>
-			<ProjectVersion>12.0</ProjectVersion>
-			<MainSource>mp2dmoe.cpp</MainSource>
+			<ProjectVersion>12.3</ProjectVersion>
+			<MainSource>mp2dmoeATL.cpp</MainSource>
 			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Base>True</Base>
+			<Platform>Win32</Platform>
+			<AppType>Library</AppType>
+			<FrameworkType>VCL</FrameworkType>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
 			<Base>true</Base>
@@ -19,6 +23,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
 			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
 			<BCC_InstructionSet>5</BCC_InstructionSet>
 			<Defines>LIBTWOLAME_STATIC;$(Defines)</Defines>
@@ -73,16 +78,17 @@
 				<DependentOn>Mp2.h</DependentOn>
 				<BuildOrder>2</BuildOrder>
 			</CppCompile>
-			<ResFiles Include="mp2dmoe.res">
-				<BuildOrder>1</BuildOrder>
-			</ResFiles>
 			<None Include="mp2dmoe.manifest">
 				<VirtualFolder>{E8007AB5-C522-4B87-9513-37C5540F31BB}</VirtualFolder>
 				<ContainerId>WebFile</ContainerId>
 			</None>
-			<CppCompile Include="mp2dmoe.cpp">
+			<CppCompile Include="mp2dmoeATL.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
+			<ResFiles Include="mp2dmoeATL.res">
+				<ModuleName>mp2dmoeATL.res</ModuleName>
+				<BuildOrder>1</BuildOrder>
+			</ResFiles>
 			<CppCompile Include="mp2dmoe_ATL.cpp">
 				<DependentOn>mp2dmoe_ATL.h</DependentOn>
 				<BuildOrder>1</BuildOrder>
@@ -91,26 +97,27 @@
 				<VirtualFolder>{6F77BEB4-1254-40CC-8A46-3297A370DA97}</VirtualFolder>
 				<BuildOrder>0</BuildOrder>
 			</None>
-			<BuildConfiguration Include="Base">
-				<Key>Base</Key>
-			</BuildConfiguration>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
 			</BuildConfiguration>
 			<BuildConfiguration Include="Debug">
 				<Key>Cfg_1</Key>
 				<CfgParent>Base</CfgParent>
 			</BuildConfiguration>
 		</ItemGroup>
-		<Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')" Project="$(BDS)\Bin\CodeGear.Cpp.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
 		<ProjectExtensions>
 			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
 			<Borland.ProjectType>CppActiveLibrary</Borland.ProjectType>
 			<BorlandProject>
 				<CPlusPlusBuilder.Personality>
 					<Source>
-						<Source Name="MainSource">mp2dmoe.cpp</Source>
+						<Source Name="MainSource">mp2dmoeATL.cpp</Source>
 					</Source>
 					<VersionInfo>
 						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
@@ -143,11 +150,6 @@
 						<Debugging Name="DebugSourceDirs"/>
 					</Debugging>
 					<Parameters>
-						<Parameters Name="RunParams"/>
-						<Parameters Name="Launcher"/>
-						<Parameters Name="UseLauncher">False</Parameters>
-						<Parameters Name="DebugCWD"/>
-						<Parameters Name="HostApplication"/>
 						<Parameters Name="RemoteHost"/>
 						<Parameters Name="RemotePath"/>
 						<Parameters Name="RemoteParams"/>
@@ -155,9 +157,6 @@
 						<Parameters Name="UseRemoteLauncher">False</Parameters>
 						<Parameters Name="RemoteCWD"/>
 						<Parameters Name="RemoteDebug">False</Parameters>
-						<Parameters Name="Debug Symbols Search Path"/>
-						<Parameters Name="LoadAllSymbols">True</Parameters>
-						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
 					</Parameters>
 					<ProjectProperties>
 						<ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
@@ -173,6 +172,9 @@
 					<version>1</version>
 				</ActiveXProjectInfo>
 				<ModelSupport>False</ModelSupport>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
