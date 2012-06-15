@@ -9,7 +9,7 @@
 			<Projects Include="mp2dmoeATL\mp2dmoeATL.cbproj">
 				<Dependencies/>
 			</Projects>
-			<Projects Include="mp2dmoe\mp2dmoe.cbproj">
+			<Projects Include="src\mp2dmoe\mp2dmoe.cbproj">
 				<Dependencies>twolame\libtwolame\libtwolame.cbproj</Dependencies>
 			</Projects>
 			<Projects Include="mp2enc\mp2enc.cbproj">
@@ -48,13 +48,13 @@
 			<MSBuild Projects="mp2dmoeATL\mp2dmoeATL.cbproj" Targets="Make"/>
 		</Target>
 		<Target Name="mp2dmoe" DependsOnTargets="libtwolame">
-			<MSBuild Projects="mp2dmoe\mp2dmoe.cbproj"/>
+			<MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj"/>
 		</Target>
 		<Target Name="mp2dmoe:Clean" DependsOnTargets="libtwolame:Clean">
-			<MSBuild Projects="mp2dmoe\mp2dmoe.cbproj" Targets="Clean"/>
+			<MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj" Targets="Clean"/>
 		</Target>
 		<Target Name="mp2dmoe:Make" DependsOnTargets="libtwolame:Make">
-			<MSBuild Projects="mp2dmoe\mp2dmoe.cbproj" Targets="Make"/>
+			<MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj" Targets="Make"/>
 		</Target>
 		<Target Name="mp2enc">
 			<MSBuild Projects="mp2enc\mp2enc.cbproj"/>

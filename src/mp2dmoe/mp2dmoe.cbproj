@@ -72,9 +72,7 @@
 				<ModuleName>mp2dmoe.res</ModuleName>
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
-			<RidlCompile Include="mp2dmoe.ridl">
-				<ModuleName>Project1</ModuleName>
-			</RidlCompile>
+			<RidlCompile Include="mp2dmoe.ridl"/>
 			<CppCompile Include="mp2dmoe_TLB.cpp">
 				<DependentOn>mp2dmoe_TLB.h</DependentOn>
 				<BuildOrder>3</BuildOrder>
