@@ -68,6 +68,11 @@
 			<CppCompile Include="mp2dmoe.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
+			<RcItem Include="mp2dmoe.manifest">
+				<ContainerId>ResourceItem</ContainerId>
+				<ResourceType>24</ResourceType>
+				<ResourceId>1</ResourceId>
+			</RcItem>
 			<ResFiles Include="mp2dmoe.res">
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
