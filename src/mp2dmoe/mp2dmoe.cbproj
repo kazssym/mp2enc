@@ -69,13 +69,17 @@
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
 			<ResFiles Include="mp2dmoe.res">
-				<ModuleName>mp2dmoe.res</ModuleName>
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
 			<RidlCompile Include="mp2dmoe.ridl"/>
 			<CppCompile Include="mp2dmoe_TLB.cpp">
 				<DependentOn>mp2dmoe_TLB.h</DependentOn>
 				<BuildOrder>3</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="Mp2EncoderImpl.cpp">
+				<CoClasses>Mp2Encoder</CoClasses>
+				<DependentOn>Mp2EncoderImpl.h</DependentOn>
+				<BuildOrder>4</BuildOrder>
 			</CppCompile>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
