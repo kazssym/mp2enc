@@ -28,11 +28,12 @@
 			<Options Name="Evidence"></Options>
 			<Options Name="KeyFile"></Options>
 			<Options Name="KeyName"></Options>
-		</Options>  <FileList>
-      <File FileName="About.dfm" ContainerId="W32Form" ModuleName="About.dfm"/>
-      <File FileName="Main.dfm" ContainerId="W32Form" ModuleName="Main.dfm"/>
-      <File FileName="mp2enc_DRC.rc" ContainerId="W32RC" ModuleName="mp2enc_DRC.rc"/>
-      <File FileName="extra.rc" ContainerId="W32RC" ModuleName="extra.rc"/>
-    </FileList>
-  </W32ResourceDLL.Personality>
+		</Options>
+		<FileList>
+			<File FileName="About.dfm" ContainerId="W32Form" ModuleName="About.dfm"/>
+			<File FileName="Main.dfm" ContainerId="W32Form" ModuleName="Main.dfm"/>
+			<File FileName="mp2enc_DRC.rc" ContainerId="W32RC" ModuleName="mp2enc_DRC.rc"/>
+			<File FileName="extra.rc" ContainerId="W32RC" ModuleName="extra.rc"/>
+		</FileList>
+	</W32ResourceDLL.Personality>
 </BorlandProject>
