@@ -170,11 +170,8 @@
 						<VFOLDER ID="{A059D25B-33B0-4185-B547-B41224478ACC}" name="Resources"/>
 					</VFOLDERS>
 					<Language>
-						<Language Name="ProjectLang">0x00000409</Language>
+						<Language Name="ProjectLang">$00000409</Language>
 					</Language>
-					<Resource_DLL_Projects>
-						<Resource_DLL_Projects Name="Item0">日本語 (日本)*$00000411*JPN*JPN</Resource_DLL_Projects>
-					</Resource_DLL_Projects>
 					<RDP_Source_Files>
 						<RDP_Source_Files Name="Item0">Main.dfm</RDP_Source_Files>
 						<RDP_Source_Files Name="Item1">extra.rc</RDP_Source_Files>
