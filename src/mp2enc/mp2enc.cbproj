@@ -3,8 +3,8 @@
 			<ProjectGuid>{3FBEFF18-8FA1-41D3-BB25-60C2AC656B78}</ProjectGuid>
 			<ProjectVersion>12.3</ProjectVersion>
 			<MainSource>mp2enc.cpp</MainSource>
-			<Config Condition="'$(Config)'==''">Debug</Config>
 			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
 			<Platform>Win32</Platform>
 			<AppType>Application</AppType>
 			<FrameworkType>VCL</FrameworkType>
@@ -23,69 +23,69 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
-			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
-			<BRCC_Defines>DEFAULT_RESOURCES=1;$(BRCC_Defines)</BRCC_Defines>
-			<ILINK_GenerateDRC>True</ILINK_GenerateDRC>
-			<BCC_InstructionSet>5</BCC_InstructionSet>
-			<_TCHARMapping>wchar_t</_TCHARMapping>
-			<PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;dbrtl.bpi;vcldb.bpi;vcldbx.bpi;bdertl.bpi;dsnap.bpi;dsnapcon.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;vclie.bpi;DbxClientDriver.bpi;DbxCommonDriver.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;dbxcds.bpi;dbexpress.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;webdsnap.bpi;soaprtl.bpi;websnap.bpi</PackageImports>
-			<Multithreaded>true</Multithreaded>
-			<ProjectType>CppVCLApplication</ProjectType>
-			<AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
 			<OutputExt>exe</OutputExt>
+			<IncludePath>..\mp2dmoe;..\..\mp2dmoeATL;$(IncludePath)</IncludePath>
+			<PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;svnui.bpi;svn.bpi;bdertl.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vclimg.bpi;vcldb.bpi;dbrtl.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;vclie.bpi;inet.bpi;inetdb.bpi;webdsnap.bpi;websnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;DbxCommonDriver.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;dbexpress.bpi;dbxcds.bpi;DbxClientDriver.bpi;AzureCloud.bpi;vclib.bpi;ibxpress.bpi</PackageImports>
+			<Multithreaded>true</Multithreaded>
+			<LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+			<_TCHARMapping>wchar_t</_TCHARMapping>
+			<AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+			<ProjectType>CppVCLApplication</ProjectType>
 			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-			<IncludePath>..\mp2dmoe;$(BDS)\include;$(BDS)\include\dinkumware;$(IncludePath)</IncludePath>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE</DCC_UnitAlias>
+			<UsePackages>true</UsePackages>
+			<IntermediateOutputDir>.\$(Config)\$(Platform)</IntermediateOutputDir>
+			<FinalOutputDir>.\$(Config)\$(Platform)</FinalOutputDir>
 			<BCC_wpar>false</BCC_wpar>
 			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+			<BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+			<ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
-			<FinalOutputDir>..\Debug</FinalOutputDir>
 			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
 			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
 			<DCC_Optimize>false</DCC_Optimize>
 			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
 			<Defines>_DEBUG;$(Defines)</Defines>
 			<BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
-			<IntermediateOutputDir>Debug</IntermediateOutputDir>
 			<BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
 			<DCC_Define>DEBUG</DCC_Define>
 			<BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
 			<TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
 			<BCC_StackFrames>true</BCC_StackFrames>
-			<ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
 			<TASM_Debugging>Full</TASM_Debugging>
 			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+			<ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
-			<FinalOutputDir>..\Release</FinalOutputDir>
 			<Defines>NDEBUG;$(Defines)</Defines>
-			<IntermediateOutputDir>Release</IntermediateOutputDir>
-			<ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
 			<CppCompile Include="About.cpp">
 				<Form>AboutBox</Form>
 				<DependentOn>About.h</DependentOn>
-				<BuildOrder>2</BuildOrder>
+				<BuildOrder>1</BuildOrder>
 			</CppCompile>
-			<ResourceCompile Include="extra.rc">
-				<Form>extra.res</Form>
-				<BuildOrder>0</BuildOrder>
-			</ResourceCompile>
 			<CppCompile Include="Main.cpp">
 				<Form>MainForm</Form>
 				<DependentOn>Main.h</DependentOn>
-				<BuildOrder>1</BuildOrder>
+				<BuildOrder>0</BuildOrder>
 			</CppCompile>
 			<None Include="ModelSupport_mp2enc\default.txaPackage"/>
 			<None Include="ModelSupport_mp2enc\default.txvpck"/>
+			<None Include="ModelSupport_mp2enc\System\default.txvpck"/>
 			<CppCompile Include="mp2enc.cpp">
-				<BuildOrder>0</BuildOrder>
+				<BuildOrder>2</BuildOrder>
 			</CppCompile>
+			<RcItem Include="mp2enc.exe.manifest">
+				<ContainerId>ResourceItem</ContainerId>
+				<ResourceType>24</ResourceType>
+				<ResourceId>1</ResourceId>
+			</RcItem>
 			<ResFiles Include="mp2enc.res">
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
@@ -93,11 +93,8 @@
 				<VirtualFolder>{7C278F3E-DB4F-4E82-A06C-48E4F072123B}</VirtualFolder>
 				<BuildOrder>0</BuildOrder>
 			</None>
-			<None Include="res\mp2enc.exe.manifest">
-				<VirtualFolder>{A059D25B-33B0-4185-B547-B41224478ACC}</VirtualFolder>
-			</None>
-			<FormResources Include="About.dfm"/>
 			<FormResources Include="Main.dfm"/>
+			<FormResources Include="About.dfm"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
@@ -112,6 +109,9 @@
 		</ItemGroup>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')" Project="$(BDS)\Bin\CodeGear.Cpp.Targets"/>
 		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<PropertyGroup Condition="'$(FileToCompile)'==''">
+			<PostBuildEvent><![CDATA[copy ..\mp2dmoe\$(Config)\$(Platform)\mp2dmoe.dll .\$(Config)\$(Platform)]]></PostBuildEvent>
+		</PropertyGroup>
 		<ProjectExtensions>
 			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
 			<Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
@@ -161,22 +161,15 @@
 					</Parameters>
 					<ProjectProperties>
 						<ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
-						<ProjectProperties Name="ManagePaths">True</ProjectProperties>
+						<ProjectProperties Name="ManagePaths">False</ProjectProperties>
 						<ProjectProperties Name="VerifyPackages">True</ProjectProperties>
 					</ProjectProperties>
 					<VFOLDERS>
-						<VFOLDER ID="{7C278F3E-DB4F-4E82-A06C-48E4F072123B}" name="Headers"/>
-						<VFOLDER ID="{A059D25B-33B0-4185-B547-B41224478ACC}" name="Resources"/>
+						<VFOLDER name="Headers" ID="{7C278F3E-DB4F-4E82-A06C-48E4F072123B}"/>
 					</VFOLDERS>
 					<Language>
 						<Language Name="ProjectLang">$00000409</Language>
 					</Language>
-					<RDP_Source_Files>
-						<RDP_Source_Files Name="Item0">Main.dfm</RDP_Source_Files>
-						<RDP_Source_Files Name="Item1">extra.rc</RDP_Source_Files>
-						<RDP_Source_Files Name="Item2">About.dfm</RDP_Source_Files>
-						<RDP_Source_Files Name="Item3">mp2enc.drc</RDP_Source_Files>
-					</RDP_Source_Files>
 				</CPlusPlusBuilder.Personality>
 				<ModelSupport>True</ModelSupport>
 				<Platforms>

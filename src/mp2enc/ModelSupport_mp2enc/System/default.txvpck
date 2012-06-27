@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="rrxa5tz6wzq_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IMediaControl&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,301,532,281" />
+      <reference referencedUin="cpp:e_field:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.intf" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator IMediaControl *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator =(IMediaControl*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator =(::System::DelphiInterface&lt;IMediaControl&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.operator = &lt;ANOTHERINTF&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.~DelphiInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.DelphiInterface(IMediaControl*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.DelphiInterface(::System::DelphiInterface&lt;IMediaControl&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.DelphiInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaControl&gt;.DelphiInterface()" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IMediaEvent&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="552,301,524,281" />
+      <reference referencedUin="cpp:e_field:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.intf" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator IMediaEvent *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator =(IMediaEvent*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator =(::System::DelphiInterface&lt;IMediaEvent&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.operator = &lt;ANOTHERINTF&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.~DelphiInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.DelphiInterface(IMediaEvent*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.DelphiInterface(::System::DelphiInterface&lt;IMediaEvent&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.DelphiInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IMediaEvent&gt;.DelphiInterface()" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IBaseFilter&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="1086,301,514,281" />
+      <reference referencedUin="cpp:e_field:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.intf" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator IBaseFilter *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator =(IBaseFilter*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator =(::System::DelphiInterface&lt;IBaseFilter&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.operator = &lt;ANOTHERINTF&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.~DelphiInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.DelphiInterface(IBaseFilter*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.DelphiInterface(::System::DelphiInterface&lt;IBaseFilter&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.DelphiInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IBaseFilter&gt;.DelphiInterface()" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IDMOWrapperFilter&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,592,562,281" />
+      <reference referencedUin="cpp:e_field:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.intf" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator IDMOWrapperFilter *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator =(IDMOWrapperFilter*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator =(::System::DelphiInterface&lt;IDMOWrapperFilter&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.operator = &lt;ANOTHERINTF&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.~DelphiInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.DelphiInterface(IDMOWrapperFilter*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.DelphiInterface(::System::DelphiInterface&lt;IDMOWrapperFilter&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.DelphiInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IDMOWrapperFilter&gt;.DelphiInterface()" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IGraphBuilder&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,531,281" />
+      <reference referencedUin="cpp:e_field:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.intf" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator IGraphBuilder *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator =(IGraphBuilder*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator =(::System::DelphiInterface&lt;IGraphBuilder&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.operator = &lt;ANOTHERINTF&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.~DelphiInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.DelphiInterface(IGraphBuilder*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.DelphiInterface(::System::DelphiInterface&lt;IGraphBuilder&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.DelphiInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IGraphBuilder&gt;.DelphiInterface()" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IAMStreamConfig&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="551,10,553,281" />
+      <reference referencedUin="cpp:e_field:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.intf" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator IAMStreamConfig *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator =(IAMStreamConfig*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator =(::System::DelphiInterface&lt;IAMStreamConfig&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.operator = &lt;ANOTHERINTF&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.~DelphiInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.DelphiInterface(IAMStreamConfig*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.DelphiInterface(::System::DelphiInterface&lt;IAMStreamConfig&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.DelphiInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IAMStreamConfig&gt;.DelphiInterface()" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IPin&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="1114,10,476,281" />
+      <reference referencedUin="cpp:e_field:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.intf" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator IPin *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator =(IPin*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator =(::System::DelphiInterface&lt;IPin&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.operator = &lt;ANOTHERINTF&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.~DelphiInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.DelphiInterface(IPin*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.DelphiInterface(::System::DelphiInterface&lt;IPin&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.DelphiInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2enc__windows_rtl:System.DelphiInterface&lt;IPin&gt;.DelphiInterface()" />
+    </reference>
+  </view>
+</nodeSet>

@@ -6,7 +6,7 @@
     <property name="$name" value="default" />
     <reference referencedUin="cpp:e_class:src:mp2enc:TAboutBox">
       <property name="$shortcutReference" value="true" />
-      <property name="bounds" value="196,10,145,192" />
+      <property name="bounds" value="299,10,145,190" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.OKButton" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Comments" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Copyright" />
@@ -18,7 +18,7 @@
     </reference>
     <reference referencedUin="cpp:e_class:src:mp2enc:TMainForm">
       <property name="$shortcutReference" value="true" />
-      <property name="bounds" value="10,10,176,312" />
+      <property name="bounds" value="10,10,279,625" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.SaveDialog1" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.OpenDialog1" />
       <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.EncodeAs1" />
@@ -35,6 +35,39 @@
       <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.TMainForm(::Classes::TComponent*)" />
       <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.About1Click(::System::TObject*)" />
       <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.Exit1Click(::System::TObject*)" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.InputFileName" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Encoder" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.MediaEvent1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.MediaControl1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.GraphBuilder1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Timer1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.EncodeButton" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.SaveProfile1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.DeleteProfile1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.NewProfile1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Tools1" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.EncodeAs(::System::UnicodeString)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.CloseFile()" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.OpenFile(::System::UnicodeString)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.GetDefaultOutputFileName()" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.Timer1Timer(::System::TObject*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.EncodeAs1Click(::System::TObject*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.Encode1Click(::System::TObject*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.Close1Click(::System::TObject*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.Open1Click(::System::TObject*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.FormClose(::System::TObject*!::Forms::TCloseAction&amp;)" />
+    </reference>
+    <reference referencedUin="design:view:::rrxa5tz6wzq_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="$hidden" value="True" />
+      <property name="bounds" value="299,10,100,89" />
+      <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IMediaControl&gt;" />
+      <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IMediaEvent&gt;" />
+      <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IBaseFilter&gt;" />
+      <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IDMOWrapperFilter&gt;" />
+      <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IGraphBuilder&gt;" />
+      <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IAMStreamConfig&gt;" />
+      <reference referencedUin="cpp:e_class:src:mp2enc:System.DelphiInterface&lt;IPin&gt;" />
     </reference>
   </view>
 </nodeSet>
