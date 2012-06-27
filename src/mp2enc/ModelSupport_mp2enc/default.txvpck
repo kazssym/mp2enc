@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="7u2k9jhjl5p_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="cpp:e_class:src:mp2enc:TAboutBox">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="196,10,145,192" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.OKButton" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Comments" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Copyright" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Version" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.ProductName" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.ProgramIcon" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TAboutBox.Panel1" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TAboutBox.TAboutBox(::Classes::TComponent*)" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2enc:TMainForm">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,176,312" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.SaveDialog1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.OpenDialog1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.EncodeAs1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Encode1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.N2" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.About1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Help1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Exit1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.N1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Close1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.Open1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.File1" />
+      <reference referencedUin="cpp:e_field:src:mp2enc:TMainForm.MainMenu1" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.TMainForm(::Classes::TComponent*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.About1Click(::System::TObject*)" />
+      <reference referencedUin="cpp:e_method:src:mp2enc:TMainForm.Exit1Click(::System::TObject*)" />
+    </reference>
+  </view>
+</nodeSet>
