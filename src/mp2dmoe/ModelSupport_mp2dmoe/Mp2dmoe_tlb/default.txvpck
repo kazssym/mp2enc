@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="d2y3lwo8z7p_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2Encoder">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="111,166,128,52" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2EncoderT&lt;T&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,323,146" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2EncoderT&lt;T&gt;.operator =(::Mp2dmoe_tlb::TCOMIMp2EncoderT&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2EncoderT&lt;T&gt;.TCOMIMp2EncoderT(::Mp2dmoe_tlb::TCOMIMp2EncoderT&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2EncoderT&lt;T&gt;.TCOMIMp2EncoderT(::Mp2dmoe_tlb::IMp2Encoder*!bool)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2EncoderT&lt;T&gt;.TCOMIMp2EncoderT()" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:Mp2dmoe_tlb.IMp2Encoder">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,166,91,80" />
+    </reference>
+  </view>
+</nodeSet>

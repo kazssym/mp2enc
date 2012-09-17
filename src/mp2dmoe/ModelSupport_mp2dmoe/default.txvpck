@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="2t7id93ifls_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="design:view:::d2y3lwo8z7p_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="389,10,130,134" />
+      <reference referencedUin="cpp:e_class:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2Encoder" />
+      <reference referencedUin="cpp:e_class:src:mp2dmoe:Mp2dmoe_tlb.TCOMIMp2EncoderT&lt;T&gt;" />
+      <reference referencedUin="cpp:e_class:src:mp2dmoe:Mp2dmoe_tlb.IMp2Encoder" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:CoMp2Encoder">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="539,10,103,52" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:TComInterfaceBase&lt;IUnknown&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="539,110,143,114" />
+      <reference referencedUin="cpp:e_field:lib:mp2dmoe__windows_rtl:TComInterfaceBase&lt;IUnknown&gt;.Variant_True" />
+      <reference referencedUin="cpp:e_field:lib:mp2dmoe__windows_rtl:TComInterfaceBase&lt;IUnknown&gt;.Variant_False" />
+      <reference referencedUin="cpp:e_field:lib:mp2dmoe__windows_rtl:TComInterfaceBase&lt;IUnknown&gt;.lcid" />
+      <reference referencedUin="cpp:e_field:lib:mp2dmoe__windows_rtl:TComInterfaceBase&lt;IUnknown&gt;.OptParam" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:IMp2EncoderPtr">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="662,10,107,52" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;">
+      <property name="$hidden" value="True" />
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,270,99,56" />
+      <reference referencedUin="cpp:e_field:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.intf" />
+      <reference referencedUin="cpp:e_field:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.iid" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.RemoteInstance(wchar_t * const!_GUID const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.ActiveInstance(wchar_t*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.ActiveInstance(_GUID const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.CreateInstance(wchar_t*!IUnknown*!unsigned long)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.CreateInstance(_GUID const &amp;!IUnknown*!unsigned long)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.IsBound()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator bool()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator !()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator =(TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator = &lt;DISPINTF&gt;(TAutoDriver&lt;DISPINTF&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator = &lt;I&gt;(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface(::System::DelphiInterface&lt;T&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator = &lt;ANOTHERINTF,ANOTHERIID&gt;(TComInterface&lt;T,piid&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator =(TVariant)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator =(IDispatch*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator =(IUnknown*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.GetIID()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator =(::Mp2dmoe_tlb::IMp2Encoder*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.AddRef()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.Detach()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.Unbind()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.Bind(::Mp2dmoe_tlb::IMp2Encoder*!bool)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.Reset(::Mp2dmoe_tlb::IMp2Encoder*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator -&gt;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator &amp;()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.operator IMp2Encoder *()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.~TComInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface(TComInterface&lt;T,piid&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface(TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt; const &amp;)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface(TVariant)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface(IDispatch*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface(IUnknown*)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface(::Mp2dmoe_tlb::IMp2Encoder*!bool)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.TComInterface()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_rtl:TComInterface&lt;IMp2Encoder,&amp;GUID_NULL&gt;.RemoteInstance(wchar_t*!_GUID const &amp;)" />
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:TMp2EncoderImpl">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,51,127,131" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:TMp2EncoderImpl.TMp2EncoderImpl(::Comobj::TComObjectFactory*!::System::_di_IInterface)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:TMp2EncoderImpl.TMp2EncoderImpl(::System::_di_IInterface)" />
+      <reference referencedUin="cpp:e_method:src:mp2dmoe:TMp2EncoderImpl.TMp2EncoderImpl()" />
+      <reference referencedUin="cpp:e_class:src:mp2dmoe:TMp2EncoderImpl.inherited" />
+      <reference referencedUin="cpp:l_gnt:src:mp2dmoe:TMp2EncoderImpl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;">
+        <property name="sourceAnchor" value="137,116" />
+        <property name="targetAnchor" value="217,116" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="cpp:e_class:src:mp2dmoe:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="217,10,152,214" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_vcl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;.QueryInterface(_GUID const &amp;!void**)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_vcl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;.Release()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_vcl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;.AddRef()" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_vcl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;.TCppComObject(::Comobj::TComObjectFactory*!::System::_di_IInterface)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_vcl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;.TCppComObject(::System::_di_IInterface)" />
+      <reference referencedUin="cpp:e_method:lib:mp2dmoe__windows_vcl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;.TCppComObject()" />
+      <reference referencedUin="cpp:e_class:lib:mp2dmoe__windows_vcl:TCppComObject&lt;IMp2Encoder,IUnknown,IInterface&gt;._COM_CLASS" />
+    </reference>
+  </view>
+</nodeSet>
