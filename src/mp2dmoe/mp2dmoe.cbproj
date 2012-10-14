@@ -26,9 +26,9 @@
 			<PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;svnui.bpi;svn.bpi;bdertl.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vclimg.bpi;vcldb.bpi;dbrtl.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;vclie.bpi;inet.bpi;inetdb.bpi;webdsnap.bpi;websnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;DbxCommonDriver.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;dbexpress.bpi;dbxcds.bpi;DbxClientDriver.bpi;AzureCloud.bpi;vclib.bpi;ibxpress.bpi</PackageImports>
 			<BCC_InstructionSet>6</BCC_InstructionSet>
 			<BCC_Defines>USING_DAX;$(BCC_Defines)</BCC_Defines>
+			<ProjectType>CppActiveLibrary</ProjectType>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<BCC_IncludePath>$(BDSINCLUDE)\windows\vcl;$(BCC_IncludePath)</BCC_IncludePath>
-			<ProjectType>CppActiveLibrary</ProjectType>
 			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
 			<OutputExt>dll</OutputExt>
 			<AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
@@ -124,8 +124,8 @@
 						<VersionInfo Name="Special">False</VersionInfo>
 						<VersionInfo Name="Private">False</VersionInfo>
 						<VersionInfo Name="DLL">False</VersionInfo>
-						<VersionInfo Name="Locale">1041</VersionInfo>
-						<VersionInfo Name="CodePage">932</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
 					</VersionInfo>
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
