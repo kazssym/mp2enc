@@ -65,6 +65,10 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
+			<None Include="ModelSupport_mp2dmoe\default.txaPackage"/>
+			<None Include="ModelSupport_mp2dmoe\default.txvpck"/>
+			<None Include="ModelSupport_mp2dmoe\Mp2dmoe_tlb\default.txaPackage"/>
+			<None Include="ModelSupport_mp2dmoe\Mp2dmoe_tlb\default.txvpck"/>
 			<CppCompile Include="mp2dmoe.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
@@ -147,6 +151,7 @@
 				<Platforms>
 					<Platform value="Win32">True</Platform>
 				</Platforms>
+				<ModelSupport>True</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
