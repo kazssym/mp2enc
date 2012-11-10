@@ -3,20 +3,20 @@ syntax: glob
 *.RES
 *.tlb
 *.rcn
-*.dfn
 
-# Binary directories.
+# RAD Studio transient files
+LibrarySupport/
+*_resources.rc
+*.tvsconfig
+*.local
+*.dsk
+
+# Common binary directories
 .libs/
 Debug/
 Release/
 
-# IDE state files/directories.
-*.local
-*.tvsconfig
-LibrarySupport/
-
-# Backup and garbage files.
+# Backup files
 *~
 *.~*
 *.orig
-*.rej
