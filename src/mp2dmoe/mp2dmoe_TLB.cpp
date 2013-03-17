@@ -9,17 +9,18 @@
 // manual modifications will be lost.
 // ************************************************************************ //
 
-// $Rev: 34747 $
-// File generated on 2012/06/16 11:04:14 from Type Library described below.
+// $Rev: 52393 $
+// File generated on 2013/03/17 20:44:43 from Type Library described below.
 
 // ************************************************************************  //
-// Type Lib: E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc\src\mp2dmoe\mp2dmoe (1)
+// Type Lib: E:\UserData\Kaz\Documents\RAD Studio\Projects\mp2enc-kit\mp2enc\src\mp2dmoe\mp2dmoe (1)
 // LIBID: {67FC4F6A-1F74-41AE-8F59-B0A174D394DF}
 // LCID: 0
 // Helpfile:
 // HelpString:
 // DepndLst:
-//   (1) v2.0 stdole, (C:\Windows\system32\stdole2.tlb)
+//   (1) v2.0 stdole, (C:\Windows\SysWOW64\stdole2.tlb)
+// SYS_KIND: SYS_WIN32
 // ************************************************************************ //
 
 #include <vcl.h>
