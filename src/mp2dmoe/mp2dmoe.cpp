@@ -3,13 +3,12 @@
 #include <ComServ.hpp>
 #include <axbase.h>
 
-#include "Mp2EncoderImpl.h"
 #pragma package(smart_init)
-#pragma link "ComServ.obj"
+#pragma link "System.Win.ComServ"
 
 // -----------------------------------------------------------------------------
-// 初期化または終了されたスレッドやプロセスに対して Windows によって
-// 呼び出されたサーバーのエントリ ポイント。
+// Entry point of your Server invoked by Windows for processes or threads are
+// initialized or terminated.
 //
 // -----------------------------------------------------------------------------
 int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void *) {
@@ -17,8 +16,8 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void *) {
 }
 
 // -----------------------------------------------------------------------------
-// DLL が使用されなくなり、読み込み解除が必要かどうかを
-// 問い合わせるために呼び出されたサーバーのエントリ ポイント。
+// Entry point of your Server invoked to inquire whether the DLL is no
+// longer in use and should be unloaded.
 // -----------------------------------------------------------------------------
 STDAPI __export DllCanUnloadNow(void) {
     Comserv::TComServer *comserver = Comserv::GetComServer();
@@ -28,8 +27,8 @@ STDAPI __export DllCanUnloadNow(void) {
 }
 
 // -----------------------------------------------------------------------------
-// ユーザーのサーバーからクラス オブジェクトを取得することを OLE に許可した
-// サーバーのエントリ ポイント。
+// Entry point of your Server allowing OLE to retrieve a class object from
+// your Server
 // -----------------------------------------------------------------------------
 STDAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv) {
     Comobj::TComObjectFactory *Factory =
@@ -46,8 +45,8 @@ STDAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv) {
 }
 
 // -----------------------------------------------------------------------------
-// モジュールでサポートされたすべてのクラスに対するレジストリ エントリ
-// を作成するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
+// Entry point of your Server invoked to instruct the server to create
+// registry entries for all classes supported by the module
 // -----------------------------------------------------------------------------
 STDAPI __export DllRegisterServer(void) {
     Comserv::TComServer *comserver = Comserv::GetComServer();
@@ -65,8 +64,8 @@ STDAPI __export DllRegisterServer(void) {
 }
 
 // -----------------------------------------------------------------------------
-// DllRegisterServer を通じて作成されたすべてのレジストリ エントリを
-// 削除するようにサーバーに指示するため呼び出されたサーバーのエントリ ポイント。
+// Entry point of your Server invoked to instruct the server to remove
+// all registry entries created through DllRegisterServer.
 // -----------------------------------------------------------------------------
 STDAPI __export DllUnregisterServer(void) {
     Comserv::TComServer *comserver = Comserv::GetComServer();
@@ -84,8 +83,8 @@ STDAPI __export DllUnregisterServer(void) {
 }
 
 // ------------------------------------------------------------------------------
-// サーバー インストール/セットアップのエントリ ポイント。'ユーザーごとの' 登録に使用
-// "regsvr32 /n /i:user [/u] axlibrary.dll" の呼び出しを通じて起動
+// Entry point of your Server installation/setup. Used for 'PerUser' registration
+// Invoked via call to "regsvr32 /n /i:user [/u] axlibrary.dll"
 // ------------------------------------------------------------------------------
 STDAPI __export DllInstall(BOOL bInstall, LPCWSTR pszCmdLine) {
     Comserv::TComServer *comserver = Comserv::GetComServer();
