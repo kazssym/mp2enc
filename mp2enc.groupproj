@@ -1,72 +1,60 @@
-﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-		<PropertyGroup>
-			<ProjectGuid>{1572FEC2-613C-4F28-BB87-DA3E0C60735F}</ProjectGuid>
-		</PropertyGroup>
-		<ItemGroup>
-			<Projects Include="mp2dmoeATL\mp2dmoeATL.cbproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="..\twolame\libtwolame\libtwolame.cbproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="src\mp2dmoe\mp2dmoe.cbproj">
-				<Dependencies>..\twolame\libtwolame\libtwolame.cbproj</Dependencies>
-			</Projects>
-			<Projects Include="src\mp2enc\mp2enc.cbproj">
-				<Dependencies>src\mp2dmoe\mp2dmoe.cbproj</Dependencies>
-			</Projects>
-		</ItemGroup>
-		<ProjectExtensions>
-			<Borland.Personality>Default.Personality.12</Borland.Personality>
-			<Borland.ProjectType/>
-			<BorlandProject>
-				<Default.Personality/>
-			</BorlandProject>
-		</ProjectExtensions>
-		<Target Name="mp2dmoeATL">
-			<MSBuild Projects="mp2dmoeATL\mp2dmoeATL.cbproj"/>
-		</Target>
-		<Target Name="mp2dmoeATL:Clean">
-			<MSBuild Projects="mp2dmoeATL\mp2dmoeATL.cbproj" Targets="Clean"/>
-		</Target>
-		<Target Name="mp2dmoeATL:Make">
-			<MSBuild Projects="mp2dmoeATL\mp2dmoeATL.cbproj" Targets="Make"/>
-		</Target>
-		<Target Name="libtwolame">
-			<MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
-		</Target>
-		<Target Name="libtwolame:Clean">
-			<MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj" Targets="Clean"/>
-		</Target>
-		<Target Name="libtwolame:Make">
-			<MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj" Targets="Make"/>
-		</Target>
-		<Target Name="mp2dmoe" DependsOnTargets="libtwolame">
-			<MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj"/>
-		</Target>
-		<Target Name="mp2dmoe:Clean" DependsOnTargets="libtwolame:Clean">
-			<MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj" Targets="Clean"/>
-		</Target>
-		<Target Name="mp2dmoe:Make" DependsOnTargets="libtwolame:Make">
-			<MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj" Targets="Make"/>
-		</Target>
-		<Target Name="mp2enc" DependsOnTargets="mp2dmoe">
-			<MSBuild Projects="src\mp2enc\mp2enc.cbproj"/>
-		</Target>
-		<Target Name="mp2enc:Clean" DependsOnTargets="mp2dmoe:Clean">
-			<MSBuild Projects="src\mp2enc\mp2enc.cbproj" Targets="Clean"/>
-		</Target>
-		<Target Name="mp2enc:Make" DependsOnTargets="mp2dmoe:Make">
-			<MSBuild Projects="src\mp2enc\mp2enc.cbproj" Targets="Make"/>
-		</Target>
-		<Target Name="Build">
-			<CallTarget Targets="mp2dmoeATL;libtwolame;mp2dmoe;mp2enc"/>
-		</Target>
-		<Target Name="Clean">
-			<CallTarget Targets="mp2dmoeATL:Clean;libtwolame:Clean;mp2dmoe:Clean;mp2enc:Clean"/>
-		</Target>
-		<Target Name="Make">
-			<CallTarget Targets="mp2dmoeATL:Make;libtwolame:Make;mp2dmoe:Make;mp2enc:Make"/>
-		</Target>
-		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
-	</Project>
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1572FEC2-613C-4F28-BB87-DA3E0C60735F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\twolame\libtwolame\libtwolame.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="src\mp2dmoe\mp2dmoe.cbproj">
+            <Dependencies>..\twolame\libtwolame\libtwolame.cbproj</Dependencies>
+        </Projects>
+        <Projects Include="src\mp2enc\mp2enc.cbproj">
+            <Dependencies>src\mp2dmoe\mp2dmoe.cbproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="libtwolame">
+        <MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj"/>
+    </Target>
+    <Target Name="libtwolame:Clean">
+        <MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="libtwolame:Make">
+        <MSBuild Projects="..\twolame\libtwolame\libtwolame.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="mp2dmoe" DependsOnTargets="libtwolame">
+        <MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj"/>
+    </Target>
+    <Target Name="mp2dmoe:Clean" DependsOnTargets="libtwolame:Clean">
+        <MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mp2dmoe:Make" DependsOnTargets="libtwolame:Make">
+        <MSBuild Projects="src\mp2dmoe\mp2dmoe.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="mp2enc" DependsOnTargets="mp2dmoe">
+        <MSBuild Projects="src\mp2enc\mp2enc.cbproj"/>
+    </Target>
+    <Target Name="mp2enc:Clean" DependsOnTargets="mp2dmoe:Clean">
+        <MSBuild Projects="src\mp2enc\mp2enc.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mp2enc:Make" DependsOnTargets="mp2dmoe:Make">
+        <MSBuild Projects="src\mp2enc\mp2enc.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="libtwolame;mp2dmoe;mp2enc"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="libtwolame:Clean;mp2dmoe:Clean;mp2enc:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="libtwolame:Make;mp2dmoe:Make;mp2enc:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
