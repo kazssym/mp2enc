@@ -1,22 +1,20 @@
-syntax: glob
+syntax: regexp
 
-*.RES
-*.tlb
-*.rcn
+\.res$
+\.tlb$
+(^|/)Debug/
+(^|/)Release/
 
-# RAD Studio transient files
-LibrarySupport/
-*_resources.rc
-*.tvsconfig
-*.local
-*.dsk
+# RAD Studio modeling support files
+\.tvsconfig$
+\.cache$
+^LibrarySupport/
 
-# Common binary directories
-.libs/
-Debug/
-Release/
+# RAD Studio state files
+\.[^/.]*proj\.local$
+\.dsk$
 
 # Backup files
-*~
-*.~*
-*.orig
+~$
+\.~
+\.orig$
