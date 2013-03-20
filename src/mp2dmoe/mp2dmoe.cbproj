@@ -138,17 +138,12 @@
         <CppCompile Include="mp2dmoe.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <RidlCompile Include="mp2dmoe.ridl"/>
         <PCHCompile Include="mp2dmoePCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
-        <CppCompile Include="mp2dmoe_TLB.cpp">
-            <DependentOn>mp2dmoe_TLB.h</DependentOn>
-            <BuildOrder>1</BuildOrder>
-        </CppCompile>
         <CppCompile Include="Mp2EncoderImpl.cpp">
             <DependentOn>Mp2EncoderImpl.h</DependentOn>
-            <BuildOrder>2</BuildOrder>
+            <BuildOrder>1</BuildOrder>
         </CppCompile>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
