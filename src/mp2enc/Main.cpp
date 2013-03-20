@@ -20,11 +20,10 @@
 #pragma hdrstop
 
 #include <initguid.h>
-
 #include "Main.h"
+
 #include "About.h"
-#include "resource.h"
-#include <mp2guid.h>
+#include <Mp2Encoder.h>
 #include <dshow.h>
 #include <dmo.h>
 #include <dmodshow.h>
