@@ -146,6 +146,7 @@
             <DependentOn>Mp2EncoderImpl.h</DependentOn>
             <BuildOrder>1</BuildOrder>
         </CppCompile>
+        <None Include="Win32\mp2dmoe.manifest"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
