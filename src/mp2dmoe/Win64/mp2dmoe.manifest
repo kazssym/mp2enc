@@ -2,7 +2,7 @@
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
   <!-- The name attribute in the following element may change later.  -->
   <assemblyIdentity name="mp2dmoe" version="1.0.0.0" type="win32"
-    processorArchitecture="x86"/>
+    processorArchitecture="amd64"/>
   <file name="mp2dmoe.dll">
     <comClass clsid="{3FCD30F6-88FE-4A44-A518-1DBB0937DAE4}"
       threadingModel="Both" description="MP2 Encoder DMO"/>
