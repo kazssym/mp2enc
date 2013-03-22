@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity name="mp2enc.exe" version="1.0.0.0" type="win32"
+    processorArchitecture="x86"/>
   <dependency>
     <dependentAssembly>
       <assemblyIdentity name="Microsoft.Windows.Common-Controls"
@@ -9,7 +11,7 @@
   </dependency>
   <dependency>
     <dependentAssembly>
-      <assemblyIdentity name="mp2dmoe" version="0.0.0.0" type="win32"
+      <assemblyIdentity name="mp2dmoe" version="1.0.0.0" type="win32"
         processorArchitecture="*" language="*"/>
     </dependentAssembly>
   </dependency>

@@ -80,13 +80,13 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <Manifest_File>mp2enc.manifest</Manifest_File>
+        <Manifest_File>Win32\mp2enc.manifest</Manifest_File>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <PackageImports>rtl;vcl;$(PackageImports)</PackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
-        <Manifest_File>mp2enc.manifest</Manifest_File>
+        <Manifest_File>Win64\mp2enc.manifest</Manifest_File>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <PackageImports>rtl;vcl;$(PackageImports)</PackageImports>
         <BCC_PCHName_Clang>mp2encPCH1.h</BCC_PCHName_Clang>
@@ -147,10 +147,11 @@
         <CppCompile Include="mp2enc.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <None Include="mp2enc.manifest"/>
         <PCHCompile Include="mp2encPCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
+        <None Include="Win32\mp2enc.manifest"/>
+        <None Include="Win64\mp2enc.manifest"/>
         <FormResources Include="Main.dfm"/>
         <FormResources Include="About.dfm"/>
         <BuildConfiguration Include="Release">
