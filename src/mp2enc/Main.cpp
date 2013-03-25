@@ -33,8 +33,6 @@
 #pragma warn .8098
 #include <ComObj.hpp>
 
-#pragma link "quartz.lib"
-
 const GUID KSDATAFORMAT_SUBTYPE_MPEG1Payload = {STATIC_KSDATAFORMAT_SUBTYPE_MPEG1Payload};
 
 //---------------------------------------------------------------------------
