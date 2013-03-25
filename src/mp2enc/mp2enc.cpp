@@ -3,6 +3,9 @@
 #include <vcl.h>
 #pragma hdrstop
 #include <tchar.h>
+
+#pragma comment(lib, "quartz")
+
 //---------------------------------------------------------------------------
 USEFORM("Main.cpp", MainForm);
 USEFORM("About.cpp", AboutBox);
