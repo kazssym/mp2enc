@@ -39,10 +39,11 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void *) {
 // longer in use and should be unloaded.
 // -----------------------------------------------------------------------------
 STDAPI __export DllCanUnloadNow(void) {
-    Comserv::TComServer *comserver = Comserv::GetComServer();
-    return (!comserver ||
-        ((comserver->ObjectCount /* + comserver->FactoryCount */) == 0)) ?
-        S_OK : S_FALSE;
+    if (!ComServer ||
+            (ComServer->ObjectCount == 0 && ComServer->FactoryCount == 0)) {
+        return S_OK;
+    }
+    return S_FALSE;
 }
 
 // -----------------------------------------------------------------------------
@@ -50,17 +51,16 @@ STDAPI __export DllCanUnloadNow(void) {
 // your Server
 // -----------------------------------------------------------------------------
 STDAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv) {
-    Comobj::TComObjectFactory *Factory =
-        Comobj::ComClassManager()->GetFactoryFromClassID(rclsid);
+    TComObjectFactory *Factory =
+            ComClassManager()->GetFactoryFromClassID(rclsid);
     if (Factory) {
         if (Factory->GetInterface(riid, ppv))
             return S_OK;
         else
             return E_NOINTERFACE;
-    } else {
-        *ppv = 0;
-        return CLASS_E_CLASSNOTAVAILABLE;
     }
+    *ppv = 0;
+    return CLASS_E_CLASSNOTAVAILABLE;
 }
 
 // -----------------------------------------------------------------------------
@@ -68,18 +68,12 @@ STDAPI __export DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv) {
 // registry entries for all classes supported by the module
 // -----------------------------------------------------------------------------
 STDAPI __export DllRegisterServer(void) {
-    Comserv::TComServer *comserver = Comserv::GetComServer();
-    if (comserver) {
-        try {
-            comserver->LoadTypeLib();
-            comserver->UpdateRegistry(true);
-            return S_OK;
-        } catch (...) {
-            return E_FAIL;
-        }
-    } else {
+    try {
+        ComServer->UpdateRegistry(true);
+    } catch (...) {
         return E_FAIL;
     }
+    return S_OK;
 }
 
 // -----------------------------------------------------------------------------
@@ -87,18 +81,12 @@ STDAPI __export DllRegisterServer(void) {
 // all registry entries created through DllRegisterServer.
 // -----------------------------------------------------------------------------
 STDAPI __export DllUnregisterServer(void) {
-    Comserv::TComServer *comserver = Comserv::GetComServer();
-    if (comserver) {
-        try {
-            comserver->LoadTypeLib();
-            comserver->UpdateRegistry(false);
-            return S_OK;
-        } catch (...) {
-            return E_FAIL;
-        }
-    } else {
+    try {
+        ComServer->UpdateRegistry(false);
+    } catch (...) {
         return E_FAIL;
     }
+    return S_OK;
 }
 
 // ------------------------------------------------------------------------------
@@ -106,23 +94,20 @@ STDAPI __export DllUnregisterServer(void) {
 // Invoked via call to "regsvr32 /n /i:user [/u] axlibrary.dll"
 // ------------------------------------------------------------------------------
 STDAPI __export DllInstall(BOOL bInstall, LPCWSTR pszCmdLine) {
-    Comserv::TComServer *comserver = Comserv::GetComServer();
-    if (comserver) {
-        bool savePerUser = comserver->PerUserRegistration;
-        if (pszCmdLine && !Sysutils::StrIComp(pszCmdLine, L"user"))
-            comserver->PerUserRegistration = true;
-        else
-            comserver->PerUserRegistration = false;
-        HRESULT result = E_FAIL;
-        if (bInstall) {
-            result = DllRegisterServer();
-            if (result == E_FAIL)
-                DllUnregisterServer();
-        } else
-            result = DllUnregisterServer();
-        comserver->PerUserRegistration = savePerUser;
-        return result;
+    bool savePerUser = ComServer->PerUserRegistration;
+    ComServer->PerUserRegistration =
+            pszCmdLine && Sysutils::StrIComp(pszCmdLine, L"user") == 0;
+
+    HRESULT hr;
+    if (bInstall) {
+        hr = DllRegisterServer();
+        if (hr == E_FAIL) {
+            DllUnregisterServer();
+        }
     } else {
-        return E_FAIL;
+        hr = DllUnregisterServer();
     }
+
+    ComServer->PerUserRegistration = savePerUser;
+    return hr;
 }
