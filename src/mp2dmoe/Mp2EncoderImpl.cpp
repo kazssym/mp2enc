@@ -26,9 +26,9 @@
 #include <System.Win.ComServ.hpp>
 
 static void CreateFactory() {
-    new TComObjectFactory(GetComServer(), __classid(TMp2EncoderImpl),
+    new TComObjectFactory(ComServer, __classid(TMp2EncoderImpl),
             CLSID_Mp2Encoder, L"TMp2EncoderImpl", L"MP2 Encoder DMO",
-            ciInternal, Comobj::tmBoth);
+            ciMultiInstance, Comobj::tmBoth);
 }
 #pragma startup CreateFactory 64
 
