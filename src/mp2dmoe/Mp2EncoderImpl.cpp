@@ -25,6 +25,8 @@
 #include "Mp2Encoder.h"
 #include <System.Win.ComServ.hpp>
 
+#pragma link "System.Win.ComServ"
+
 static void CreateFactory() {
     new TComObjectFactory(ComServer, __classid(TMp2EncoderImpl),
             CLSID_Mp2Encoder, L"TMp2EncoderImpl", L"MP2 Encoder DMO",
