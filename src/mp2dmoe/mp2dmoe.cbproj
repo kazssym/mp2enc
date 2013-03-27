@@ -224,6 +224,9 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <ModelSupport>True</ModelSupport>
+            <UnitTesting>
+                <TestProjectName>tests\mp2dmoe_tests.cbproj</TestProjectName>
+            </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
