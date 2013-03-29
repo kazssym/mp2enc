@@ -22,6 +22,8 @@
 #include <GUITestRunner.hpp>
 #include <tchar.h>
 
+#pragma comment(lib, "msdmo")
+
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int) {
     try {
         Application->Initialize();
