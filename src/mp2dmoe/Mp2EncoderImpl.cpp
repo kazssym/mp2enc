@@ -27,13 +27,6 @@
 
 #pragma link "System.Win.ComServ"
 
-static void CreateFactory() {
-    new TComObjectFactory(ComServer, __classid(TMp2EncoderImpl),
-            CLSID_Mp2Encoder, L"TMp2EncoderImpl", L"MP2 Encoder DMO",
-            ciMultiInstance, Comobj::tmBoth);
-}
-#pragma startup CreateFactory 64
-
 // TMp2EncoderImpl implementation
 
 __fastcall TMp2EncoderImpl::TMp2EncoderImpl() {
@@ -150,3 +143,12 @@ STDMETHODIMP TMp2EncoderImpl::ProcessOutput(DWORD dwFlags,
 STDMETHODIMP TMp2EncoderImpl::Lock(LONG bLock){
     return E_NOTIMPL;
 }
+
+// Unit initialization
+
+static void CreateFactory() {
+    new TComObjectFactory(ComServer, __classid(TMp2EncoderImpl),
+            CLSID_Mp2Encoder, L"TMp2EncoderImpl", L"MP2 Encoder DMO",
+            ciMultiInstance, Comobj::tmBoth);
+}
+#pragma startup CreateFactory 64
