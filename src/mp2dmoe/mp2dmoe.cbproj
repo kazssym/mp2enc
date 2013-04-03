@@ -59,6 +59,7 @@
     </PropertyGroup>
     <Import Project="..\..\mp2enc.optset" Condition="'$(Base)'!='' And Exists('..\..\mp2enc.optset')"/>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <IncludePath>.;$(IncludePath)</IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>

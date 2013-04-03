@@ -17,7 +17,7 @@
  */
 
 #ifndef Mp2EncoderImplH
-#define Mp2EncoderImplH
+#define Mp2EncoderImplH 1
 
 #include <dmo.h>
 #include <axbase.h>
@@ -91,6 +91,10 @@ namespace Mp2encoderimpl {
         virtual HRESULT STDMETHODCALLTYPE Lock(LONG bLock) override;
 
         DAX_IMPL_IUNKNOWN(inherited);
+
+    private:
+        static const DWORD NumberOfInputStreams = 1;
+        static const DWORD NumberOfOutputStreams = 1;
     };
 }
 using namespace Mp2encoderimpl;
