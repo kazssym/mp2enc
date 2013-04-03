@@ -91,22 +91,38 @@ void __fastcall TTestTMp2EncoderImpl::TestGetInputStreamInfo() {
     DWORD flags;
     CheckEqualsHex(Mp2Encoder->GetInputStreamInfo(0, 0), E_POINTER);
     Check(SUCCEEDED(Mp2Encoder->GetInputStreamInfo(0, &flags)));
-    Check(FAILED(Mp2Encoder->GetInputStreamInfo(1, &flags)));
+    CheckEqualsHex(flags,
+            DMO_INPUT_STREAMF_WHOLE_SAMPLES |
+            DMO_INPUT_STREAMF_FIXED_SAMPLE_SIZE);
+    CheckEqualsHex(Mp2Encoder->GetInputStreamInfo(1, &flags),
+            DMO_E_INVALIDSTREAMINDEX);
 }
 
 void __fastcall TTestTMp2EncoderImpl::TestGetOutputStreamInfo() {
     DWORD flags;
     CheckEqualsHex(Mp2Encoder->GetOutputStreamInfo(0, 0), E_POINTER);
     Check(SUCCEEDED(Mp2Encoder->GetOutputStreamInfo(0, &flags)));
-    Check(FAILED(Mp2Encoder->GetOutputStreamInfo(1, &flags)));
+    CheckEqualsHex(flags, DMO_OUTPUT_STREAMF_DISCARDABLE);
+    CheckEqualsHex(Mp2Encoder->GetOutputStreamInfo(1, &flags),
+            DMO_E_INVALIDSTREAMINDEX);
 }
 
 void __fastcall TTestTMp2EncoderImpl::TestGetInputType() {
-    // HRESULT STDMETHODCALLTYPE GetInputType(DWORD dwInputStreamIndex, DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt)
+    DMO_MEDIA_TYPE mt = {};
+    Check(SUCCEEDED(Mp2Encoder->GetInputType(0, 0, 0)));
+    Check(SUCCEEDED(Mp2Encoder->GetInputType(0, 0, &mt)));
+    MoFreeMediaType(&mt);
+    CheckEqualsHex(Mp2Encoder->GetInputType(1, 0, 0),
+            DMO_E_INVALIDSTREAMINDEX);
 }
 
 void __fastcall TTestTMp2EncoderImpl::TestGetOutputType() {
-    // HRESULT STDMETHODCALLTYPE GetOutputType(DWORD dwOutputStreamIndex, DWORD dwTypeIndex, DMO_MEDIA_TYPE *pmt)
+    DMO_MEDIA_TYPE mt = {};
+    Check(SUCCEEDED(Mp2Encoder->GetOutputType(0, 0, 0)));
+    Check(SUCCEEDED(Mp2Encoder->GetOutputType(0, 0, &mt)));
+    MoFreeMediaType(&mt);
+    CheckEqualsHex(Mp2Encoder->GetOutputType(1, 0, 0),
+            DMO_E_INVALIDSTREAMINDEX);
 }
 
 void __fastcall TTestTMp2EncoderImpl::TestSetInputType() {
